@@ -1,0 +1,110 @@
+{
+    "Classi": {
+        "1E": {
+            "Materie": {
+                "1": {
+                    "name": "Ginnastica",
+                    "professore": "Cavallet",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "2": {
+                    "name": "Scienze",
+                    "professore": "Alghisi",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                }
+            }
+        },
+        "2E": {
+            "Materie" : {
+                "1" : {
+                    "name" : "Informatica",
+                    "professore" : "Cavallet",
+                    "verifica" : "no",
+                    "data" : "7 febbraio 2017",
+                    "argomento" : ""
+                },
+                "2" : {
+                    "name" : "Italiano",
+                    "professore": "Archetti",
+                    "verifica": "no",
+                    "data" : "7 febbraio 2017",
+                    "argomento" : ""
+                },
+                "3" : {
+                    "name" : "Diritto",
+                    "professore" : "Calimeri",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "4" : {
+                    "name" : "Matematica",
+                    "professore" : "Pedersoli",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "5" : {
+                    "name" : "Scienze",
+                    "professore" : "Alghisi",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "6" : {
+                    "name" : "Narrativa",
+                    "professore": "Atria",
+                    "verifica" : "yes",
+                    "data" : "10 febbraio 2017",
+                    "argomento" : ""
+                },
+                "7" : {
+                    "name" : "Elettrotecnica",
+                    "professore" : "Pedersoli",
+                    "verifica" : "",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "8" : {
+                    "name" : "Automazione",
+                    "professore" : "Pedersoli",
+                    "verifica" : "",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "9" : {
+                    "name" : "Tecnologia Elettrica",
+                    "professore" : "Torosani",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "10" : {
+                    "name" : "Inglese",
+                    "professore" : "Deori",
+                    "verifica" : "",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "11" : {
+                    "name" : "Laboratorio Elettrico",
+                    "professore" : "Torosani",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                },
+                "12" : {
+                    "name" : "IRC",
+                    "professore" : "Cannone",
+                    "verifica" : "no",
+                    "data" : "",
+                    "argomento" : ""
+                }
+            }
+        }
+    }
+}

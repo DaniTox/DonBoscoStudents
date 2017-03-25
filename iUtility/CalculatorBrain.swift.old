@@ -1,0 +1,91 @@
+//
+//  CalculatorBrain.swift
+//  iUtility
+//
+//  Created by Dani Tox on 28/12/16.
+//  Copyright © 2016 Dani Tox. All rights reserved.
+//
+
+import Foundation
+
+class CalculatorBrain {
+    
+    
+    fileprivate var accumulator:Double = 0.0
+    
+    func setOperand(_ operand: Double) {
+        accumulator = operand
+    }
+    
+    fileprivate var operations : Dictionary <String, Operations> = [
+        "π" : Operations.constant (M_PI),
+        "e" : Operations.constant (M_E),
+        "X^2" : Operations.binaryPlusOpeartion(pow),
+        "√" : Operations.unaryOperation(sqrt),
+        "cos": Operations.unaryOperation(cos),
+        "×" : Operations.binaryOperation({$0 * $1}),
+        "÷" : Operations.binaryOperation({$0 / $1}),
+        "+" : Operations.binaryOperation({$0 + $1}),
+        "−" : Operations.binaryOperation({$0 - $1}),
+        "=" : Operations.equals,
+        "C" : Operations.delete
+        
+    ]
+    
+    fileprivate enum Operations {
+        case constant(Double)
+        case unaryOperation((Double) ->Double)
+        case binaryOperation((Double, Double) ->Double)
+        case equals
+        case binaryPlusOpeartion((Double, Double) ->Double)
+        case delete
+    }
+    
+    func performOperation(_ symbol: String) {
+        if let operation = operations[symbol] {
+            switch operation{
+            case .constant(let value):
+                accumulator = value
+            case .unaryOperation (let foo):
+                accumulator = foo(accumulator)
+            case .binaryOperation(let function):
+                executePendingBinaryOperation()
+                pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
+            case .equals:
+                executePendingBinaryOperation()
+            case .binaryPlusOpeartion(let function):
+                let number = accumulator
+                accumulator = function(number, 2)
+            case .delete :
+                accumulator = 0
+                pending = nil
+            }
+            
+        }
+        
+    }
+    
+    fileprivate func executePendingBinaryOperation() {
+        if pending != nil {
+            accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
+            pending = nil
+        }
+    }
+    
+    fileprivate var pending: PendingBinaryOperationInfo?
+    
+    fileprivate struct PendingBinaryOperationInfo {
+        var binaryFunction: (Double, Double) ->Double
+        var firstOperand: Double
+    }
+    
+    var result: Double {
+        get {
+            return accumulator
+        }
+    }
+    
+    
+    
+}
+

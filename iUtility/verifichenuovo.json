@@ -1,0 +1,596 @@
+{
+    "Classi" : {
+        "1E" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        },
+        "2E" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        },
+        "3E" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        },
+        "4E" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        },
+        "1M" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        },
+        "2M" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        },
+        "3M" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        },
+        "4M" : {
+            "Informatica" : {
+                "Nome" : "Informatica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Scienze" : {
+                "Nome" : "Scienze",
+                "Data" : "",
+                "Argomento": "",
+                "Verifica" : ""
+            },
+            "Diritto" : {
+                "Nome" : "Diritto",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Italiano" : {
+                "Nome" : "Italiano",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Narrativa" : {
+                "Nome" : "Narrativa",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Matematica" : {
+                "Nome" : "Matematica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Elettrotecnica" : {
+                "Nome" : "Elettrotecnica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Tecnologia Elettrica" : {
+                "Nome" : "Tecnologia Elettrica",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Motoria" : {
+                "Nome" : "Motoria",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Automazione" : {
+                "Nome" : "Automazione",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Economia" : {
+                "Nome" : "Economia",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            },
+            "Disegno Elettrico" : {
+                "Nome" : "Disegno Elettrico",
+                "Data" : "",
+                "Argomento" : "",
+                "Verifica" : ""
+            }
+        }
+    }
+}
