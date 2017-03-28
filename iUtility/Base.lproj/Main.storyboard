@@ -293,6 +293,49 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="EMJ-lx-nQc">
+                                        <rect key="frame" x="0.0" y="320" width="1024" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EMJ-lx-nQc" id="lhS-fV-rZy">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se vuoi aiutarmi a migliorare l'app, vai sul progetto GitHub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QR3-xL-nPc">
+                                                    <rect key="frame" x="31" y="11" width="500" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="23" id="a4R-p1-Xj5"/>
+                                                        <constraint firstAttribute="width" constant="500" id="fHX-Qj-UCE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Htj-Gp-il6">
+                                                    <rect key="frame" x="853" y="4" width="150" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="1Sz-hg-x9q"/>
+                                                        <constraint firstAttribute="width" constant="150" id="6Rn-yk-qzd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <state key="normal" title="GitHub">
+                                                        <color key="titleColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="openGithub" destination="3ya-rS-ma5" eventType="touchUpInside" id="D5x-B2-i9d"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Htj-Gp-il6" secondAttribute="trailing" constant="21" id="18y-BL-OE9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="QR3-xL-nPc" secondAttribute="bottom" constant="1" id="8rH-Fi-06W"/>
+                                                <constraint firstItem="QR3-xL-nPc" firstAttribute="top" secondItem="lhS-fV-rZy" secondAttribute="topMargin" constant="3" id="Bga-PU-jJC"/>
+                                                <constraint firstItem="Htj-Gp-il6" firstAttribute="top" secondItem="lhS-fV-rZy" secondAttribute="top" constant="4" id="HqU-kI-hAB"/>
+                                                <constraint firstAttribute="bottom" secondItem="Htj-Gp-il6" secondAttribute="bottom" constant="5" id="nBr-Qa-bQK"/>
+                                                <constraint firstItem="QR3-xL-nPc" firstAttribute="leading" secondItem="lhS-fV-rZy" secondAttribute="leadingMargin" constant="23" id="oF9-PG-vad"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -317,7 +360,7 @@
         <scene sceneID="EX6-cI-NMh">
             <objects>
                 <tableViewController id="7aR-L7-Bd4" customClass="VerificheNuovoTableViewController" customModule="iUtility" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="BpS-BD-Fef">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" id="BpS-BD-Fef">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>

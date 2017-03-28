@@ -60,8 +60,8 @@ class DeveloperTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let CaricatoreSchema = SchemiTest()
-        CaricatoreSchema.caricaSchemi(testoSelezionato: avvisiArray[indexPath.row])
+//        let CaricatoreSchema = SchemiTest()
+//        CaricatoreSchema.caricaSchemi(testoSelezionato: avvisiArray[indexPath.row])
     }
     
     func aggiornaTuttoCompresoLaView() {

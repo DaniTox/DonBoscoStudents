@@ -30,7 +30,7 @@ class SchemiTest : NSObject {
             labelScritta.textColor = UIColor.green
             
             labelScritta.lineBreakMode = .byWordWrapping
-            labelScritta.font = UIFont(name: "PingFangTC-Thin", size: 50)
+            labelScritta.font = UIFont(name: "PingFangTC-Thin", size: 25)
             labelScritta.textAlignment = .left
             viewSchemi.addSubview(labelScritta)
             

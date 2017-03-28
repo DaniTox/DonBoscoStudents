@@ -160,6 +160,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         let orientationValue : String = UIDevice.current.deviceOrientation
         let numeroBuild :String = Bundle.main.buildVersionNumber!
         let appTypeOfRun:String = UIDevice.current.appTypeOfRun
+        let linkSonoCorretti = UserDefaults.standard.bool(forKey: "linkCorretti")
+        let allLinks = [UserDefaults.standard.string(forKey: "LinkAvvisi"), UserDefaults.standard.string(forKey: "LinkControllaAggiornamenti"), UserDefaults.standard.string(forKey: "LinkMsgTester"),UserDefaults.standard.string(forKey: "LinkOrario")]
         
         if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
@@ -175,7 +177,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients(["d.bazzani.cfp@gmail.com"])
             mailVC.setSubject("BUG DBStudenti " + appVersion)
-            mailVC.setMessageBody("INFORMAZIONI DEL TUO DISPOSITIVO PER CAPIRE COME RIPRODURRE IL BUG. NON MODIFICARLE\n---------------\nDEVICE/APP INFO:\nVersione Applicazione: \(appVersion)\nNumero Build: \(numeroBuild)\nType: \(appTypeOfRun)\nDispositivo: \(deviceModel)\nDevice Type: \(deviceModelIdentifier)\nOS: \(deviceOSVersion)\nOrientation: \(orientationValue)\n------------\n\n\nSCRIVI QUA SOTTO INFORMAZIONI UTILI SUL BUG E SU COME POSSO TROVARLO:\n\n", isHTML: false)
+            mailVC.setMessageBody("SCRIVI QUA SOTTO INFORMAZIONI UTILI SUL BUG E SU COME POSSO TROVARLO:\n\n\n\nINFORMAZIONI DEL TUO DISPOSITIVO PER CAPIRE COME RIPRODURRE IL BUG. NON MODIFICARLE\n---------------\nDEVICE/APP INFO:\nVersione Applicazione: \(appVersion)\nNumero Build: \(numeroBuild)\nType: \(appTypeOfRun)\nDispositivo: \(deviceModel)\nDevice Type: \(deviceModelIdentifier)\nOS: \(deviceOSVersion)\nOrientation: \(orientationValue)\nLink aggiornati dalle impostazioni: \(linkSonoCorretti)\nLinks aggiornati: \(allLinks)\n------------\n", isHTML: false)
             
             present(mailVC, animated: true, completion: nil)
         }
@@ -198,6 +200,11 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     
+    @IBAction func openGithub() {
+        if let url = URL(string: "https://github.com/DaniTox/DonBoscoStudents/tree/master/iUtility") {
+            UIApplication.shared.openURL(url)
+        }
+    }
     
     
     override func viewDidLoad() {
