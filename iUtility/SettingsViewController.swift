@@ -11,9 +11,10 @@ import UserNotifications
 import MessageUI
 import SwiftyJSON
 
-
+var linksModificati:Bool?
 
 class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
+    
     
     
     @IBOutlet weak var classeTextField: UITextField!
@@ -51,40 +52,70 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
                 alert1.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 present(alert1, animated: true, completion: nil)
 
-              classeTextField.endEditing(false)
+              classeTextField.endEditing(true)
+                classeTextField.resignFirstResponder()
             }
         }
     }
     
     @IBAction func verificaAggiornamenti() {
-        let url = URL(string: "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/DBStudentiVersion.json")
-        let jsonData = try? Data(contentsOf: url!) as Data
-        let readableJson = JSON(data: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
+      
+        var linkUltimaVersione: String?
         
-        let latestVersion = String(describing: readableJson["latestVersion"])
-        let versionInstalled = String(describing: UIDevice.current.appVersion)
+        if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
+            linkUltimaVersione = "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/DBStudentiVersion.json"
+        }
+        else {
+            linkUltimaVersione = UserDefaults.standard.string(forKey: "LinkControllaAggiornamenti")
+        }
         
-        print("Versione attuale: \(versionInstalled)\nVersione più aggiornata: \(latestVersion)")
-        
-        if versionInstalled == latestVersion {
-            let alert = UIAlertController(title: "Nessun Aggiornamento", message: "Hai già la versione più aggiornata", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            present(alert, animated: true, completion: nil)
-            print("Nessun Aggiornamento Disponibile")
-        } else {
-            let alert = UIAlertController(title: "Aggiornamento Disponibile", message: "Nuova versione disponibile: \(latestVersion)", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Non ora", style: UIAlertActionStyle.default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Scarica", style: UIAlertActionStyle.default, handler: { (aggiorna) in
-                //AGGIORNARE L'URL QUANDO L'APP DOVRà USCIRE SULL'APP STORE
-                let urlAggiornamento = URL(string: "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/notaperibetatester.html")
-                UIApplication.shared.openURL(urlAggiornamento!)
-            }))
-            present(alert, animated: true, completion: nil)
-            print("Aggiornamento Disponibile")
+        if let url = URL(string: linkUltimaVersione!) {
+            let jsonData = try? Data(contentsOf: url) as Data
+            let readableJson = JSON(data: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
+            
+            let latestVersion = String(describing: readableJson["latestVersion"])
+            let versionInstalled = String(describing: UIDevice.current.appVersion)
+            
+            print("Versione attuale: \(versionInstalled)\nVersione più aggiornata: \(latestVersion)")
+            
+            if versionInstalled == latestVersion {
+                let alert = UIAlertController(title: "Nessun Aggiornamento", message: "Hai già la versione più aggiornata", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                present(alert, animated: true, completion: nil)
+                print("Nessun Aggiornamento Disponibile")
+            } else {
+                let alert = UIAlertController(title: "Aggiornamento Disponibile", message: "Nuova versione disponibile: \(latestVersion)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Non ora", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Scarica", style: UIAlertActionStyle.default, handler: { (aggiorna) in
+                    //AGGIORNARE L'URL QUANDO L'APP DOVRà USCIRE SULL'APP STORE
+                    
+                    if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
+                        let urlString = "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/notaperibetatester.html"
+                        let urlAggiornamento = URL(string: urlString)
+                        UIApplication.shared.openURL(urlAggiornamento!)
+                    }
+                    else  {
+                        if let urlString = UserDefaults.standard.string(forKey: "LinkMsgTester") {
+                            let urlAggiornamento = URL(string: urlString)
+                            UIApplication.shared.openURL(urlAggiornamento!)
+                        }
+                        else {
+                            print("Qualcosa non va negli UserDefaults riguardo il link per il messaggio agli sviluppatori")
+                        }
+                    }
+                }))
+                present(alert, animated: true, completion: nil)
+                print("Aggiornamento Disponibile")
+            }
+        }
+        else {
+            //print(linkUltimaVersione)
+            print("Errato")
         }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        salvaClasseButton()
         textField.resignFirstResponder()
         return true
     }
@@ -154,8 +185,24 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         controller.dismiss(animated: true, completion: nil)
     }
 
+    
+    @IBAction func correggiLinks() {
+        
+        let alert = UIAlertController(title: "Correzione dei link", message: "Se le tab che devono connettersi a internet per funzionare (es. Sviluppatore, Controllo Aggiornamento, Scarica aggiornamento e Orario) non funzionano (e magari fanno anche crashare), premi Correggi e dovrebbe tornare normale.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Annulla", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Correggi", style: UIAlertActionStyle.default, handler: { (correggiPremuto) in
+            let correttore = CorrettoreLink()
+            correttore.correggiLink()
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         self.classeTextField.delegate = self
         

@@ -12,6 +12,8 @@ var avvisiArray = [String]()
 
 class DeveloperTableViewController: UITableViewController {
     
+    
+    
     let developerModel = DeveloperModel()
     
     let ricaricaControl = UIRefreshControl()

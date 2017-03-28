@@ -29,6 +29,9 @@ class VerificheNuovoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        materieArray.removeAll()
+        materieDataArray.removeAll()
+        materieArgomentoArray.removeAll()
         
         classeAllievo = UserDefaults.standard.string(forKey: "classe")
         
@@ -73,45 +76,46 @@ class VerificheNuovoTableViewController: UITableViewController {
     func caricaLeVerifiche() {
         if let classeAllievo = UserDefaults.standard.string(forKey: "classe") {
             if classeAllievo != "" {
-            ref?.child("Classi").child(classeAllievo).observeSingleEvent(of: .value, with: { (snapshot) in
-                self.classeAllievo = UserDefaults.standard.string(forKey: "classe")
-                if let materie = snapshot.value as? NSDictionary {
-                    for (keys, _) in materie {
-                        let test = materie[keys] as? NSDictionary
-                        //print(test!)
-                        if test?["Verifica"] as? String == "yes" {
-                            //self.materieArray.removeAll()
-                            //self.materieDataArray.removeAll()
-                            //self.materieArgomentoArray.removeAll()
-                            let verificaProgrammataNome = test!["Nome"] as! String
-                            let verificaProgrammataData = test!["Data"] as! String
-                            let verificaProgrammataArgomento = test!["Argomento"] as! String
-                            print("+1   \(verificaProgrammataNome)")
-                            self.materieArray.append(verificaProgrammataNome)
-                            self.materieDataArray.append(verificaProgrammataData)
-                            self.materieArgomentoArray.append(verificaProgrammataArgomento)
+                ricaricaControl.beginRefreshing()
+                ref?.child("Classi").child(classeAllievo).observeSingleEvent(of: .value, with: { (snapshot) in
+                    self.classeAllievo = UserDefaults.standard.string(forKey: "classe")
+                    if let materie = snapshot.value as? NSDictionary {
+                        for (keys, _) in materie {
+                            let test = materie[keys] as? NSDictionary
+                            //print(test!)
+                            if test?["Verifica"] as? String == "yes" {
+                                //self.materieArray.removeAll()
+                                //self.materieDataArray.removeAll()
+                                //self.materieArgomentoArray.removeAll()
+                                let verificaProgrammataNome = test!["Nome"] as! String
+                                let verificaProgrammataData = test!["Data"] as! String
+                                let verificaProgrammataArgomento = test!["Argomento"] as! String
+                                print("+1   \(verificaProgrammataNome)")
+                                self.materieArray.append(verificaProgrammataNome)
+                                self.materieDataArray.append(verificaProgrammataData)
+                                self.materieArgomentoArray.append(verificaProgrammataArgomento)
+                            }
+                            
+                            
                         }
                         
+                        self.tableView.reloadData()
+                        self.ricaricaControl.endRefreshing()
+                        
+                        //self.materieArray.append(item)
+                        //self.tableView.reloadData()
                         
                     }
-                
-                    self.tableView.reloadData()
-                    self.ricaricaControl.endRefreshing()
+                    else {
+                        let alert1 = UIAlertController(title: "Errore", message: "La classe selezionata ha qualche errore di scrittura. Assicurati di averla scritta giusta nelle impostazioni e riprova. \nSintassi: 1E, 2E, 3E, 4E, 1M, 2M, 3M, 4M", preferredStyle: .alert)
+                        alert1.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self.present(alert1, animated: true, completion: nil)
+                        self.ricaricaControl.endRefreshing()
+                        print("error")
+                    }
                     
-                    //self.materieArray.append(item)
-                    //self.tableView.reloadData()
                     
-                }
-                else {
-                    let alert1 = UIAlertController(title: "Errore", message: "La classe selezionata ha qualche errore di scrittura. Assicurati di averla scritta giusta nelle impostazioni e riprova. \nSintassi: 1E, 2E, 3E, 4E, 1M, 2M, 3M, 4M", preferredStyle: .alert)
-                    alert1.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    self.present(alert1, animated: true, completion: nil)
-                    self.ricaricaControl.endRefreshing()
-                    print("error")
-                }
-                
-                
-            })
+                })
             }
         } else if classeAllievo == "" {
             let alert1 = UIAlertController(title: "Nessuna classe", message: "Non hai selezionato nessuna classe. Puoi farlo nelle impostazioni", preferredStyle: .alert)

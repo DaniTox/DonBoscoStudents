@@ -250,6 +250,49 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="UUj-0m-CRl">
+                                        <rect key="frame" x="0.0" y="276" width="1024" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UUj-0m-CRl" id="Ih9-VX-gSp">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correggi i link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jjw-TF-1Iv">
+                                                    <rect key="frame" x="31" y="11" width="200" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="23" id="C6t-LU-L23"/>
+                                                        <constraint firstAttribute="width" constant="200" id="xgL-ma-506"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUr-Yb-oJu">
+                                                    <rect key="frame" x="853" y="4" width="150" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="NM7-bQ-VXg"/>
+                                                        <constraint firstAttribute="height" constant="34" id="eQ0-G9-I3t"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Correggi Links">
+                                                        <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="correggiLinks" destination="3ya-rS-ma5" eventType="touchUpInside" id="D8A-iK-Go0"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jjw-TF-1Iv" secondAttribute="bottom" constant="1" id="4rZ-CE-oSB"/>
+                                                <constraint firstItem="jjw-TF-1Iv" firstAttribute="leading" secondItem="Ih9-VX-gSp" secondAttribute="leadingMargin" constant="23" id="CPZ-PN-X4k"/>
+                                                <constraint firstAttribute="bottom" secondItem="EUr-Yb-oJu" secondAttribute="bottom" constant="5" id="clc-Vk-Zph"/>
+                                                <constraint firstAttribute="trailing" secondItem="EUr-Yb-oJu" secondAttribute="trailing" constant="21" id="ctx-HW-HOU"/>
+                                                <constraint firstItem="jjw-TF-1Iv" firstAttribute="top" secondItem="Ih9-VX-gSp" secondAttribute="topMargin" constant="3" id="iZo-Hj-85N"/>
+                                                <constraint firstItem="EUr-Yb-oJu" firstAttribute="top" secondItem="Ih9-VX-gSp" secondAttribute="top" constant="4" id="pWb-v7-5cd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -291,7 +334,7 @@
                                 <rect key="frame" x="0.0" y="96" width="1024" height="126"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LJp-YX-b2v" id="lIJ-aP-rLw">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="126"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>

@@ -40,10 +40,25 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
     
     func caricaPagina() {
         if giaCaricato == false {
-            let urlOrario = URL(string: "http://www.donboscobrescia.it/file/orario.pdf")
-            orarioWebView.loadRequest(URLRequest(url: urlOrario!))
-            orarioWebView.delegate = self
-            giaCaricato = true
+            var orarioStringUrl:String?
+            if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
+                orarioStringUrl = "http://www.donboscobrescia.it/file/orario.pdf"
+                print("LOG: UserDefault per i link corretti NON SETTATO oppure è uguale a FALSE. Quindi si usa lo  standard link")
+            }
+            else {
+                orarioStringUrl = UserDefaults.standard.string(forKey: "LinkOrario")
+                print("LOG: UserDefault per i link corretti SETTATO a TRUE. Vuol dire che sono stati corretti e il link usato è quello negli UserDefault")
+            }
+            if let urlOrario = URL(string: orarioStringUrl!) {
+                orarioWebView.loadRequest(URLRequest(url: urlOrario))
+                orarioWebView.delegate = self
+                giaCaricato = true
+            }
+            else {
+                let alert = UIAlertController(title: "Errore", message: "Probabilmente c'è qualche errore con i link. Prova a coreggerli nelle impostazioni", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+            }
         }
         
     }

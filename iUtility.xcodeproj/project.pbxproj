@@ -27,6 +27,7 @@
 		DB3E40741E69F3AE002BF4C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB3E40731E69F3AE002BF4C7 /* GoogleService-Info.plist */; };
 		DB3E40761E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E40751E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift */; };
 		DB3E40781E6B5ADC002BF4C7 /* verifichenuovo.json in Resources */ = {isa = PBXBuildFile; fileRef = DB3E40771E6B5ADC002BF4C7 /* verifichenuovo.json */; };
+		DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */; };
 		DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */; };
 		DB5A65C91E7C41960094FCC8 /* NumeriCasualiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */; };
 		DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */; };
@@ -91,6 +92,7 @@
 		DB3E40731E69F3AE002BF4C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3E40751E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificheNuovoTableViewController.swift; sourceTree = "<group>"; };
 		DB3E40771E6B5ADC002BF4C7 /* verifichenuovo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verifichenuovo.json; sourceTree = "<group>"; };
+		DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrettoreLink.swift; sourceTree = "<group>"; };
 		DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachablity.swift; sourceTree = "<group>"; };
 		DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumeriCasualiViewController.swift; sourceTree = "<group>"; };
 		DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelNumeriCasuali.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				DB3343241E1437C8007535E6 /* Main.storyboard */,
 				DB3E40511E68D17C002BF4C7 /* FormuleTableViewController.swift */,
+				DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */,
 				DB0B46FD1E3D1A8400DF7CC7 /* iUtility.entitlements */,
 				DB5EB3791E77250F005C4267 /* avvisi.json */,
 				DB0A06DD1E4534C300D7F9CC /* verifiche.json */,
@@ -587,6 +590,7 @@
 				DBF202631E7DC38E00A1548E /* DeveopersModel.swift in Sources */,
 				DB1A7C901E85864200B73044 /* DeviceInfo.swift in Sources */,
 				DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */,
+				DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */,
 				DB3343231E1437C7007535E6 /* ViewController.swift in Sources */,
 				DB5EB3781E77061F005C4267 /* DeveloperTableViewController.swift in Sources */,
 				DB3E40521E68D17C002BF4C7 /* FormuleTableViewController.swift in Sources */,
