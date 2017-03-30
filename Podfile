@@ -10,7 +10,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'TextFieldEffects'
 pod 'LTMorphingLabel'
-
+pod 'Firebase/Messaging’
 
   target 'iUtilityTests' do
     inherit! :search_paths

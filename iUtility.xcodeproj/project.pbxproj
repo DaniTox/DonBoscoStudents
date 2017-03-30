@@ -11,7 +11,6 @@
 		B0853E8E8ADDCF259AA4BB26 /* Pods_iUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0577E57CCDFF34DC2BD0D4 /* Pods_iUtility.framework */; };
 		C5004816E812FC7821EBDF92 /* Pods_iUtilityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58329F89DAF8A98E94ABA0CF /* Pods_iUtilityUITests.framework */; };
 		DB0A06DA1E4531AC00D7F9CC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */; };
-		DB0A06DE1E4534C300D7F9CC /* verifiche.json in Resources */ = {isa = PBXBuildFile; fileRef = DB0A06DD1E4534C300D7F9CC /* verifiche.json */; };
 		DB0B46EE1E394F5400DF7CC7 /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B46ED1E394F5400DF7CC7 /* Swift+Gif.swift */; };
 		DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */; };
 		DB0B46FA1E3CFACC00DF7CC7 /* donboscologo.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0B46F91E3CFACC00DF7CC7 /* donboscologo.png */; };
@@ -23,16 +22,14 @@
 		DB3343361E1437C8007535E6 /* iUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343351E1437C8007535E6 /* iUtilityTests.swift */; };
 		DB3343411E1437C9007535E6 /* iUtilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343401E1437C9007535E6 /* iUtilityUITests.swift */; };
 		DB368B151E3FCA5E00B185DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */; };
-		DB3E40521E68D17C002BF4C7 /* FormuleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E40511E68D17C002BF4C7 /* FormuleTableViewController.swift */; };
-		DB3E40741E69F3AE002BF4C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB3E40731E69F3AE002BF4C7 /* GoogleService-Info.plist */; };
 		DB3E40761E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E40751E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift */; };
 		DB3E40781E6B5ADC002BF4C7 /* verifichenuovo.json in Resources */ = {isa = PBXBuildFile; fileRef = DB3E40771E6B5ADC002BF4C7 /* verifichenuovo.json */; };
+		DB4A30341E8DB54B00B98C49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4A30331E8DB54B00B98C49 /* GoogleService-Info.plist */; };
 		DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */; };
 		DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */; };
 		DB5A65C91E7C41960094FCC8 /* NumeriCasualiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */; };
 		DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */; };
 		DB5EB3781E77061F005C4267 /* DeveloperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5EB3771E77061F005C4267 /* DeveloperTableViewController.swift */; };
-		DB5EB37A1E77250F005C4267 /* avvisi.json in Resources */ = {isa = PBXBuildFile; fileRef = DB5EB3791E77250F005C4267 /* avvisi.json */; };
 		DB6C30691E71FD85004FC96A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C30681E71FD85004FC96A /* CalculatorBrain.swift */; };
 		DB6C6FD41E380CE2009C2578 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C6FD31E380CE2009C2578 /* SettingsViewController.swift */; };
 		DB98E7A81E86968700593168 /* InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB98E7A71E86968700593168 /* InfoApp.swift */; };
@@ -69,7 +66,6 @@
 		9F8B85105CA7985578FE4BB9 /* Pods-iUtilityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iUtilityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iUtilityTests/Pods-iUtilityTests.release.xcconfig"; sourceTree = "<group>"; };
 		BD5E5CF1D8B1988BD5E2CC5E /* Pods-iUtilityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iUtilityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iUtilityUITests/Pods-iUtilityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/iUtility-auuluzxdtjglungwowhcyjpdyzgk/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
-		DB0A06DD1E4534C300D7F9CC /* verifiche.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verifiche.json; sourceTree = "<group>"; };
 		DB0B46ED1E394F5400DF7CC7 /* Swift+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Swift+Gif.swift"; path = "../Swift+Gif.swift"; sourceTree = "<group>"; };
 		DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewOrarioViewController.swift; sourceTree = "<group>"; };
 		DB0B46F91E3CFACC00DF7CC7 /* donboscologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donboscologo.png; sourceTree = "<group>"; };
@@ -88,16 +84,14 @@
 		DB3343401E1437C9007535E6 /* iUtilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iUtilityUITests.swift; sourceTree = "<group>"; };
 		DB3343421E1437C9007535E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
-		DB3E40511E68D17C002BF4C7 /* FormuleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormuleTableViewController.swift; sourceTree = "<group>"; };
-		DB3E40731E69F3AE002BF4C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3E40751E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificheNuovoTableViewController.swift; sourceTree = "<group>"; };
 		DB3E40771E6B5ADC002BF4C7 /* verifichenuovo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = verifichenuovo.json; sourceTree = "<group>"; };
+		DB4A30331E8DB54B00B98C49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrettoreLink.swift; sourceTree = "<group>"; };
 		DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachablity.swift; sourceTree = "<group>"; };
 		DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumeriCasualiViewController.swift; sourceTree = "<group>"; };
 		DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelNumeriCasuali.swift; sourceTree = "<group>"; };
 		DB5EB3771E77061F005C4267 /* DeveloperTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewController.swift; sourceTree = "<group>"; };
-		DB5EB3791E77250F005C4267 /* avvisi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = avvisi.json; sourceTree = "<group>"; };
 		DB6C30681E71FD85004FC96A /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		DB6C6FD31E380CE2009C2578 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DB98E7A71E86968700593168 /* InfoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
@@ -217,15 +211,12 @@
 		DB33434E1E1437D2007535E6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				DB4A30331E8DB54B00B98C49 /* GoogleService-Info.plist */,
 				DB3343241E1437C8007535E6 /* Main.storyboard */,
-				DB3E40511E68D17C002BF4C7 /* FormuleTableViewController.swift */,
 				DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */,
 				DB0B46FD1E3D1A8400DF7CC7 /* iUtility.entitlements */,
-				DB5EB3791E77250F005C4267 /* avvisi.json */,
-				DB0A06DD1E4534C300D7F9CC /* verifiche.json */,
 				DB3E40771E6B5ADC002BF4C7 /* verifichenuovo.json */,
 				DB0B46ED1E394F5400DF7CC7 /* Swift+Gif.swift */,
-				DB3E40731E69F3AE002BF4C7 /* GoogleService-Info.plist */,
 				DB3343201E1437C7007535E6 /* AppDelegate.swift */,
 				DB98E7A71E86968700593168 /* InfoApp.swift */,
 				DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */,
@@ -367,11 +358,17 @@
 				TargetAttributes = {
 					DB33431C1E1437C7007535E6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9NRFD47MK9;
+						DevelopmentTeam = Q5WYV8U42F;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
 							};
 						};
 					};
@@ -416,11 +413,9 @@
 			files = (
 				DB3E40781E6B5ADC002BF4C7 /* verifichenuovo.json in Resources */,
 				DB1A7C8E1E857BE500B73044 /* Images.xcassets in Resources */,
+				DB4A30341E8DB54B00B98C49 /* GoogleService-Info.plist in Resources */,
 				DB368B151E3FCA5E00B185DC /* Launch Screen.storyboard in Resources */,
-				DB3E40741E69F3AE002BF4C7 /* GoogleService-Info.plist in Resources */,
 				DB0B46FA1E3CFACC00DF7CC7 /* donboscologo.png in Resources */,
-				DB5EB37A1E77250F005C4267 /* avvisi.json in Resources */,
-				DB0A06DE1E4534C300D7F9CC /* verifiche.json in Resources */,
 				DB3343261E1437C8007535E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,7 +588,6 @@
 				DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */,
 				DB3343231E1437C7007535E6 /* ViewController.swift in Sources */,
 				DB5EB3781E77061F005C4267 /* DeveloperTableViewController.swift in Sources */,
-				DB3E40521E68D17C002BF4C7 /* FormuleTableViewController.swift in Sources */,
 				DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */,
 				DB3343211E1437C7007535E6 /* AppDelegate.swift in Sources */,
 				DB0B46EE1E394F5400DF7CC7 /* Swift+Gif.swift in Sources */,
@@ -746,11 +740,12 @@
 			baseConfigurationReference = 2491E253A9DD842F64F0F206 /* Pods-iUtility.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9NRFD47MK9;
+				CODE_SIGN_ENTITLEMENTS = iUtility/iUtility.entitlements;
+				DEVELOPMENT_TEAM = Q5WYV8U42F;
 				INFOPLIST_FILE = iUtility/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danitox.donBoscoApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danitox.donBoscoStudents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -762,11 +757,12 @@
 			baseConfigurationReference = 6C16D97F01B97C888CD35602 /* Pods-iUtility.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9NRFD47MK9;
+				CODE_SIGN_ENTITLEMENTS = iUtility/iUtility.entitlements;
+				DEVELOPMENT_TEAM = Q5WYV8U42F;
 				INFOPLIST_FILE = iUtility/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danitox.donBoscoApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danitox.donBoscoStudents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
