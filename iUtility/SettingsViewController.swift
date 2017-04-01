@@ -11,6 +11,12 @@ import UserNotifications
 import MessageUI
 import SwiftyJSON
 
+extension Sequence {
+    var minimalDescription: String {
+        return map { "\($0)" }.joined(separator: " ")
+    }
+}
+
 var linksModificati:Bool?
 
 class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
@@ -161,7 +167,10 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         let numeroBuild :String = Bundle.main.buildVersionNumber!
         let appTypeOfRun:String = UIDevice.current.appTypeOfRun
         let linkSonoCorretti = UserDefaults.standard.bool(forKey: "linkCorretti")
-        let allLinks = [UserDefaults.standard.string(forKey: "LinkAvvisi"), UserDefaults.standard.string(forKey: "LinkControllaAggiornamenti"), UserDefaults.standard.string(forKey: "LinkMsgTester"),UserDefaults.standard.string(forKey: "LinkOrario")]
+        let allLinks = [UserDefaults.standard.string(forKey: "LinkAvvisi"), UserDefaults.standard.string(forKey: "LinkControllaAggiornamenti"), UserDefaults.standard.string(forKey: "LinkMsgTester"),UserDefaults.standard.string(forKey: "LinkOrario"), UserDefaults.standard.string(forKey: "LinkChangeLog")]
+        let bundleIdentifier = Bundle.main.bundleIdentifier
+        
+        
         
         if !MFMailComposeViewController.canSendMail() {
             print("Mail services are not available")
@@ -177,7 +186,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients(["d.bazzani.cfp@gmail.com"])
             mailVC.setSubject("BUG DBStudenti " + appVersion)
-            mailVC.setMessageBody("SCRIVI QUA SOTTO INFORMAZIONI UTILI SUL BUG E SU COME POSSO TROVARLO:\n\n\n\nINFORMAZIONI DEL TUO DISPOSITIVO PER CAPIRE COME RIPRODURRE IL BUG. NON MODIFICARLE\n---------------\nDEVICE/APP INFO:\nVersione Applicazione: \(appVersion)\nNumero Build: \(numeroBuild)\nType: \(appTypeOfRun)\nDispositivo: \(deviceModel)\nDevice Type: \(deviceModelIdentifier)\nOS: \(deviceOSVersion)\nOrientation: \(orientationValue)\nLink aggiornati dalle impostazioni: \(linkSonoCorretti)\nLinks aggiornati: \(allLinks)\n------------\n", isHTML: false)
+            mailVC.setMessageBody("SCRIVI QUA SOTTO INFORMAZIONI UTILI SUL BUG E SU COME POSSO TROVARLO:\n\n\n\nINFORMAZIONI DEL TUO DISPOSITIVO PER CAPIRE COME RIPRODURRE IL BUG. NON MODIFICARLE\n---------------\nDEVICE/APP INFO:\nVersione Applicazione: \(appVersion)\nNumero Build: \(numeroBuild)\nType: \(appTypeOfRun)\nDispositivo: \(deviceModel)\nDevice Type: \(deviceModelIdentifier)\nOS: \(deviceOSVersion)\nOrientation: \(orientationValue)\nLink aggiornati dalle impostazioni: \(linkSonoCorretti)\nLinks aggiornati: \(allLinks)\nBundle ID: \(bundleIdentifier)\n------------\n", isHTML: false)
             
             present(mailVC, animated: true, completion: nil)
         }
@@ -205,6 +214,45 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             UIApplication.shared.openURL(url)
         }
     }
+    
+    @IBAction func showChangeLog() {
+        let changelog = GetChangeLog()
+        changelogArray.removeAll()
+        changelog.getCangelog()
+        
+        if changelogArray.last == "\n" {
+            changelogArray.removeLast()
+        }
+        
+        let alert = UIAlertController(title: "Changelog", message: String(describing: changelogArray.minimalDescription), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func consigliamiFunzione() {
+        if !MFMailComposeViewController.canSendMail() {
+            print("Mail services are not available")
+            let alert = UIAlertController(title: "Errore", message: "Probabilmente non hai impostato nessun indirizzo e-mail nell'app Mail.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            
+        }
+        else {
+            
+            let mailVC = MFMailComposeViewController()
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients(["d.bazzani.cfp@gmail.com"])
+            mailVC.setSubject("FUNZIONE DBStudenti")
+            mailVC.setMessageBody("Scrivi qua sotto i dettagli su come posso migliorare l'app.\nATTENZIONE: non deve essere un bug da risolvere. Per quello c'è già la funzione \"Segnala bug\"\n", isHTML: false)
+            
+            present(mailVC, animated: true, completion: nil)
+        }
+    }
+    
+    
+    
+    
     
     
     override func viewDidLoad() {

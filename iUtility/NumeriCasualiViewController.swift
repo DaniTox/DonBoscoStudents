@@ -8,13 +8,18 @@
 
 import UIKit
 
+
+
 class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
 
-    
+    var togliFunzioneArray: Bool = false
     @IBOutlet weak var nMinTextField: UITextField!
     @IBOutlet weak var nMaxTextField: UITextField!
     @IBOutlet weak var risultatoLabel: UILabel!
     @IBOutlet weak var numeriUscitiLabel: UILabel!
+    @IBOutlet weak var avvisoLabel: UILabel!
+    
+    
     
     var arrayNumeriUsciti = [Int]()
     
@@ -39,6 +44,11 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
         risultatoValue = 0
         numeriUscitiLabel.text = nil
         
+        avvisoLabel.text = nil
+        
+        avvisoLabel.numberOfLines = 0
+        avvisoLabel.lineBreakMode = .byWordWrapping
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,11 +68,27 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
         
         if let nMinimo = UInt32(nMinTextField.text!) {
             if let nMassimo = UInt32(nMaxTextField.text!) {
+                
+                if Int(nMassimo) - Int(nMinimo) >= 50 {
+                    print("È un intervallo abbastanza grande")
+                    avvisoLabel.text = "Per motivi di risorse, quando i numeri da generare sono maggiori di 5, la funzione dei numeri usciti viene disabilitata."
+                    togliFunzioneArray = true
+                }
+                else {
+                    togliFunzioneArray = false
+                    avvisoLabel.text = nil
+                }
+                
                 let result = modelNCasuli.generaNumero(nMin: nMinimo, nMax: nMassimo)
                 if result != -1 {
                     risultatoValue = result
-                    aggiungiInArray(numero: result)
-                    numeriUscitiLabel.text = String(describing: arrayNumeriUsciti)
+                    if togliFunzioneArray == false {
+                        aggiungiInArray(numero: result)
+                        numeriUscitiLabel.text = String(describing: arrayNumeriUsciti)
+                    }
+                    else {
+                        print("Array disabilitato")
+                    }
                 }
                 else {
                     let alert = UIAlertController(title: "Errore", message: "Il numero minimo è maggiore o uguale al numero massimo. Correggi e riprova", preferredStyle: .alert)
@@ -81,6 +107,7 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
         nMinTextField.text = nil
         nMaxTextField.text = nil
         risultatoValue = 0
+        avvisoLabel.text = nil
     }
     
     

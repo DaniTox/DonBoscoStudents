@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension Double {
+    var cleanValue: String {
+        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
@@ -48,7 +54,8 @@ class ViewController: UIViewController {
         }
 
         set {
-            display.text = String(newValue)
+            
+            display.text = String(newValue.cleanValue)
         }
     }
     
@@ -63,6 +70,7 @@ class ViewController: UIViewController {
             brain.performOperation(mathematicalSymbol)
         }
         if let result = brain.result {
+            
             displayValue = result
         }
     }

@@ -57,8 +57,7 @@ class VerificheNuovoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let caricatoreDatiVerifica = CaricaDatiVerifica()
-        //caricatoreDatiVerifica.caricaTabellaMateria()
+        //carica una View con i dati  ANCORA DA CREARE
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -26,6 +26,9 @@ class CorrettoreLink: NSObject {
         let linkMsgTester = String(describing: readableJson["msgForTestersUpdates"])
         UserDefaults.standard.setValue(linkMsgTester, forKey: "LinkMsgTester")
         
+        let linkChangelog = String(describing: readableJson["changelog"])
+        UserDefaults.standard.set(linkChangelog, forKey: "LinkChangeLog")
+        
         let linkOrario = String(describing: readableJson["orarioLink"])
         UserDefaults.standard.setValue(linkOrario, forKey: "LinkOrario")
         
