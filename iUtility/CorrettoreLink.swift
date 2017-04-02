@@ -32,6 +32,9 @@ class CorrettoreLink: NSObject {
         let linkOrario = String(describing: readableJson["orarioLink"])
         UserDefaults.standard.setValue(linkOrario, forKey: "LinkOrario")
         
+        let linkBugs = String(describing: readableJson["bugs"])
+        UserDefaults.standard.set(linkBugs, forKey: "LinkBugs")
+        
         //linksModificati = true
         UserDefaults.standard.set(true, forKey: "linkCorretti")
         

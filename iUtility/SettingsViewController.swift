@@ -11,6 +11,8 @@ import UserNotifications
 import MessageUI
 import SwiftyJSON
 
+//DA FARE: EVITARE DI CREARE SEMPRE UN ALERT NUOVO SE IL MESSAGGIO DA DARE ALL'UTENTE è LO STESSO. FARLO INVECE TRAMITE UNA FUNZIONE UNICA
+
 extension Sequence {
     var minimalDescription: String {
         return map { "\($0)" }.joined(separator: " ")
@@ -76,47 +78,55 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         }
         
         if let url = URL(string: linkUltimaVersione!) {
-            let jsonData = try? Data(contentsOf: url) as Data
-            let readableJson = JSON(data: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
-            
-            let latestVersion = String(describing: readableJson["latestVersion"])
-            let versionInstalled = String(describing: UIDevice.current.appVersion)
-            
-            print("Versione attuale: \(versionInstalled)\nVersione più aggiornata: \(latestVersion)")
-            
-            if versionInstalled == latestVersion {
-                let alert = UIAlertController(title: "Nessun Aggiornamento", message: "Hai già la versione più aggiornata", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                present(alert, animated: true, completion: nil)
-                print("Nessun Aggiornamento Disponibile")
-            } else {
-                let alert = UIAlertController(title: "Aggiornamento Disponibile", message: "Nuova versione disponibile: \(latestVersion)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Non ora", style: UIAlertActionStyle.default, handler: nil))
-                alert.addAction(UIAlertAction(title: "Scarica", style: UIAlertActionStyle.default, handler: { (aggiorna) in
-                    //AGGIORNARE L'URL QUANDO L'APP DOVRà USCIRE SULL'APP STORE
-                    
-                    if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
-                        let urlString = "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/notaperibetatester.html"
-                        let urlAggiornamento = URL(string: urlString)
-                        UIApplication.shared.openURL(urlAggiornamento!)
-                    }
-                    else  {
-                        if let urlString = UserDefaults.standard.string(forKey: "LinkMsgTester") {
+            if Reachability.isConnectedToNetwork() {
+                let jsonData = try? Data(contentsOf: url) as Data
+                let readableJson = JSON(data: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
+                
+                let latestVersion = String(describing: readableJson["latestVersion"])
+                let versionInstalled = String(describing: UIDevice.current.appVersion)
+                
+                print("Versione attuale: \(versionInstalled)\nVersione più aggiornata: \(latestVersion)")
+                
+                if versionInstalled == latestVersion {
+                    let alert = UIAlertController(title: "Nessun Aggiornamento", message: "Hai già la versione più aggiornata", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                    print("Nessun Aggiornamento Disponibile")
+                } else {
+                    let alert = UIAlertController(title: "Aggiornamento Disponibile", message: "Nuova versione disponibile: \(latestVersion)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Non ora", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Scarica", style: UIAlertActionStyle.default, handler: { (aggiorna) in
+                        //AGGIORNARE L'URL QUANDO L'APP DOVRà USCIRE SULL'APP STORE
+                        
+                        if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
+                            let urlString = "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/notaperibetatester.html"
                             let urlAggiornamento = URL(string: urlString)
                             UIApplication.shared.openURL(urlAggiornamento!)
                         }
-                        else {
-                            print("Qualcosa non va negli UserDefaults riguardo il link per il messaggio agli sviluppatori")
+                        else  {
+                            if let urlString = UserDefaults.standard.string(forKey: "LinkMsgTester") {
+                                let urlAggiornamento = URL(string: urlString)
+                                UIApplication.shared.openURL(urlAggiornamento!)
+                            }
+                            else {
+                                print("Qualcosa non va negli UserDefaults riguardo il link per il messaggio agli sviluppatori")
+                            }
                         }
-                    }
-                }))
+                    }))
+                    present(alert, animated: true, completion: nil)
+                    print("Aggiornamento Disponibile")
+                }
+            }
+            else {
+                let alert = UIAlertController(title: "Nessuna Connessione", message: "Assicurati di essere connesso a Internet e riprova", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 present(alert, animated: true, completion: nil)
-                print("Aggiornamento Disponibile")
+                print("No connection")
             }
         }
         else {
             //print(linkUltimaVersione)
-            print("Errato")
+            print("URL Errato")
         }
     }
 
@@ -167,7 +177,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         let numeroBuild :String = Bundle.main.buildVersionNumber!
         let appTypeOfRun:String = UIDevice.current.appTypeOfRun
         let linkSonoCorretti = UserDefaults.standard.bool(forKey: "linkCorretti")
-        let allLinks = [UserDefaults.standard.string(forKey: "LinkAvvisi"), UserDefaults.standard.string(forKey: "LinkControllaAggiornamenti"), UserDefaults.standard.string(forKey: "LinkMsgTester"),UserDefaults.standard.string(forKey: "LinkOrario"), UserDefaults.standard.string(forKey: "LinkChangeLog")]
+        let allLinks = [UserDefaults.standard.string(forKey: "LinkAvvisi"), UserDefaults.standard.string(forKey: "LinkControllaAggiornamenti"), UserDefaults.standard.string(forKey: "LinkMsgTester"),UserDefaults.standard.string(forKey: "LinkOrario"), UserDefaults.standard.string(forKey: "LinkChangeLog"), UserDefaults.standard.string(forKey: "LinkBugs")]
         let bundleIdentifier = Bundle.main.bundleIdentifier
         
         
@@ -202,8 +212,15 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         let alert = UIAlertController(title: "Correzione dei link", message: "Se le tab che devono connettersi a internet per funzionare (es. Sviluppatore, Controllo Aggiornamento, Scarica aggiornamento e Orario) non funzionano (e magari fanno anche crashare), premi Correggi e dovrebbe tornare normale.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Annulla", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Correggi", style: UIAlertActionStyle.default, handler: { (correggiPremuto) in
-            let correttore = CorrettoreLink()
-            correttore.correggiLink()
+            if Reachability.isConnectedToNetwork() {
+                let correttore = CorrettoreLink()
+                correttore.correggiLink()
+            }
+            else {
+                let alert = UIAlertController(title: "Nessuna Connessione", message: "Assicurati di essere connesso a Internet e riprova", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -223,10 +240,18 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         if changelogArray.last == "\n" {
             changelogArray.removeLast()
         }
-        
-        let alert = UIAlertController(title: "Changelog", message: String(describing: changelogArray.minimalDescription), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        if changelogArray.first != "ERRORE" {
+            let alert = UIAlertController(title: "Changelog", message: String(describing: changelogArray.minimalDescription), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+        else {
+            print("Errore di connessione")
+            let alert = UIAlertController(title: "Errore di connessione", message: "Assicurati di essere connesso a Internet e riprova", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            changelogArray.removeAll()
+        }
     }
     
     
@@ -251,6 +276,21 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     
+    @IBAction func mostraBugRisolti() {
+        var url:URL?
+        
+        if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
+            url = URL(string: "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/PatchBugs/BugRisolti.html")
+        }
+        else {
+            let urlString = UserDefaults.standard.string(forKey: "LinkBugs")
+            url = URL(string: urlString!)
+            
+            
+        }
+        
+        UIApplication.shared.openURL(url!)
+    }
     
     
     

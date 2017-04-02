@@ -71,7 +71,7 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
                 
                 if Int(nMassimo) - Int(nMinimo) >= 50 {
                     print("È un intervallo abbastanza grande")
-                    avvisoLabel.text = "Per motivi di risorse, quando i numeri da generare sono maggiori di 5, la funzione dei numeri usciti viene disabilitata."
+                    avvisoLabel.text = "Per motivi di risorse, quando i numeri da generare sono maggiori di 50, la funzione dei numeri usciti viene disabilitata."
                     togliFunzioneArray = true
                 }
                 else {

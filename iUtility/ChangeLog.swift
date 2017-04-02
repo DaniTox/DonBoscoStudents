@@ -31,20 +31,24 @@ class GetChangeLog : NSObject {
             }
         }
         
-        
-        if let jsonData = try? Data(contentsOf: url!) as Data {
-            
-            let readableJson = JSON(data: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
-            
-            let changes = readableJson["Changelog"]
-            
-            for i in 1...20 {
-                let change = changes[String(i)]
-                if change != "" {
-                    changelogArray.append(String(describing: change))
-                    changelogArray.append("\n")
+        if Reachability.isConnectedToNetwork() {
+            if let jsonData = try? Data(contentsOf: url!) as Data {
+                
+                let readableJson = JSON(data: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
+                
+                let changes = readableJson["Changelog"]
+                
+                for i in 1...20 {
+                    let change = changes[String(i)]
+                    if change != "" {
+                        changelogArray.append(String(describing: change))
+                        changelogArray.append("\n")
+                    }
                 }
             }
+        }
+        else {
+            changelogArray.append("ERRORE")
         }
     }
 }
