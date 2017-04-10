@@ -140,32 +140,32 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         self.classeTextField.endEditing(true)
     }
     
-    private func changeColorMode(mode:String) {
-        switch mode {
-        case "dark":
-            self.view.backgroundColor = UIColor.darkGray
-            statusBar.backgroundColor = UIColor.darkGray
-        case "white":
-            self.view.backgroundColor = UIColor.white
-            statusBar.backgroundColor = UIColor.white
-        default:
-            print("Error in color mode Impostazioni View")
-        }
-    }
+//    private func changeColorMode(mode:String) {
+//        switch mode {
+//        case "dark":
+//            self.view.backgroundColor = UIColor.darkGray
+//            statusBar.backgroundColor = UIColor.darkGray
+//        case "white":
+//            self.view.backgroundColor = UIColor.white
+//            statusBar.backgroundColor = UIColor.white
+//        default:
+//            print("Error in color mode Impostazioni View")
+//        }
+//    }
     
     
     @IBAction func darkModeSwitch(_ sender: UISwitch) {
         
-        if sender.isOn == true {
-            UserDefaults.standard.set(true, forKey: "darkmodeswitchon")
-            UserDefaults.standard.set("dark", forKey: "colormode")
-            changeColorMode(mode: "dark")
-        }
-        else {
-            UserDefaults.standard.set(false, forKey: "darkmodeswitchon")
-            UserDefaults.standard.set("white", forKey: "colormode")
-            changeColorMode(mode: "white")
-        }
+//        if sender.isOn == true {
+//            UserDefaults.standard.set(true, forKey: "darkmodeswitchon")
+//            UserDefaults.standard.set("dark", forKey: "colormode")
+//            changeColorMode(mode: "dark")
+//        }
+//        else {
+//            UserDefaults.standard.set(false, forKey: "darkmodeswitchon")
+//            UserDefaults.standard.set("white", forKey: "colormode")
+//            changeColorMode(mode: "white")
+//        }
     }
     
     @IBAction func sendBugMessage() {
@@ -318,12 +318,12 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     override func viewWillAppear(_ animated: Bool) {
         classeTextField.text = UserDefaults.standard.string(forKey: "classe")
 
-        if UserDefaults.standard.string(forKey: "colormode") == "dark" {
-            changeColorMode(mode: "dark")
-        }
-        else {
-            changeColorMode(mode: "white")
-        }
+//        if UserDefaults.standard.string(forKey: "colormode") == "dark" {
+//            changeColorMode(mode: "dark")
+//        }
+//        else {
+//            changeColorMode(mode: "white")
+//        }
     }
 
     }

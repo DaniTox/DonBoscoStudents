@@ -38,7 +38,7 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.image = UIImage(named: "dark")
-        
+        statusBar.backgroundColor = UIColor.clear
         nMinTextField.delegate = self
         nMaxTextField.delegate = self
        
@@ -104,32 +104,32 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func changeColorMode(mode: String) {
-        switch mode {
-        case "dark":
-            self.view.backgroundColor = darkColor
-            
-        case "white":
-            self.view.backgroundColor = UIColor.white
-            
-        default:
-            print("Error in color mode")
-        }
-        
-    }
+//    func changeColorMode(mode: String) {
+//        switch mode {
+//        case "dark":
+//            self.view.backgroundColor = darkColor
+//            
+//        case "white":
+//            self.view.backgroundColor = UIColor.white
+//            
+//        default:
+//            print("Error in color mode")
+//        }
+//        
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
-        if UserDefaults.standard.string(forKey: "colormode") != nil {
-            switch UserDefaults.standard.string(forKey: "colormode")! {
-            case "dark":
-                changeColorMode(mode: "dark")
-            case "white":
-                changeColorMode(mode: "white")
-            default:
-                print("Nessuna color mode rilevata")
-            }
-            
-        }
+//        if UserDefaults.standard.string(forKey: "colormode") != nil {
+//            switch UserDefaults.standard.string(forKey: "colormode")! {
+//            case "dark":
+//                changeColorMode(mode: "dark")
+//            case "white":
+//                changeColorMode(mode: "white")
+//            default:
+//                print("Nessuna color mode rilevata")
+//            }
+//            
+//        }
         
     }
 

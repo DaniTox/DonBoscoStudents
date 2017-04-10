@@ -8,7 +8,7 @@
 
 import UIKit
 
-let darkColor = UIColor(colorLiteralRed: 0.259, green: 0.259, blue: 0.259, alpha: 1)
+//let darkColor = UIColor(colorLiteralRed: 0.259, green: 0.259, blue: 0.259, alpha: 1)
 let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
 
 extension Double {
@@ -19,6 +19,7 @@ extension Double {
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var imageView: UIImageView!
     
     
     @IBOutlet weak var display: UILabel!
@@ -80,37 +81,37 @@ class ViewController: UIViewController {
         }
     }
     
-    func changeColorMode(mode: String) {
-        switch mode {
-        case "dark":
-            display.textColor = UIColor.white
-            display.backgroundColor = darkColor
-            statusBar.backgroundColor = darkColor
-            self.view.backgroundColor = darkColor
-        case "white":
-            display.textColor = UIColor.black
-            display.backgroundColor = UIColor.white
-            statusBar.backgroundColor = UIColor.white
-            self.view.backgroundColor = UIColor.green
-            
-        default:
-            print("Error in color mode")
-        }
-        
-    }
+//    func changeColorMode(mode: String) {
+//        switch mode {
+//        case "dark":
+//            display.textColor = UIColor.white
+//            display.backgroundColor = darkColor
+//            statusBar.backgroundColor = darkColor
+//            self.view.backgroundColor = darkColor
+//        case "white":
+//            display.textColor = UIColor.black
+//            display.backgroundColor = UIColor.white
+//            statusBar.backgroundColor = UIColor.white
+//            self.view.backgroundColor = UIColor.green
+//            
+//        default:
+//            print("Error in color mode")
+//        }
+//        
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
-        if UserDefaults.standard.string(forKey: "colormode") != nil {
-            switch UserDefaults.standard.string(forKey: "colormode")! {
-            case "dark":
-                changeColorMode(mode: "dark")
-            case "white":
-                changeColorMode(mode: "white")
-            default:
-                print("Nessuna color mode rilevata")
-            }
-            
-        }
+//        if UserDefaults.standard.string(forKey: "colormode") != nil {
+//            switch UserDefaults.standard.string(forKey: "colormode")! {
+//            case "dark":
+//                changeColorMode(mode: "dark")
+//            case "white":
+//                changeColorMode(mode: "white")
+//            default:
+//                print("Nessuna color mode rilevata")
+//            }
+//            
+//        }
 
     }
     
@@ -120,6 +121,8 @@ class ViewController: UIViewController {
         
         UINavigationBar.appearance().clipsToBounds = true
         
+        imageView.image = UIImage(named: "dark")
+        statusBar.backgroundColor = UIColor.clear
         
     }
 
