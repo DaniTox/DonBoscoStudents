@@ -21,17 +21,17 @@
 		DB3343361E1437C8007535E6 /* iUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343351E1437C8007535E6 /* iUtilityTests.swift */; };
 		DB3343411E1437C9007535E6 /* iUtilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343401E1437C9007535E6 /* iUtilityUITests.swift */; };
 		DB368B151E3FCA5E00B185DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */; };
-		DB3E40761E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3E40751E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift */; };
 		DB4A30341E8DB54B00B98C49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4A30331E8DB54B00B98C49 /* GoogleService-Info.plist */; };
 		DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */; };
 		DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */; };
 		DB5A65C91E7C41960094FCC8 /* NumeriCasualiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */; };
 		DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */; };
-		DB5EB3781E77061F005C4267 /* DeveloperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5EB3771E77061F005C4267 /* DeveloperTableViewController.swift */; };
 		DB6C30691E71FD85004FC96A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C30681E71FD85004FC96A /* CalculatorBrain.swift */; };
 		DB6C6FD41E380CE2009C2578 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C6FD31E380CE2009C2578 /* SettingsViewController.swift */; };
 		DB89B1A41E902F7F006E727E /* ChangeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89B1A31E902F7F006E727E /* ChangeLog.swift */; };
 		DB98E7A81E86968700593168 /* InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB98E7A71E86968700593168 /* InfoApp.swift */; };
+		DBB3102A1E9AC658000A926C /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB310291E9AC658000A926C /* DeveloperViewController.swift */; };
+		DBB3102C1E9BEAC1000A926C /* VerificheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB3102B1E9BEAC1000A926C /* VerificheViewController.swift */; };
 		DBF202631E7DC38E00A1548E /* DeveopersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF202621E7DC38E00A1548E /* DeveopersModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,17 +80,17 @@
 		DB3343401E1437C9007535E6 /* iUtilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iUtilityUITests.swift; sourceTree = "<group>"; };
 		DB3343421E1437C9007535E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
-		DB3E40751E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificheNuovoTableViewController.swift; sourceTree = "<group>"; };
 		DB4A30331E8DB54B00B98C49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrettoreLink.swift; sourceTree = "<group>"; };
 		DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachablity.swift; sourceTree = "<group>"; };
 		DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumeriCasualiViewController.swift; sourceTree = "<group>"; };
 		DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelNumeriCasuali.swift; sourceTree = "<group>"; };
-		DB5EB3771E77061F005C4267 /* DeveloperTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewController.swift; sourceTree = "<group>"; };
 		DB6C30681E71FD85004FC96A /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		DB6C6FD31E380CE2009C2578 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DB89B1A31E902F7F006E727E /* ChangeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeLog.swift; sourceTree = "<group>"; };
 		DB98E7A71E86968700593168 /* InfoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
+		DBB310291E9AC658000A926C /* DeveloperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
+		DBB3102B1E9BEAC1000A926C /* VerificheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificheViewController.swift; sourceTree = "<group>"; };
 		DBF202621E7DC38E00A1548E /* DeveopersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveopersModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -240,7 +240,7 @@
 		DBF2025E1E7DC34300A1548E /* Developers */ = {
 			isa = PBXGroup;
 			children = (
-				DB5EB3771E77061F005C4267 /* DeveloperTableViewController.swift */,
+				DBB310291E9AC658000A926C /* DeveloperViewController.swift */,
 				DBF202621E7DC38E00A1548E /* DeveopersModel.swift */,
 			);
 			name = Developers;
@@ -249,7 +249,7 @@
 		DBF2025F1E7DC35900A1548E /* Verifiche */ = {
 			isa = PBXGroup;
 			children = (
-				DB3E40751E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift */,
+				DBB3102B1E9BEAC1000A926C /* VerificheViewController.swift */,
 			);
 			name = Verifiche;
 			sourceTree = "<group>";
@@ -569,18 +569,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB3E40761E6B4FA5002BF4C7 /* VerificheNuovoTableViewController.swift in Sources */,
 				DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */,
 				DB89B1A41E902F7F006E727E /* ChangeLog.swift in Sources */,
 				DBF202631E7DC38E00A1548E /* DeveopersModel.swift in Sources */,
 				DB1A7C901E85864200B73044 /* DeviceInfo.swift in Sources */,
+				DBB3102A1E9AC658000A926C /* DeveloperViewController.swift in Sources */,
 				DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */,
 				DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */,
 				DB3343231E1437C7007535E6 /* ViewController.swift in Sources */,
-				DB5EB3781E77061F005C4267 /* DeveloperTableViewController.swift in Sources */,
 				DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */,
 				DB3343211E1437C7007535E6 /* AppDelegate.swift in Sources */,
 				DB6C30691E71FD85004FC96A /* CalculatorBrain.swift in Sources */,
+				DBB3102C1E9BEAC1000A926C /* VerificheViewController.swift in Sources */,
 				DB5A65C91E7C41960094FCC8 /* NumeriCasualiViewController.swift in Sources */,
 				DB6C6FD41E380CE2009C2578 /* SettingsViewController.swift in Sources */,
 				DB98E7A81E86968700593168 /* InfoApp.swift in Sources */,

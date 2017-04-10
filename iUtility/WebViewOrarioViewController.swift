@@ -18,6 +18,8 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
     
     @IBOutlet weak var orarioWebView: UIWebView!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     var scrollView: UIScrollView!
     
     @IBAction func reloadPage() {
@@ -31,11 +33,17 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
         //orarioWebView.loadRequest(URLRequest(url: urlOrario!))
         //orarioWebView.delegate = self
         //caricaPagina()
+        
+        imageView.image = UIImage(named: "dark")
         }
 
     
     override func viewDidAppear(_ animated: Bool) {
-       caricaPagina()
+        DispatchQueue.global(qos: .background).async {
+            self.caricaPagina()
+        }
+        
+        
     }
     
     func caricaPagina() {

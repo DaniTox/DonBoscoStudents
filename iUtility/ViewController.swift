@@ -8,6 +8,9 @@
 
 import UIKit
 
+let darkColor = UIColor(colorLiteralRed: 0.259, green: 0.259, blue: 0.259, alpha: 1)
+let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+
 extension Double {
     var cleanValue: String {
         return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
@@ -15,6 +18,8 @@ extension Double {
 }
 
 class ViewController: UIViewController {
+    
+    
     
     @IBOutlet weak var display: UILabel!
     
@@ -75,10 +80,46 @@ class ViewController: UIViewController {
         }
     }
     
+    func changeColorMode(mode: String) {
+        switch mode {
+        case "dark":
+            display.textColor = UIColor.white
+            display.backgroundColor = darkColor
+            statusBar.backgroundColor = darkColor
+            self.view.backgroundColor = darkColor
+        case "white":
+            display.textColor = UIColor.black
+            display.backgroundColor = UIColor.white
+            statusBar.backgroundColor = UIColor.white
+            self.view.backgroundColor = UIColor.green
+            
+        default:
+            print("Error in color mode")
+        }
+        
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.string(forKey: "colormode") != nil {
+            switch UserDefaults.standard.string(forKey: "colormode")! {
+            case "dark":
+                changeColorMode(mode: "dark")
+            case "white":
+                changeColorMode(mode: "white")
+            default:
+                print("Nessuna color mode rilevata")
+            }
+            
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        UINavigationBar.appearance().clipsToBounds = true
+        
         
     }
 

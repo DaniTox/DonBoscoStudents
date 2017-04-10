@@ -140,16 +140,16 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         self.classeTextField.endEditing(true)
     }
     
-   private func changeColorMode(mode:String) {
-        if mode == "dark" {
-            //view.backgroundColor = UIColor(colorLiteralRed: 58, green: 58, blue: 58, alpha: 0.3)
-            view.backgroundColor = UIColor.darkGray
-            //self.labeldarkMode.textColor = UIColor.white
-        }
-        else {
-            view.backgroundColor = UIColor.white
-            //self.labeldarkMode.textColor = UIColor.black
-            
+    private func changeColorMode(mode:String) {
+        switch mode {
+        case "dark":
+            self.view.backgroundColor = UIColor.darkGray
+            statusBar.backgroundColor = UIColor.darkGray
+        case "white":
+            self.view.backgroundColor = UIColor.white
+            statusBar.backgroundColor = UIColor.white
+        default:
+            print("Error in color mode Impostazioni View")
         }
     }
     

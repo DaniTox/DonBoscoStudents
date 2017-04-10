@@ -1,17 +1,21 @@
 //
-//  DeveloperTableViewController.swift
+//  test.swift
 //  iUtility
 //
-//  Created by Dani Tox on 13/03/17.
+//  Created by Dani Tox on 09/04/17.
 //  Copyright © 2017 Dani Tox. All rights reserved.
 //
 
 import UIKit
+import SwiftyJSON
 
 var avvisiArray = [String]()
 
-class DeveloperTableViewController: UITableViewController {
+class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageView: UIImageView!
     
     
     let developerModel = DeveloperModel()
@@ -20,6 +24,8 @@ class DeveloperTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.image = UIImage(named: "dark")
+        statusBar.backgroundColor = UIColor.clear
         
         ricaricaControl.addTarget(self, action: #selector(self.aggiornaTuttoCompresoLaView), for: UIControlEvents.valueChanged)
         
@@ -29,65 +35,54 @@ class DeveloperTableViewController: UITableViewController {
         else {
             tableView.addSubview(ricaricaControl)
         }
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        controllaECaricaAvvisi()
-        tableView.reloadData()
-    }
-
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return avvisiArray.count
     }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-        cell.backgroundView?.backgroundColor = UIColor.darkGray
-        cell.backgroundColor = UIColor.darkGray
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        cell.textLabel?.textColor = UIColor.white
-        cell.textLabel?.text = avvisiArray[indexPath.row]
-        
-        return cell
+    override func viewDidAppear(_ animated: Bool) {
+        controllaConnessioneECaricaAvvisi()
+        tableView.reloadData()
     }
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        cell?.backgroundColor = UIColor.clear
+        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell?.textLabel?.textColor = UIColor.white
+        cell?.textLabel?.text = avvisiArray[indexPath.row]
+        return cell!
     }
     
     func aggiornaTuttoCompresoLaView() {
-        controllaECaricaAvvisi()
+        controllaConnessioneECaricaAvvisi()
         tableView.reloadData()
         ricaricaControl.endRefreshing()
     }
     
-    
-    
-    func controllaECaricaAvvisi() {
+    func controllaConnessioneECaricaAvvisi() {
         
         //SE C'È CONNESSIONE, ESEGUI QUESTO BLOCCO
         if Reachability.isConnectedToNetwork() == true {
             developerModel.estrapolaAvvisiDaInternet()
             ricaricaControl.endRefreshing()
         }
-        
-        // SE NON C'È, ESEGUI QUESTO BLOCCO
+            
+            // SE NON C'È, ESEGUI QUESTO BLOCCO
         else {
-           presentaAvvisoErrore()
+            presentaAvvisoErrore()
         }
         
         
         
     }
-
+    
+    
+    
     func presentaAvvisoErrore() {
         print("No Connection")
         let alert = UIAlertController(title: "Nessuna Connessione", message: "Assicurati di essere connesso al Wi-Fi o al 3G/4G e riprova.", preferredStyle: .alert)
@@ -95,5 +90,4 @@ class DeveloperTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
         ricaricaControl.endRefreshing()
     }
-
 }

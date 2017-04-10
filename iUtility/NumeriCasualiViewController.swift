@@ -18,6 +18,7 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var risultatoLabel: UILabel!
     @IBOutlet weak var numeriUscitiLabel: UILabel!
     @IBOutlet weak var avvisoLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     
     
@@ -36,6 +37,8 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.image = UIImage(named: "dark")
+        
         nMinTextField.delegate = self
         nMaxTextField.delegate = self
        
@@ -101,6 +104,35 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    func changeColorMode(mode: String) {
+        switch mode {
+        case "dark":
+            self.view.backgroundColor = darkColor
+            
+        case "white":
+            self.view.backgroundColor = UIColor.white
+            
+        default:
+            print("Error in color mode")
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.string(forKey: "colormode") != nil {
+            switch UserDefaults.standard.string(forKey: "colormode")! {
+            case "dark":
+                changeColorMode(mode: "dark")
+            case "white":
+                changeColorMode(mode: "white")
+            default:
+                print("Nessuna color mode rilevata")
+            }
+            
+        }
+        
+    }
+
     @IBAction func pulisciButton() {
         arrayNumeriUsciti.removeAll()
         numeriUscitiLabel.text = String(describing: arrayNumeriUsciti)
