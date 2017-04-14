@@ -111,6 +111,14 @@ class ViewController: UIViewController {
 
         coloraButtons()
         
+         var grandezza = UserDefaults.standard.integer(forKey: "GrandezzaNumeri")
+        if grandezza == 0 {
+            grandezza = 10
+        }
+        for button in numbers {
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: CGFloat(grandezza))
+        }
+        
         
     }
     
@@ -194,6 +202,9 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    
+    
     
     
 }

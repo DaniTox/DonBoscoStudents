@@ -36,7 +36,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     
     
     var altroPressedperLaPrimaVolta:Bool = false
-
+    var setColorNumbersPressedLaPrimaVolta:Bool = false
     
     @IBAction func notificheAttivateSwitch(_ sender: UISwitch) {
         if sender.isOn == true {
@@ -272,6 +272,22 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     var darkCenter: CGPoint!
     var greenCenter: CGPoint!
     
+    var blueNumbersCenter: CGPoint!
+    var redNumbersCenter: CGPoint!
+    var darkNumbersCenter: CGPoint!
+    var greenNumbersCenter: CGPoint!
+    var whiteNumbersCenter: CGPoint!
+    
+    @IBOutlet weak var whiteNumbersOutlet: CircleButton!
+    @IBOutlet weak var darkNumbersOutlet: CircleButton!
+    @IBOutlet weak var redNumbersOutlet: CircleButton!
+    @IBOutlet weak var greenNumbersOutlet: CircleButton!
+    @IBOutlet weak var blueNumbersOutlet: CircleButton!
+    @IBOutlet weak var selectNumbersColorOutlet: CircleButton!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -286,6 +302,11 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         darkCenter = darkButton.center
         greenCenter = greenButton.center
         
+        blueNumbersCenter = blueNumbersOutlet.center
+        redNumbersCenter = redNumbersOutlet.center
+        darkNumbersCenter = darkNumbersOutlet.center
+        greenNumbersCenter = greenNumbersOutlet.center
+        whiteNumbersCenter = whiteNumbersOutlet.center
         
        portaButtonAStatoInziale()
         
@@ -315,6 +336,24 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             }
         }
 
+        if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
+            switch color {
+            case "dark":
+                selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
+            case "red":
+                selectNumbersColorOutlet.backgroundColor = UIColor.red
+            case "blue":
+                selectNumbersColorOutlet.backgroundColor = UIColor.blue
+            case "green":
+                selectNumbersColorOutlet.backgroundColor = UIColor.green
+            case "white":
+                selectNumbersColorOutlet.backgroundColor = UIColor.white
+            default:
+                print("Erro")
+            }
+        }
+        
+        
     }
 
     
@@ -357,6 +396,20 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         redButton.alpha = 0
         darkButton.alpha = 0
         greenButton.alpha = 0
+        
+        blueNumbersOutlet.center = selectNumbersColorOutlet.center
+        greenNumbersOutlet.center = selectNumbersColorOutlet.center
+        whiteNumbersOutlet.center = selectNumbersColorOutlet.center
+        darkNumbersOutlet.center = selectNumbersColorOutlet.center
+        redNumbersOutlet.center = selectNumbersColorOutlet.center
+        blueNumbersOutlet.center = selectNumbersColorOutlet.center
+        
+        blueNumbersOutlet.alpha = 0
+        greenNumbersOutlet.alpha = 0
+        whiteNumbersOutlet.alpha = 0
+        darkNumbersOutlet.alpha = 0
+        redNumbersOutlet.alpha = 0
+        blueNumbersOutlet.alpha = 0
     }
     
     @IBAction func setBlueMode(_ sender: UIButton) {
@@ -426,6 +479,129 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         }
         print("ColorMode cambiata")
     }
+    
+    
+    
+    @IBAction func setWhiteNumbers(_ sender: UIButton) {
+        setColorNumbers(mode: "white")
+        animColorsNumbersContraria()
+        setColorNumbersPressedLaPrimaVolta = false
+        
+    }
+    
+    @IBAction func setBlackNumbers(_ sender: UIButton) {
+        setColorNumbers(mode: "black")
+        animColorsNumbersContraria()
+        setColorNumbersPressedLaPrimaVolta = false
+    }
+    
+    @IBAction func setRedNumbers(_ sender: UIButton) {
+        setColorNumbers(mode: "red")
+        animColorsNumbersContraria()
+        setColorNumbersPressedLaPrimaVolta = false
+    }
+    
+    @IBAction func setGreenNumbers(_ sender: UIButton) {
+        setColorNumbers(mode: "green")
+        animColorsNumbersContraria()
+        setColorNumbersPressedLaPrimaVolta = false
+    }
+    
+    @IBAction func setBlueNumbers(_ sender: UIButton) {
+        setColorNumbers(mode: "blue")
+        animColorsNumbersContraria()
+        setColorNumbersPressedLaPrimaVolta = false
+    }
+    
+    func setColorNumbers(mode: String) {
+        UserDefaults.standard.set(mode, forKey: "ColorNumbers")
+        if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
+            switch color {
+            case "dark":
+                selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
+                selectNumbersColorOutlet.setImage(nil, for: .normal)
+            case "red":
+                selectNumbersColorOutlet.backgroundColor = UIColor.red
+                selectNumbersColorOutlet.setImage(nil, for: .normal)
+            case "blue":
+                selectNumbersColorOutlet.backgroundColor = UIColor.blue
+                selectNumbersColorOutlet.setImage(nil, for: .normal)
+            case "green":
+                selectNumbersColorOutlet.backgroundColor = UIColor.green
+                selectNumbersColorOutlet.setImage(nil, for: .normal)
+            case "white":
+                selectNumbersColorOutlet.backgroundColor = UIColor.white
+                selectNumbersColorOutlet.setImage(nil, for: .normal)
+            default:
+                print("Erro")
+            }
+        }
+    }
+    
+    
+    func animColorsNumbers() {
+        UIView.animate(withDuration: 0.3) { 
+            self.blueNumbersOutlet.center = self.blueNumbersCenter
+            self.blueNumbersOutlet.alpha = 1
+            
+            self.redNumbersOutlet.center = self.redNumbersCenter
+            self.redNumbersOutlet.alpha = 1
+            
+            self.darkNumbersOutlet.center = self.darkNumbersCenter
+            self.darkNumbersOutlet.alpha = 1
+            
+            self.whiteNumbersOutlet.center = self.whiteNumbersCenter
+            self.whiteNumbersOutlet.alpha = 1
+            
+            self.greenNumbersOutlet.center = self.greenNumbersCenter
+            self.greenNumbersOutlet.alpha = 1
+        }
+    }
+    
+    func animColorsNumbersContraria() {
+        UIView.animate(withDuration: 0.3) {
+            self.blueNumbersOutlet.center = self.selectNumbersColorOutlet.center
+            self.blueNumbersOutlet.alpha = 0
+            
+            self.redNumbersOutlet.center = self.selectNumbersColorOutlet.center
+            self.redNumbersOutlet.alpha = 0
+            
+            self.darkNumbersOutlet.center = self.selectNumbersColorOutlet.center
+            self.darkNumbersOutlet.alpha = 0
+            
+            self.whiteNumbersOutlet.center = self.selectNumbersColorOutlet.center
+            self.whiteNumbersOutlet.alpha = 0
+            
+            self.greenNumbersOutlet.center = self.selectNumbersColorOutlet.center
+            self.greenNumbersOutlet.alpha = 0
+        }
+    }
+    
+    @IBAction func setColorNumbersAction(_ sender: UIButton) {
+        
+        
+        setColorNumbersPressedLaPrimaVolta = !setColorNumbersPressedLaPrimaVolta
+        
+        if setColorNumbersPressedLaPrimaVolta == true {
+            animColorsNumbers()
+            setColorNumbersPressedLaPrimaVolta = true
+        }
+        else {
+            animColorsNumbersContraria()
+        }
+    }
+    
+    
+    @IBOutlet weak var grandezzaNUmeriTextField: UITextField!
+    
+    @IBAction func salvaGrandezzaNumeri(_ sender: UIButton) {
+        if let grandezza = Int(grandezzaNUmeriTextField.text!) {
+            UserDefaults.standard.set(grandezza, forKey: "GrandezzaNumeri")
+        }
+    }
+    
+    
+    
     
     
     
