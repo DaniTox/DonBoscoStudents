@@ -90,8 +90,8 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
                 imageView.image = UIImage(named: "blue")
             case "red":
                 imageView.image = UIImage(named: "red")
-            case "zoom":
-                imageView.loadGif(name: "tenor")
+            case "green":
+                imageView.image = UIImage(named: "green")
             default:
                 imageView.image = UIImage(named: "dark")
                 print("Error in colormode")

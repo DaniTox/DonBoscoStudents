@@ -10,11 +10,8 @@ import UIKit
 import UserNotifications
 import MessageUI
 import SwiftyJSON
-import AVFoundation
 
 //DA FARE: EVITARE DI CREARE SEMPRE UN ALERT NUOVO SE IL MESSAGGIO DA DARE ALL'UTENTE è LO STESSO. FARLO INVECE TRAMITE UNA FUNZIONE UNICA
-
-var zoomIsMorto: Bool = false
 
 extension Sequence {
     var minimalDescription: String {
@@ -26,7 +23,6 @@ var linksModificati:Bool?
 
 class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
     
-    var audioPlayer = AVAudioPlayer()
     
     @IBOutlet weak var classeTextField: UITextField!
     @IBOutlet weak var labeldarkMode: UILabel!
@@ -36,8 +32,11 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     @IBOutlet weak var blueButton: CircleButton!
     @IBOutlet weak var redButton: CircleButton!
     @IBOutlet weak var darkButton: CircleButton!
-    @IBOutlet weak var zoomButton: CircleButton!
+    @IBOutlet weak var greenButton: CircleButton!
     
+    
+    var altroPressedperLaPrimaVolta:Bool = false
+
     
     @IBAction func notificheAttivateSwitch(_ sender: UISwitch) {
         if sender.isOn == true {
@@ -168,7 +167,6 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         }
         else {
 
-            
             let mailVC = MFMailComposeViewController()
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients(["d.bazzani.cfp@gmail.com"])
@@ -198,17 +196,6 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-        }))
-        alert.addAction(UIAlertAction(title: "Sconfiggi Zoom", style: .default, handler: { (displayWin) in
-            let alert = UIAlertController(title: "Zoom", message: "Corri Barry, Corri!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Io sono Flash!", style: .default, handler: { (win) in
-                self.audioPlayer2.play()
-                let alert = UIAlertController(title: "Barry", message: "Hai sconfitto Zoom!\nOra ascolta tutta la musica della corsa finale!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Let's do Flashpoint now", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                zoomIsMorto = true
-            }))
-            self.present(alert, animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -283,23 +270,12 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     var blueCenter: CGPoint!
     var redCenter: CGPoint!
     var darkCenter: CGPoint!
-    var zoomCenter: CGPoint!
-    
-    var audioPlayer2 = AVAudioPlayer()
+    var greenCenter: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "zoom4", ofType: "aifc")!))
-            audioPlayer.prepareToPlay()
-            
-            audioPlayer2 = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "ZoomTheme", ofType: "mp3")!))
-            audioPlayer2.prepareToPlay()
-        }
-        catch {
-            print(error)
-        }
+      
+        altroPressedperLaPrimaVolta = false
         
         self.classeTextField.delegate = self
         
@@ -308,10 +284,10 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         blueCenter = blueButton.center
         redCenter = redButton.center
         darkCenter = darkButton.center
-        zoomCenter = zoomButton.center
+        greenCenter = greenButton.center
         
         
-       riportaButtonAStatoInziale()
+       portaButtonAStatoInziale()
         
     }
 
@@ -321,6 +297,23 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     
     override func viewWillAppear(_ animated: Bool) {
         classeTextField.text = UserDefaults.standard.string(forKey: "classe")
+        
+        
+        
+        if let color = UserDefaults.standard.string(forKey: "ColorMode") {
+            switch color {
+            case "dark":
+                altroButton.backgroundColor = UIColor.darkGray
+            case "red":
+                altroButton.backgroundColor = UIColor.red
+            case "blue":
+                altroButton.backgroundColor = UIColor.blue
+            case "green":
+                altroButton.backgroundColor = UIColor.green
+            default:
+                print("Erro")
+            }
+        }
 
     }
 
@@ -336,47 +329,62 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             self.darkButton.alpha = 1
             self.darkButton.center = self.darkCenter
             
-            self.zoomButton.alpha = 1
-            self.zoomButton.center = self.zoomCenter
+            self.greenButton.alpha = 1
+            self.greenButton.center = self.greenCenter
         }
     }
     
     
     @IBAction func altroPressed(_ sender: UIButton) {
-        buttonAnim()
+        altroPressedperLaPrimaVolta = !altroPressedperLaPrimaVolta
+        
+        if altroPressedperLaPrimaVolta == true {
+            buttonAnim()
+            altroPressedperLaPrimaVolta = true
+        }
+        else {
+            animContraria()
+        }
     }
     
-    func riportaButtonAStatoInziale() {
+    func portaButtonAStatoInziale() {
         blueButton.center = altroButton.center
         redButton.center = altroButton.center
         darkButton.center = altroButton.center
-        zoomButton.center = altroButton.center
+        greenButton.center = altroButton.center
         
         blueButton.alpha = 0
         redButton.alpha = 0
         darkButton.alpha = 0
-        zoomButton.alpha = 0
+        greenButton.alpha = 0
     }
     
     @IBAction func setBlueMode(_ sender: UIButton) {
         changeColorModeInUserDefaults(mode: "blue")
         animContraria()
+        altroPressedperLaPrimaVolta = false
+
     }
     
     @IBAction func setRedMode(_ sender: UIButton) {
         changeColorModeInUserDefaults(mode: "red")
         animContraria()
+        altroPressedperLaPrimaVolta = false
+
     }
     
     @IBAction func setDarkMode(_ sender: UIButton) {
         changeColorModeInUserDefaults(mode: "dark")
         animContraria()
+        altroPressedperLaPrimaVolta = false
+
     }
     
-    @IBAction func setZOOMMode(_ sender: UIButton) {
-        changeColorModeInUserDefaults(mode: "zoom")
-        audioPlayer.play()
+    @IBAction func setGreenMode(_ sender: UIButton) {
+        changeColorModeInUserDefaults(mode: "green")
         animContraria()
+        altroPressedperLaPrimaVolta = false
+
     }
     
     
@@ -391,8 +399,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             self.darkButton.alpha = 0
             self.darkButton.center = self.altroButton.center
             
-            self.zoomButton.alpha = 0
-            self.zoomButton.center = self.altroButton.center
+            self.greenButton.alpha = 0
+            self.greenButton.center = self.altroButton.center
         }
     }
     
@@ -409,8 +417,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             case "blue":
                 altroButton.backgroundColor = UIColor.blue
                 altroButton.setImage(nil, for: .normal)
-            case "zoom":
-                altroButton.setImage(UIImage(named: "zoom"), for: .normal)
+            case "green":
+                altroButton.backgroundColor = UIColor.green
+                altroButton.setImage(nil, for: .normal)
             default:
                 print("Erro")
             }

@@ -19,8 +19,7 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var numeriUscitiLabel: UILabel!
     @IBOutlet weak var avvisoLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
-    
+  
     
     var arrayNumeriUsciti = [Int]()
     
@@ -103,33 +102,10 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-//    func changeColorMode(mode: String) {
-//        switch mode {
-//        case "dark":
-//            self.view.backgroundColor = darkColor
-//            
-//        case "white":
-//            self.view.backgroundColor = UIColor.white
-//            
-//        default:
-//            print("Error in color mode")
-//        }
-//        
-//    }
+
     
     override func viewWillAppear(_ animated: Bool) {
-//        if UserDefaults.standard.string(forKey: "colormode") != nil {
-//            switch UserDefaults.standard.string(forKey: "colormode")! {
-//            case "dark":
-//                changeColorMode(mode: "dark")
-//            case "white":
-//                changeColorMode(mode: "white")
-//            default:
-//                print("Nessuna color mode rilevata")
-//            }
-//            
-//        }
+
         if UserDefaults.standard.string(forKey: "ColorMode") != nil {
             switch UserDefaults.standard.string(forKey: "ColorMode")! {
             case "dark":
@@ -138,8 +114,8 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
                 imageView.image = UIImage(named: "blue")
             case "red":
                 imageView.image = UIImage(named: "red")
-            case "zoom":
-                imageView.image = UIImage(named: "zoomB")
+            case "green":
+                imageView.image = UIImage(named: "green")
             default:
                 imageView.image = UIImage(named: "dark")
                 print("Error in colormode")

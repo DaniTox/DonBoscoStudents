@@ -103,18 +103,13 @@
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1S-lY-Is5" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
-                                                    <rect key="frame" x="864" y="3" width="72" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="zoom"/>
-                                                    <connections>
-                                                        <action selector="setZOOMMode:" destination="3ya-rS-ma5" eventType="touchUpInside" id="rLD-Lt-CZg"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cm-M5-pc2" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
-                                                    <rect key="frame" x="830" y="7" width="32" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cm-M5-pc2" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                                    <rect key="frame" x="830" y="6" width="32" height="32"/>
                                                     <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="16z-To-kN3"/>
+                                                        <constraint firstAttribute="width" constant="32" id="Qr9-vr-24s"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="16"/>
@@ -124,10 +119,13 @@
                                                         <action selector="setDarkMode:" destination="3ya-rS-ma5" eventType="touchUpInside" id="V05-GQ-iPg"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcK-er-nQb" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
-                                                    <rect key="frame" x="776" y="7" width="32" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcK-er-nQb" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                                    <rect key="frame" x="776" y="6" width="32" height="32"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="kpO-bJ-4tm"/>
+                                                        <constraint firstAttribute="width" constant="32" id="tO2-XL-qdm"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="16"/>
@@ -137,10 +135,13 @@
                                                         <action selector="setRedMode:" destination="3ya-rS-ma5" eventType="touchUpInside" id="nmz-Dr-Fqa"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-3r-ArJ" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
-                                                    <rect key="frame" x="722" y="7" width="32" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-3r-ArJ" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                                    <rect key="frame" x="722" y="6" width="32" height="32"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="SId-xa-R8Q"/>
+                                                        <constraint firstAttribute="height" constant="32" id="Xe2-td-9Ln"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="16"/>
@@ -150,11 +151,13 @@
                                                         <action selector="setBlueMode:" destination="3ya-rS-ma5" eventType="touchUpInside" id="qZ8-F1-VL1"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yya-My-LHS" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
-                                                    <rect key="frame" x="961" y="7" width="32" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yya-My-LHS" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                                    <rect key="frame" x="961" y="6" width="32" height="32"/>
                                                     <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="..."/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="ncM-NW-hyX"/>
+                                                        <constraint firstAttribute="width" constant="32" id="nzb-6L-kBx"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="15"/>
@@ -164,12 +167,38 @@
                                                         <action selector="altroPressed:" destination="3ya-rS-ma5" eventType="touchUpInside" id="K7O-8B-LbV"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1S-lY-Is5" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                                    <rect key="frame" x="884" y="6" width="32" height="32"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="6Vd-Jk-2tB"/>
+                                                        <constraint firstAttribute="width" constant="32" id="A3j-6k-lGZ"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="setGreenMode:" destination="3ya-rS-ma5" eventType="touchUpInside" id="DKA-SU-QDE"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="yya-My-LHS" firstAttribute="centerY" secondItem="Pys-ZO-Num" secondAttribute="centerY" id="1rY-Hh-obX"/>
                                                 <constraint firstItem="Ac6-cF-cMM" firstAttribute="leading" secondItem="Pys-ZO-Num" secondAttribute="leadingMargin" constant="21" id="9mw-wE-YSW"/>
+                                                <constraint firstItem="8cm-M5-pc2" firstAttribute="centerY" secondItem="Pys-ZO-Num" secondAttribute="centerY" id="9tH-KB-mw7"/>
+                                                <constraint firstItem="8cm-M5-pc2" firstAttribute="leading" secondItem="LcK-er-nQb" secondAttribute="trailing" constant="22" id="H0D-Zw-8NO"/>
                                                 <constraint firstItem="Ac6-cF-cMM" firstAttribute="top" secondItem="Pys-ZO-Num" secondAttribute="topMargin" constant="3" id="QC8-xt-kNK"/>
+                                                <constraint firstItem="w1S-lY-Is5" firstAttribute="leading" secondItem="8cm-M5-pc2" secondAttribute="trailing" constant="22" id="QHR-Fu-RWc"/>
+                                                <constraint firstItem="w1S-lY-Is5" firstAttribute="centerY" secondItem="Pys-ZO-Num" secondAttribute="centerY" id="TeF-Jj-nY7"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Ac6-cF-cMM" secondAttribute="bottom" constant="3" id="hUE-84-cD2"/>
+                                                <constraint firstItem="LcK-er-nQb" firstAttribute="leading" secondItem="IkA-3r-ArJ" secondAttribute="trailing" constant="22" id="idG-C7-S9l"/>
+                                                <constraint firstItem="IkA-3r-ArJ" firstAttribute="centerY" secondItem="Pys-ZO-Num" secondAttribute="centerY" id="j4d-20-yzt"/>
+                                                <constraint firstItem="LcK-er-nQb" firstAttribute="centerY" secondItem="Pys-ZO-Num" secondAttribute="centerY" id="rFc-2q-xDl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yya-My-LHS" secondAttribute="trailing" constant="23" id="rfo-p0-eTf"/>
+                                                <constraint firstItem="yya-My-LHS" firstAttribute="leading" secondItem="w1S-lY-Is5" secondAttribute="trailing" constant="45" id="rui-pj-S6t"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -233,10 +262,10 @@
                             <tableViewSection headerTitle="Altro" footerTitle="" id="z0P-0i-6uw">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="MQz-lO-tiM">
-                                        <rect key="frame" x="0.0" y="251" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="252" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MQz-lO-tiM" id="Ev6-2W-fH2">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Segnala un bug --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVk-gz-LtM">
@@ -278,10 +307,10 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="wvg-1X-h7Z">
-                                        <rect key="frame" x="0.0" y="295" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="296" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wvg-1X-h7Z" id="C1C-c1-Ogy">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Consigliami come migliorare l'app --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ijk-ED-i4x">
@@ -322,10 +351,10 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="HcQ-UY-ZrU">
-                                        <rect key="frame" x="0.0" y="339" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="340" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HcQ-UY-ZrU" id="MlP-95-qHq">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verifica Aggiornamenti --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjZ-Kf-kyr">
@@ -367,10 +396,10 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="jc6-In-IqP">
-                                        <rect key="frame" x="0.0" y="383" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="384" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jc6-In-IqP" id="g4g-Ee-eNI">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se hai problemi con le verifiche, orario o sviluppatore, correggi i link --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RV4-GI-L0u">
@@ -412,10 +441,10 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="bat-g2-Oee">
-                                        <rect key="frame" x="0.0" y="427" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="428" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bat-g2-Oee" id="R3k-Vp-f3v">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se vuoi imparare come ho sviluppato l'app, vai nel mio progetto GitHub --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g1S-Vo-TfX">
@@ -457,10 +486,10 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="nGP-ob-Um6">
-                                        <rect key="frame" x="0.0" y="471" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="472" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGP-ob-Um6" id="RGC-jv-UGO">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guarda il changelog dell'ultima versione disponibile --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oXu-nV-thi">
@@ -501,10 +530,10 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="lX9-k8-fRx">
-                                        <rect key="frame" x="0.0" y="515" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="516" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lX9-k8-fRx" id="anb-iL-Pam">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bug segnalati e risolti nell'ultima versione --&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jtZ-mK-M2N">
@@ -546,6 +575,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Calcolatrice" footerTitle="" id="92z-NG-nfb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="s55-F4-bru">
+                                        <rect key="frame" x="0.0" y="624" width="1024" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s55-F4-bru" id="D8v-U7-bja">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HO-i3-HfN">
+                                                    <rect key="frame" x="946" y="6" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Colore Numeri" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGD-yw-y9g">
+                                                    <rect key="frame" x="20" y="11" width="276" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="3ya-rS-ma5" id="iFp-YY-d3t"/>
@@ -558,15 +614,15 @@
                         <outlet property="blueButton" destination="IkA-3r-ArJ" id="anM-ux-dP0"/>
                         <outlet property="classeTextField" destination="KmN-r1-xYI" id="6Jt-7X-za9"/>
                         <outlet property="darkButton" destination="8cm-M5-pc2" id="m94-Kv-Ndb"/>
+                        <outlet property="greenButton" destination="w1S-lY-Is5" id="90e-Sv-lyF"/>
                         <outlet property="labeldarkMode" destination="Ac6-cF-cMM" id="I3u-kf-DJx"/>
                         <outlet property="redButton" destination="LcK-er-nQb" id="IMJ-pV-nBt"/>
                         <outlet property="switchLabel" destination="zvF-2c-Nlj" id="iPS-JA-cjQ"/>
-                        <outlet property="zoomButton" destination="w1S-lY-Is5" id="xRf-nA-JfO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lw5-d4-eTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1033" y="2425"/>
+            <point key="canvasLocation" x="-1049.4140625" y="2384.765625"/>
         </scene>
         <!--Verifiche-->
         <scene sceneID="3PH-PC-woH">
@@ -598,7 +654,7 @@
                                         <rect key="frame" x="0.0" y="28" width="1024" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbQ-YN-RxM" id="qNS-ln-EFg">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="168"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -724,24 +780,6 @@
                                 <color key="textColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Classe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T34-hS-wX2" customClass="JiroTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="457" y="333" width="110" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="ZXK-9T-6Yj"/>
-                                    <constraint firstAttribute="height" constant="43" id="dVU-A2-mub"/>
-                                </constraints>
-                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
-                                        <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3I-6a-DlH" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
                                 <rect key="frame" x="284" y="518" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -801,12 +839,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIe-iK-RAV" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
                                 <rect key="frame" x="663" y="518" width="50" height="50"/>
+                                <color key="backgroundColor" red="9.2269257401883452e-05" green="0.47993853794136632" blue="0.27552430601817046" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jxo-Ba-I94"/>
                                     <constraint firstAttribute="width" constant="50" id="mq4-SJ-xKr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="zoom57"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="25"/>
@@ -816,7 +854,143 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="zoomModeAction:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="4XD-GC-Kjw"/>
+                                    <action selector="greenModeAction:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="3aa-v6-pnt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg6-5p-MyE" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="218" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="1E">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta1E:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="aSM-f3-TBv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBb-Rn-sRq" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="293" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="2E">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta2E:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="mqB-z2-9zD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIK-K8-CbO" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="365" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="3E">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta3E:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="1yy-DJ-T7X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENt-3X-mxd" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="441" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="4E">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta4E:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="Cpj-g9-18X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="af5-f0-Re0" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="520" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="1M">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta1M:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="2Vw-4m-jSK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sQ-j4-Mcb" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="599" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="2M">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta2M:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="DDw-ng-VK4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLX-Qm-9eN" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="679" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="3M">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta3M:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="K2U-P1-Sfx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaN-Kg-Igb" customClass="CircleButton" customModule="iUtility" customModuleProvider="target">
+                                <rect key="frame" x="760" y="360" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <state key="normal" title="4M">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setta4M:" destination="gaJ-zs-J8G" eventType="touchUpInside" id="O3B-SL-Mmt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -824,7 +998,6 @@
                         <constraints>
                             <constraint firstItem="Ud4-1G-SuJ" firstAttribute="leading" secondItem="B3I-6a-DlH" secondAttribute="trailing" constant="73" id="2f9-4r-Zva"/>
                             <constraint firstItem="dFS-aB-xwa" firstAttribute="top" secondItem="bjD-Cu-Rxw" secondAttribute="bottom" constant="101" id="3Nr-Z8-NVO"/>
-                            <constraint firstItem="T34-hS-wX2" firstAttribute="top" secondItem="bjD-Cu-Rxw" secondAttribute="bottom" constant="313" id="4WA-0H-hgT"/>
                             <constraint firstItem="B3I-6a-DlH" firstAttribute="top" secondItem="HSf-cc-O8s" secondAttribute="bottom" constant="41" id="4WF-yg-Qrb"/>
                             <constraint firstItem="TXI-95-uOc" firstAttribute="top" secondItem="bjD-Cu-Rxw" secondAttribute="bottom" constant="-14" id="50X-GB-n1R"/>
                             <constraint firstItem="HSf-cc-O8s" firstAttribute="centerX" secondItem="QT5-fF-l7R" secondAttribute="centerX" id="84N-EM-1UT"/>
@@ -837,14 +1010,12 @@
                             <constraint firstItem="j5T-Z7-NLK" firstAttribute="leading" secondItem="QT5-fF-l7R" secondAttribute="leading" id="NQr-3A-1i7"/>
                             <constraint firstItem="dFS-aB-xwa" firstAttribute="centerX" secondItem="QT5-fF-l7R" secondAttribute="centerX" id="Nje-74-vSG"/>
                             <constraint firstItem="Ud4-1G-SuJ" firstAttribute="top" secondItem="HSf-cc-O8s" secondAttribute="bottom" constant="41" id="QLY-xh-ZQA"/>
-                            <constraint firstItem="j5T-Z7-NLK" firstAttribute="top" secondItem="T34-hS-wX2" secondAttribute="bottom" constant="-376" id="R1Y-ad-IxU"/>
                             <constraint firstItem="HSf-cc-O8s" firstAttribute="top" secondItem="bjD-Cu-Rxw" secondAttribute="bottom" constant="410" id="RcY-ed-V2a"/>
                             <constraint firstItem="GUP-U6-Uru" firstAttribute="top" secondItem="HSf-cc-O8s" secondAttribute="bottom" constant="41" id="Wkk-z5-s9e"/>
                             <constraint firstItem="iNm-wr-QWT" firstAttribute="top" secondItem="j5T-Z7-NLK" secondAttribute="bottom" id="Z9v-TA-jXK"/>
                             <constraint firstItem="GUP-U6-Uru" firstAttribute="leading" secondItem="Ud4-1G-SuJ" secondAttribute="trailing" constant="73" id="ZK3-HQ-F4d"/>
                             <constraint firstItem="j5T-Z7-NLK" firstAttribute="top" secondItem="Ol3-Ze-gXR" secondAttribute="bottom" constant="-325" id="a6f-A4-MPo"/>
                             <constraint firstItem="TXI-95-uOc" firstAttribute="centerX" secondItem="QT5-fF-l7R" secondAttribute="centerX" id="bKY-6c-PEL"/>
-                            <constraint firstItem="T34-hS-wX2" firstAttribute="centerX" secondItem="QT5-fF-l7R" secondAttribute="centerX" id="bnl-HC-Q6w"/>
                             <constraint firstItem="F2V-m2-yI1" firstAttribute="centerX" secondItem="QT5-fF-l7R" secondAttribute="centerX" id="c7c-yD-6O6"/>
                             <constraint firstItem="j5T-Z7-NLK" firstAttribute="top" secondItem="QT5-fF-l7R" secondAttribute="top" id="d3S-GY-huz"/>
                             <constraint firstAttribute="trailing" secondItem="j5T-Z7-NLK" secondAttribute="trailing" id="ekS-HG-l20"/>
@@ -859,16 +1030,23 @@
                     <connections>
                         <outlet property="blueModeButton" destination="B3I-6a-DlH" id="z53-fd-9xU"/>
                         <outlet property="button" destination="F2V-m2-yI1" id="tmI-he-KM4"/>
+                        <outlet property="classe1" destination="dg6-5p-MyE" id="eJo-ti-4iS"/>
+                        <outlet property="classe2" destination="WBb-Rn-sRq" id="j6V-Gd-XN4"/>
+                        <outlet property="classe3" destination="JIK-K8-CbO" id="VeM-M0-d4M"/>
+                        <outlet property="classe4" destination="ENt-3X-mxd" id="EPs-cC-T2i"/>
+                        <outlet property="classe5" destination="af5-f0-Re0" id="Iwz-P6-jnu"/>
+                        <outlet property="classe6" destination="0sQ-j4-Mcb" id="n43-Gj-Ye3"/>
+                        <outlet property="classe7" destination="YLX-Qm-9eN" id="LYh-fA-RvK"/>
+                        <outlet property="classe8" destination="vaN-Kg-Igb" id="akG-m1-z4i"/>
                         <outlet property="darkModeButton" destination="GUP-U6-Uru" id="3Yw-Oo-ivk"/>
                         <outlet property="frase1" destination="dFS-aB-xwa" id="a8r-Pd-A3E"/>
                         <outlet property="frase2" destination="9yj-53-AxR" id="M4y-93-QQZ"/>
                         <outlet property="frase3" destination="Ol3-Ze-gXR" id="yai-YK-8If"/>
                         <outlet property="frase4" destination="HSf-cc-O8s" id="jiL-mD-pvZ"/>
+                        <outlet property="greenModeButton" destination="EIe-iK-RAV" id="Jqa-xM-pj4"/>
                         <outlet property="imageView" destination="j5T-Z7-NLK" id="JeB-j0-eIh"/>
                         <outlet property="redModeButton" destination="Ud4-1G-SuJ" id="kNf-UT-MRv"/>
-                        <outlet property="textField" destination="T34-hS-wX2" id="XL0-ae-0WI"/>
                         <outlet property="titolo" destination="TXI-95-uOc" id="ozc-HN-RpB"/>
-                        <outlet property="zoomModeButton" destination="EIe-iK-RAV" id="vpw-KO-smn"/>
                         <segue destination="pYJ-sI-xbr" kind="show" identifier="gotoMainScreen" id="1N5-au-26z"/>
                     </connections>
                 </viewController>
@@ -1259,8 +1437,28 @@
                     <tabBarItem key="tabBarItem" title="Calcolatrice" id="jdj-ah-WFJ"/>
                     <navigationItem key="navigationItem" id="Xxi-8C-Y0r"/>
                     <connections>
+                        <outlet property="cancelButton" destination="WbN-Yf-5cs" id="EPY-6d-juU"/>
                         <outlet property="display" destination="Wfo-GG-tJ4" id="Vkh-5s-jes"/>
                         <outlet property="imageView" destination="vng-IF-df5" id="TbM-Hu-Kqv"/>
+                        <outletCollection property="numbers" destination="YFu-4q-SgV" collectionClass="NSMutableArray" id="kww-p5-Oin"/>
+                        <outletCollection property="numbers" destination="m3k-UZ-DpI" collectionClass="NSMutableArray" id="acl-gs-M53"/>
+                        <outletCollection property="numbers" destination="3Sg-9g-lyo" collectionClass="NSMutableArray" id="Vf4-h7-z4U"/>
+                        <outletCollection property="numbers" destination="WY4-uD-2XS" collectionClass="NSMutableArray" id="ebm-pB-IjL"/>
+                        <outletCollection property="numbers" destination="Z9f-RS-CUz" collectionClass="NSMutableArray" id="6Zl-bz-82K"/>
+                        <outletCollection property="numbers" destination="phe-CH-mqc" collectionClass="NSMutableArray" id="8AD-PX-boT"/>
+                        <outletCollection property="numbers" destination="Lyl-aS-gCY" collectionClass="NSMutableArray" id="v06-Bh-CId"/>
+                        <outletCollection property="numbers" destination="bqd-wF-rMm" collectionClass="NSMutableArray" id="Mbr-qd-VXZ"/>
+                        <outletCollection property="numbers" destination="kCS-PB-EHx" collectionClass="NSMutableArray" id="07l-oq-eq9"/>
+                        <outletCollection property="ImportantOperations" destination="eaG-hH-jF6" collectionClass="NSMutableArray" id="5eb-6y-wpy"/>
+                        <outletCollection property="ImportantOperations" destination="mgk-zQ-43d" collectionClass="NSMutableArray" id="DnF-uV-l11"/>
+                        <outletCollection property="ImportantOperations" destination="ou6-qr-yxZ" collectionClass="NSMutableArray" id="lNq-d5-jGw"/>
+                        <outletCollection property="ImportantOperations" destination="IBu-8C-ce9" collectionClass="NSMutableArray" id="X59-L5-Nka"/>
+                        <outletCollection property="secondaryOperations" destination="BC8-GQ-WHG" collectionClass="NSMutableArray" id="ETs-kk-nhV"/>
+                        <outletCollection property="secondaryOperations" destination="Dih-68-Wi3" collectionClass="NSMutableArray" id="dvr-As-s8D"/>
+                        <outletCollection property="secondaryOperations" destination="9j1-9s-1Dw" collectionClass="NSMutableArray" id="uyi-UT-MQn"/>
+                        <outletCollection property="numbers" destination="jw0-0k-YMI" collectionClass="NSMutableArray" id="vOa-vZ-MCf"/>
+                        <outletCollection property="numbers" destination="cTW-sF-pba" collectionClass="NSMutableArray" id="XZF-IR-CAa"/>
+                        <outletCollection property="numbers" destination="Kdf-LR-wmV" collectionClass="NSMutableArray" id="iej-99-cue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1467,7 +1665,7 @@
                                         <rect key="frame" x="0.0" y="28" width="1024" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1LV-3N-QDg" id="aQf-3E-7Jt">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="135"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="134"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -1554,8 +1752,4 @@
             <point key="canvasLocation" x="-1099" y="1533"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="zoom" width="40" height="40"/>
-        <image name="zoom57" width="57" height="57"/>
-    </resources>
 </document>

@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import AVFoundation
 
 class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScrollViewDelegate {
     
-    var audioPlayer = AVAudioPlayer()
     var giaCaricato:Bool = false
     
     @IBOutlet weak var statoPaginaLabel: UILabel!
@@ -36,15 +34,9 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
         //orarioWebView.delegate = self
         //caricaPagina()
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "zoom3", ofType: "aifc")!))
-            audioPlayer.prepareToPlay()
-        }
-        catch {
-            print(error)
-        }
+
         
-        imageView.image = UIImage(named: "dark")
+        //imageView.image = UIImage(named: "dark")
         }
 
     
@@ -61,9 +53,8 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
                 imageView.image = UIImage(named: "blue")
             case "red":
                 imageView.image = UIImage(named: "red")
-            case "zoom":
-                imageView.image = UIImage(named: "dark")
-                audioPlayer.play()
+            case "green":
+                imageView.image = UIImage(named: "green")
             default:
                 imageView.image = UIImage(named: "dark")
                 print("Error in colormode")

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
 
 //let darkColor = UIColor(colorLiteralRed: 0.259, green: 0.259, blue: 0.259, alpha: 1)
 let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
@@ -20,8 +19,12 @@ extension Double {
 
 class ViewController: UIViewController {
     
-    var audioPlayer = AVAudioPlayer()
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet var numbers: [UIButton]!
+    @IBOutlet var ImportantOperations: [UIButton]!
+    @IBOutlet var secondaryOperations: [UIButton]!
+    @IBOutlet weak var cancelButton: UIButton!
     
     
     @IBOutlet weak var display: UILabel!
@@ -81,10 +84,6 @@ class ViewController: UIViewController {
             
             displayValue = result
         }
-        
-        if UserDefaults.standard.string(forKey: "ColorMode") == "zoom" {
-                audioPlayer.play()
-        }
     }
 
     
@@ -99,8 +98,8 @@ class ViewController: UIViewController {
                 imageView.image = UIImage(named: "blue")
             case "red":
                 imageView.image = UIImage(named: "red")
-            case "zoom":
-                imageView.image = UIImage(named: "dark")
+            case "green":
+                imageView.image = UIImage(named: "green")
             default:
                 imageView.image = UIImage(named: "dark")
                 print("Error in colormode")
@@ -110,6 +109,9 @@ class ViewController: UIViewController {
             print("Error in CM")
         }
 
+        coloraButtons()
+        
+        
     }
     
     override func viewDidLoad() {
@@ -121,13 +123,6 @@ class ViewController: UIViewController {
         imageView.image = UIImage(named: "dark")
         statusBar.backgroundColor = UIColor.clear
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "zoom2", ofType: "aifc")!))
-            audioPlayer.prepareToPlay()
-        }
-        catch {
-            print(error)
-        }
         
     }
 
@@ -136,6 +131,70 @@ class ViewController: UIViewController {
         
     }
 
-
+    func coloraButtons() {
+        if let colorNumbers = UserDefaults.standard.string(forKey: "ColorNumbers") {
+            switch colorNumbers {
+            case "blue":
+                for button in numbers {
+                    button.backgroundColor = UIColor.blue
+                }
+            case "green":
+                for button in numbers {
+                    button.backgroundColor = UIColor.green
+                }
+            case "red":
+                for button in numbers {
+                    button.backgroundColor = UIColor.red
+                }
+            case "black":
+                for button in numbers {
+                    button.backgroundColor = UIColor.black
+                }
+            case "white":
+                for button in numbers {
+                    button.backgroundColor = UIColor.white
+                }
+            default:
+                for button in numbers {
+                    button.backgroundColor = UIColor.white
+                }
+                print("Error in ColorNumbers. Set to default white")
+            }
+        }
+        
+        if let colorFirstOperations = UserDefaults.standard.string(forKey: "ColorOperations") {
+            switch colorFirstOperations {
+            case "blue":
+                for button in ImportantOperations {
+                    button.backgroundColor = UIColor.blue
+                }
+            case "green":
+                for button in ImportantOperations {
+                    button.backgroundColor = UIColor.green
+                }
+            case "red":
+                for button in ImportantOperations {
+                    button.backgroundColor = UIColor.red
+                }
+            case "black":
+                for button in ImportantOperations {
+                    button.backgroundColor = UIColor.black
+                }
+            case "white":
+                for button in ImportantOperations {
+                    button.backgroundColor = UIColor.white
+                }
+            default:
+                for button in ImportantOperations {
+                    button.backgroundColor = UIColor.white
+                }
+                print("Error in ColorNumbers. Set to default white")
+            }
+ 
+            
+        }
+    }
+    
+    
 }
 

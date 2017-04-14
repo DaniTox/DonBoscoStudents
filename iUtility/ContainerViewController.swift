@@ -13,7 +13,7 @@ class ContainerViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(named: "dark")
+        //imageView.image = UIImage(named: "dark")
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,9 +39,8 @@ class ContainerViewController: UIViewController {
                 imageView.image = UIImage(named: "blue")
             case "red":
                 imageView.image = UIImage(named: "red")
-            case "zoom":
-                    imageView.loadGif(name: "Zoom_CW")
-            //imageView.image = UIImage(named: "dark")
+            case "green":
+                imageView.image = UIImage(named: "green")
             default:
                 imageView.image = UIImage(named: "dark")
                 print("Error in colormode")
