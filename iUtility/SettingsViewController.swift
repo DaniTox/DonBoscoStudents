@@ -10,8 +10,11 @@ import UIKit
 import UserNotifications
 import MessageUI
 import SwiftyJSON
+import AVFoundation
 
 //DA FARE: EVITARE DI CREARE SEMPRE UN ALERT NUOVO SE IL MESSAGGIO DA DARE ALL'UTENTE è LO STESSO. FARLO INVECE TRAMITE UNA FUNZIONE UNICA
+
+var zoomIsMorto: Bool = false
 
 extension Sequence {
     var minimalDescription: String {
@@ -23,14 +26,17 @@ var linksModificati:Bool?
 
 class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
     
-    
+    var audioPlayer = AVAudioPlayer()
     
     @IBOutlet weak var classeTextField: UITextField!
-    @IBOutlet weak var switchDarkModeOn: UISwitch!
     @IBOutlet weak var labeldarkMode: UILabel!
-    
     @IBOutlet weak var switchLabel: UISwitch!
     
+    @IBOutlet weak var altroButton: CircleButton!
+    @IBOutlet weak var blueButton: CircleButton!
+    @IBOutlet weak var redButton: CircleButton!
+    @IBOutlet weak var darkButton: CircleButton!
+    @IBOutlet weak var zoomButton: CircleButton!
     
     
     @IBAction func notificheAttivateSwitch(_ sender: UISwitch) {
@@ -40,7 +46,6 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge] , completionHandler: {didAllow, error in })
                 
             } else {
-                // Fallback on earlier versions
                 let setting = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
                 UIApplication.shared.registerUserNotificationSettings(setting)
                 
@@ -125,7 +130,6 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             }
         }
         else {
-            //print(linkUltimaVersione)
             print("URL Errato")
         }
     }
@@ -139,34 +143,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.classeTextField.endEditing(true)
     }
-    
-//    private func changeColorMode(mode:String) {
-//        switch mode {
-//        case "dark":
-//            self.view.backgroundColor = UIColor.darkGray
-//            statusBar.backgroundColor = UIColor.darkGray
-//        case "white":
-//            self.view.backgroundColor = UIColor.white
-//            statusBar.backgroundColor = UIColor.white
-//        default:
-//            print("Error in color mode Impostazioni View")
-//        }
-//    }
-    
-    
-    @IBAction func darkModeSwitch(_ sender: UISwitch) {
-        
-//        if sender.isOn == true {
-//            UserDefaults.standard.set(true, forKey: "darkmodeswitchon")
-//            UserDefaults.standard.set("dark", forKey: "colormode")
-//            changeColorMode(mode: "dark")
-//        }
-//        else {
-//            UserDefaults.standard.set(false, forKey: "darkmodeswitchon")
-//            UserDefaults.standard.set("white", forKey: "colormode")
-//            changeColorMode(mode: "white")
-//        }
-    }
+
     
     @IBAction func sendBugMessage() {
         let appVersion = UIDevice.current.appType + " " + UIDevice.current.appVersion
@@ -221,6 +198,17 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+        }))
+        alert.addAction(UIAlertAction(title: "Sconfiggi Zoom", style: .default, handler: { (displayWin) in
+            let alert = UIAlertController(title: "Zoom", message: "Corri Barry, Corri!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Io sono Flash!", style: .default, handler: { (win) in
+                self.audioPlayer2.play()
+                let alert = UIAlertController(title: "Barry", message: "Hai sconfitto Zoom!\nOra ascolta tutta la musica della corsa finale!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Let's do Flashpoint now", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                zoomIsMorto = true
+            }))
+            self.present(alert, animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -292,23 +280,39 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         UIApplication.shared.openURL(url!)
     }
     
+    var blueCenter: CGPoint!
+    var redCenter: CGPoint!
+    var darkCenter: CGPoint!
+    var zoomCenter: CGPoint!
     
-    
+    var audioPlayer2 = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "zoom4", ofType: "aifc")!))
+            audioPlayer.prepareToPlay()
+            
+            audioPlayer2 = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "ZoomTheme", ofType: "mp3")!))
+            audioPlayer2.prepareToPlay()
+        }
+        catch {
+            print(error)
+        }
         
         self.classeTextField.delegate = self
         
         classeTextField.text = UserDefaults.standard.string(forKey: "classe")
         
-        if UserDefaults.standard.bool(forKey: "darkmodeswitchon") == true {
-            switchDarkModeOn.isOn = true
-        }
-        else {
-            switchDarkModeOn.isOn = false
-        }
+        blueCenter = blueButton.center
+        redCenter = redButton.center
+        darkCenter = darkButton.center
+        zoomCenter = zoomButton.center
+        
+        
+       riportaButtonAStatoInziale()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -318,12 +322,102 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     override func viewWillAppear(_ animated: Bool) {
         classeTextField.text = UserDefaults.standard.string(forKey: "classe")
 
-//        if UserDefaults.standard.string(forKey: "colormode") == "dark" {
-//            changeColorMode(mode: "dark")
-//        }
-//        else {
-//            changeColorMode(mode: "white")
-//        }
     }
 
+    
+    func buttonAnim() {
+        UIView.animate(withDuration: 0.3) {
+            self.blueButton.alpha = 1
+            self.blueButton.center = self.blueCenter
+            
+            self.redButton.alpha = 1
+            self.redButton.center = self.redCenter
+            
+            self.darkButton.alpha = 1
+            self.darkButton.center = self.darkCenter
+            
+            self.zoomButton.alpha = 1
+            self.zoomButton.center = self.zoomCenter
+        }
+    }
+    
+    
+    @IBAction func altroPressed(_ sender: UIButton) {
+        buttonAnim()
+    }
+    
+    func riportaButtonAStatoInziale() {
+        blueButton.center = altroButton.center
+        redButton.center = altroButton.center
+        darkButton.center = altroButton.center
+        zoomButton.center = altroButton.center
+        
+        blueButton.alpha = 0
+        redButton.alpha = 0
+        darkButton.alpha = 0
+        zoomButton.alpha = 0
+    }
+    
+    @IBAction func setBlueMode(_ sender: UIButton) {
+        changeColorModeInUserDefaults(mode: "blue")
+        animContraria()
+    }
+    
+    @IBAction func setRedMode(_ sender: UIButton) {
+        changeColorModeInUserDefaults(mode: "red")
+        animContraria()
+    }
+    
+    @IBAction func setDarkMode(_ sender: UIButton) {
+        changeColorModeInUserDefaults(mode: "dark")
+        animContraria()
+    }
+    
+    @IBAction func setZOOMMode(_ sender: UIButton) {
+        changeColorModeInUserDefaults(mode: "zoom")
+        audioPlayer.play()
+        animContraria()
+    }
+    
+    
+    func animContraria() {
+        UIView.animate(withDuration: 0.3) { 
+            self.blueButton.alpha = 0
+            self.blueButton.center = self.altroButton.center
+            
+            self.redButton.alpha = 0
+            self.redButton.center = self.altroButton.center
+            
+            self.darkButton.alpha = 0
+            self.darkButton.center = self.altroButton.center
+            
+            self.zoomButton.alpha = 0
+            self.zoomButton.center = self.altroButton.center
+        }
+    }
+    
+    func changeColorModeInUserDefaults(mode: String) {
+        UserDefaults.standard.set(mode, forKey: "ColorMode")
+        if let color = UserDefaults.standard.string(forKey: "ColorMode") {
+            switch color {
+            case "dark":
+                altroButton.backgroundColor = UIColor.darkGray
+                altroButton.setImage(nil, for: .normal)
+            case "red":
+                altroButton.backgroundColor = UIColor.red
+                altroButton.setImage(nil, for: .normal)
+            case "blue":
+                altroButton.backgroundColor = UIColor.blue
+                altroButton.setImage(nil, for: .normal)
+            case "zoom":
+                altroButton.setImage(UIImage(named: "zoom"), for: .normal)
+            default:
+                print("Erro")
+            }
+        }
+        print("ColorMode cambiata")
+    }
+    
+    
+    
     }

@@ -81,7 +81,26 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
+            switch UserDefaults.standard.string(forKey: "ColorMode")! {
+            case "dark":
+                imageView.image = UIImage(named: "dark")
+            case "blue":
+                imageView.image = UIImage(named: "blue")
+            case "red":
+                imageView.image = UIImage(named: "red")
+            case "zoom":
+                imageView.loadGif(name: "tenor")
+            default:
+                imageView.image = UIImage(named: "dark")
+                print("Error in colormode")
+            }
+        }
+        else {
+            print("Error in CM")
+        }
+    }
     
     func presentaAvvisoErrore() {
         print("No Connection")

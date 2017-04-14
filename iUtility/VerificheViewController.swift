@@ -53,6 +53,27 @@ class VerificheViewController: UIViewController, UITableViewDelegate, UITableVie
         print("Tempo impiegato per caricare le verifiche dalla Cache: \(end.timeIntervalSince(start))")
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
+            switch UserDefaults.standard.string(forKey: "ColorMode")! {
+            case "dark":
+                imageView.image = UIImage(named: "dark")
+            case "blue":
+                imageView.image = UIImage(named: "blue")
+            case "red":
+                imageView.image = UIImage(named: "red")
+            case "zoom":
+                imageView.image = UIImage(named: "zoomB")
+            //imageView.image = UIImage(named: "dark")
+            default:
+                imageView.image = UIImage(named: "dark")
+                print("Error in colormode")
+            }
+        }
+        else {
+            print("Error in CM")
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -61,7 +82,9 @@ class VerificheViewController: UIViewController, UITableViewDelegate, UITableVie
         materieDataArray.removeAll()
         materieArgomentoArray.removeAll()
         
-        imageView.image = UIImage(named: "dark")
+
+        
+        
         statusBar.backgroundColor = UIColor.clear
         tableView.backgroundColor = UIColor.clear
         

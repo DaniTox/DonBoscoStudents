@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScrollViewDelegate {
-
+    
+    var audioPlayer = AVAudioPlayer()
     var giaCaricato:Bool = false
     
     @IBOutlet weak var statoPaginaLabel: UILabel!
@@ -34,6 +36,14 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
         //orarioWebView.delegate = self
         //caricaPagina()
         
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "zoom3", ofType: "aifc")!))
+            audioPlayer.prepareToPlay()
+        }
+        catch {
+            print(error)
+        }
+        
         imageView.image = UIImage(named: "dark")
         }
 
@@ -43,29 +53,53 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
             self.caricaPagina()
         }
         
+        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
+            switch UserDefaults.standard.string(forKey: "ColorMode")! {
+            case "dark":
+                imageView.image = UIImage(named: "dark")
+            case "blue":
+                imageView.image = UIImage(named: "blue")
+            case "red":
+                imageView.image = UIImage(named: "red")
+            case "zoom":
+                imageView.image = UIImage(named: "dark")
+                audioPlayer.play()
+            default:
+                imageView.image = UIImage(named: "dark")
+                print("Error in colormode")
+            }
+        }
+        else {
+            print("Error in CM")
+        }
         
     }
     
     func caricaPagina() {
         if giaCaricato == false {
             var orarioStringUrl:String?
-            if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
-                orarioStringUrl = "http://www.donboscobrescia.it/file/orario.pdf"
-                print("LOG: UserDefault per i link corretti NON SETTATO oppure è uguale a FALSE. Quindi si usa lo  standard link")
+            if UserDefaults.standard.string(forKey: "ColorMode") != "zoom" {
+                if UserDefaults.standard.bool(forKey: "linkCorretti") != true {
+                    orarioStringUrl = "http://www.donboscobrescia.it/file/orario.pdf"
+                    print("LOG: UserDefault per i link corretti NON SETTATO oppure è uguale a FALSE. Quindi si usa lo  standard link")
+                }
+                else {
+                    orarioStringUrl = UserDefaults.standard.string(forKey: "LinkOrario")
+                    print("LOG: UserDefault per i link corretti SETTATO a TRUE. Vuol dire che sono stati corretti e il link usato è quello negli UserDefault")
+                }
+                if let urlOrario = URL(string: orarioStringUrl!) {
+                    orarioWebView.loadRequest(URLRequest(url: urlOrario))
+                    orarioWebView.delegate = self
+                    giaCaricato = true
+                }
+                else {
+                    let alert = UIAlertController(title: "Errore", message: "Probabilmente c'è qualche errore con i link. Prova a coreggerli nelle impostazioni", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                }
             }
-            else {
-                orarioStringUrl = UserDefaults.standard.string(forKey: "LinkOrario")
-                print("LOG: UserDefault per i link corretti SETTATO a TRUE. Vuol dire che sono stati corretti e il link usato è quello negli UserDefault")
-            }
-            if let urlOrario = URL(string: orarioStringUrl!) {
-                orarioWebView.loadRequest(URLRequest(url: urlOrario))
-                orarioWebView.delegate = self
-                giaCaricato = true
-            }
-            else {
-                let alert = UIAlertController(title: "Errore", message: "Probabilmente c'è qualche errore con i link. Prova a coreggerli nelle impostazioni", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
+            else  {
+                orarioWebView.loadRequest(URLRequest(url: URL(string: "https://fsmedia.imgix.net/49/dd/62/9d/6929/488f/b462/2e2778ca886e/the-flash-season-2-finale-zoom.jpeg?rect=0%2C30%2C800%2C400&auto=format%2Ccompress&w=1800&q=70")!))
             }
         }
         

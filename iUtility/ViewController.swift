@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 //let darkColor = UIColor(colorLiteralRed: 0.259, green: 0.259, blue: 0.259, alpha: 1)
 let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
@@ -19,6 +20,7 @@ extension Double {
 
 class ViewController: UIViewController {
     
+    var audioPlayer = AVAudioPlayer()
     @IBOutlet weak var imageView: UIImageView!
     
     
@@ -79,39 +81,34 @@ class ViewController: UIViewController {
             
             displayValue = result
         }
+        
+        if UserDefaults.standard.string(forKey: "ColorMode") == "zoom" {
+                audioPlayer.play()
+        }
     }
-    
-//    func changeColorMode(mode: String) {
-//        switch mode {
-//        case "dark":
-//            display.textColor = UIColor.white
-//            display.backgroundColor = darkColor
-//            statusBar.backgroundColor = darkColor
-//            self.view.backgroundColor = darkColor
-//        case "white":
-//            display.textColor = UIColor.black
-//            display.backgroundColor = UIColor.white
-//            statusBar.backgroundColor = UIColor.white
-//            self.view.backgroundColor = UIColor.green
-//            
-//        default:
-//            print("Error in color mode")
-//        }
-//        
-//    }
+
     
     override func viewWillAppear(_ animated: Bool) {
-//        if UserDefaults.standard.string(forKey: "colormode") != nil {
-//            switch UserDefaults.standard.string(forKey: "colormode")! {
-//            case "dark":
-//                changeColorMode(mode: "dark")
-//            case "white":
-//                changeColorMode(mode: "white")
-//            default:
-//                print("Nessuna color mode rilevata")
-//            }
-//            
-//        }
+
+        
+        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
+            switch UserDefaults.standard.string(forKey: "ColorMode")! {
+            case "dark":
+                imageView.image = UIImage(named: "dark")
+            case "blue":
+                imageView.image = UIImage(named: "blue")
+            case "red":
+                imageView.image = UIImage(named: "red")
+            case "zoom":
+                imageView.image = UIImage(named: "dark")
+            default:
+                imageView.image = UIImage(named: "dark")
+                print("Error in colormode")
+            }
+        }
+        else {
+            print("Error in CM")
+        }
 
     }
     
@@ -123,6 +120,14 @@ class ViewController: UIViewController {
         
         imageView.image = UIImage(named: "dark")
         statusBar.backgroundColor = UIColor.clear
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "zoom2", ofType: "aifc")!))
+            audioPlayer.prepareToPlay()
+        }
+        catch {
+            print(error)
+        }
         
     }
 

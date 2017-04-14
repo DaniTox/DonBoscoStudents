@@ -1,13 +1,12 @@
 //
-//  gifLoader.swift
+//  GIFLoader.swift
 //  iUtility
 //
-//  Created by Dani Tox on 25/01/17.
+//  Created by Dani Tox on 13/04/17.
 //  Copyright © 2017 Dani Tox. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
 import ImageIO
 
 extension UIImageView {
