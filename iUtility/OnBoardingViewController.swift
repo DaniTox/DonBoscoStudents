@@ -98,6 +98,8 @@ class OnBoardingViewController: UIViewController {
         if classeIsSelected && colorModeisSelected {
             UserDefaults.standard.set("true", forKey: "OnboardingEffettuato")
             performSegue(withIdentifier: "gotoMainScreen", sender: self)
+            UserDefaults.standard.set("white", forKey: "ColorNumbers")
+            UserDefaults.standard.set("black", forKey: "FontNumeriColor")
         }
         else {
             print("Devi selezionare sia la classe che la Color Mode prima di continuare")

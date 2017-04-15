@@ -290,7 +290,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         altroPressedperLaPrimaVolta = false
         
         self.classeTextField.delegate = self
@@ -308,7 +308,14 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         greenNumbersCenter = greenNumbersOutlet.center
         whiteNumbersCenter = whiteNumbersOutlet.center
         
-       portaButtonAStatoInziale()
+        
+        blueFontCenter = BlueFontOutlet.center
+        greenFontCenter = GreenFontOutlet.center
+        redFontCenter = RedFontOutlet.center
+        blackFontCenter = BlackFontOutlet.center
+        whiteFontCenter = WhiteFontOutlet.center
+        
+        portaButtonAStatoInziale()
         
     }
 
@@ -416,6 +423,18 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         darkNumbersOutlet.alpha = 0
         redNumbersOutlet.alpha = 0
         blueNumbersOutlet.alpha = 0
+        
+        BlueFontOutlet.center = selectFontColor.center
+        GreenFontOutlet.center = selectFontColor.center
+        RedFontOutlet.center = selectFontColor.center
+        BlackFontOutlet.center = selectFontColor.center
+        WhiteFontOutlet.center = selectFontColor.center
+        
+        BlueFontOutlet.alpha = 0
+        GreenFontOutlet.alpha = 0
+        RedFontOutlet.alpha = 0
+        BlackFontOutlet.alpha = 0
+        WhiteFontOutlet.alpha = 0
     }
     
     @IBAction func setBlueMode(_ sender: UIButton) {
@@ -607,6 +626,115 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     @IBOutlet weak var stepperOutlet: UIStepper!
+    
+    
+    var blueFontCenter: CGPoint!
+    var greenFontCenter: CGPoint!
+    var redFontCenter: CGPoint!
+    var blackFontCenter: CGPoint!
+    var whiteFontCenter: CGPoint!
+    
+    
+    @IBOutlet weak var selectFontColor: CircleButton!
+    @IBOutlet weak var BlueFontOutlet: CircleButton!
+    @IBOutlet weak var GreenFontOutlet: CircleButton!
+    @IBOutlet weak var RedFontOutlet: CircleButton!
+    @IBOutlet weak var BlackFontOutlet: CircleButton!
+    @IBOutlet weak var WhiteFontOutlet: CircleButton!
+    
+    var setColorFontNumbers:Bool = false
+    @IBAction func slectFontColorAction(_ sender: Any) {
+        setColorFontNumbers = !setColorFontNumbers
+        
+        if setColorFontNumbers == true {
+            animateFontColorButtons()
+            setColorFontNumbers = true
+        }
+        else {
+            animFontColorContraria()
+        }
+    }
+    
+    @IBAction func setBlueFont(_ sender: Any) {
+        changeFontColor(color: "blue")
+        selectFontColor.backgroundColor = UIColor.blue
+        animFontColorContraria()
+        setColorFontNumbers = false
+    }
+    
+    @IBAction func setGreenFont(_ sender: Any) {
+        changeFontColor(color: "green")
+        selectFontColor.backgroundColor = UIColor.green
+        animFontColorContraria()
+        setColorFontNumbers = false
+    }
+    
+    @IBAction func setRedFont(_ sender: Any) {
+        changeFontColor(color: "red")
+        selectFontColor.backgroundColor = UIColor.red
+        animFontColorContraria()
+        setColorFontNumbers = false
+    }
+    
+    @IBAction func setBlackFont(_ sender: Any) {
+        changeFontColor(color: "black")
+        selectFontColor.backgroundColor = UIColor.black
+        animFontColorContraria()
+        setColorFontNumbers = false
+    }
+    
+    @IBAction func setWhiteFont(_ sender: Any) {
+        changeFontColor(color: "white")
+        selectFontColor.backgroundColor = UIColor.white
+        animFontColorContraria()
+        setColorFontNumbers = false
+    }
+    
+    
+    func changeFontColor(color: String) {
+        UserDefaults.standard.set(color, forKey: "FontNumeriColor")
+    }
+    
+    
+    func animateFontColorButtons() {
+        UIView.animate(withDuration: 0.3) { 
+            self.BlueFontOutlet.center = self.blueFontCenter
+            self.BlueFontOutlet.alpha = 1
+            
+            self.GreenFontOutlet.center = self.greenFontCenter
+            self.GreenFontOutlet.alpha = 1
+            
+            self.RedFontOutlet.center = self.redFontCenter
+            self.RedFontOutlet.alpha = 1
+            
+            self.BlackFontOutlet.center = self.blackFontCenter
+            self.BlackFontOutlet.alpha = 1
+            
+            self.WhiteFontOutlet.center = self.whiteFontCenter
+            self.WhiteFontOutlet.alpha = 1
+        }
+        
+    }
+    
+    func animFontColorContraria() {
+        UIView.animate(withDuration: 0.3) { 
+            self.BlueFontOutlet.center = self.selectFontColor.center
+            self.BlueFontOutlet.alpha = 0
+            
+            self.GreenFontOutlet.center = self.selectFontColor.center
+            self.GreenFontOutlet.alpha = 0
+            
+            self.RedFontOutlet.center = self.selectFontColor.center
+            self.RedFontOutlet.alpha = 0
+            
+            self.BlackFontOutlet.center = self.selectFontColor.center
+            self.BlackFontOutlet.alpha = 0
+            
+            self.WhiteFontOutlet.center = self.selectFontColor.center
+            self.WhiteFontOutlet.alpha = 0
+        }
+    
+    }
     
     
     

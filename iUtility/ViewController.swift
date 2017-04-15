@@ -108,12 +108,18 @@ class ViewController: UIViewController {
         else {
             print("Error in CM")
         }
+       
 
         coloraButtons()
         modificaGrandezzaNumeri()
-        
-        
+
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        coloraFont()
+
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,8 +200,41 @@ class ViewController: UIViewController {
  
             
         }
+        
+        
     }
     
+    func coloraFont() {
+        if let colorFontNumbers = UserDefaults.standard.string(forKey: "FontNumeriColor") {
+            switch colorFontNumbers {
+            case "blue":
+                for button in numbers {
+                    button.titleLabel?.textColor = UIColor.blue
+                }
+            case "green":
+                for button in numbers {
+                    button.titleLabel?.textColor = UIColor.green
+                }
+            case "red":
+                for button in numbers {
+                    button.titleLabel?.textColor = UIColor.red
+                }
+            case "black":
+                for button in numbers {
+                    button.titleLabel?.textColor = UIColor.black
+                }
+            case "white":
+                for button in numbers {
+                    button.titleLabel?.textColor = UIColor.white
+                }
+            default:
+                for button in numbers {
+                    button.titleLabel?.textColor = UIColor.black
+                    print("Error in font color")
+                }
+            }
+        }
+    }
     
     func modificaGrandezzaNumeri() {
         var grandezza = UserDefaults.standard.float(forKey: "GrandezzaNumeri")
@@ -205,7 +244,7 @@ class ViewController: UIViewController {
             for number in numbers {
                 number.titleLabel?.font = UIFont.boldSystemFont(ofSize: CGFloat(grandezza))
             }
-        
+
     
     }
     
