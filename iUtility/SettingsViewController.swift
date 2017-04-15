@@ -319,6 +319,12 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     override func viewWillAppear(_ animated: Bool) {
         classeTextField.text = UserDefaults.standard.string(forKey: "classe")
         
+        stepperOutlet.value = Double(UserDefaults.standard.float(forKey: "GrandezzaNumeri"))
+        if stepperOutlet.value <= 1 {
+            stepperOutlet.value = 30
+        }
+        labelGrandezzaNumeri.text = String(stepperOutlet.value)
+        
         
         
         if let color = UserDefaults.standard.string(forKey: "ColorMode") {
@@ -338,7 +344,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 
         if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
             switch color {
-            case "dark":
+            case "black":
                 selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
             case "red":
                 selectNumbersColorOutlet.backgroundColor = UIColor.red
@@ -517,7 +523,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         UserDefaults.standard.set(mode, forKey: "ColorNumbers")
         if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
             switch color {
-            case "dark":
+            case "black":
                 selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
                 selectNumbersColorOutlet.setImage(nil, for: .normal)
             case "red":
@@ -592,14 +598,15 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     
-    @IBOutlet weak var grandezzaNUmeriTextField: UITextField!
+    @IBOutlet weak var labelGrandezzaNumeri: UILabel!
     
-    @IBAction func salvaGrandezzaNumeri(_ sender: UIButton) {
-        if let grandezza = Int(grandezzaNUmeriTextField.text!) {
-            UserDefaults.standard.set(grandezza, forKey: "GrandezzaNumeri")
-        }
+
+    @IBAction func stepper(_ sender: UIStepper) {
+        labelGrandezzaNumeri.text = String(sender.value)
+        UserDefaults.standard.set(Float(labelGrandezzaNumeri.text!), forKey: "GrandezzaNumeri")
     }
     
+    @IBOutlet weak var stepperOutlet: UIStepper!
     
     
     

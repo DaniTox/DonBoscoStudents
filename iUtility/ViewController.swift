@@ -110,14 +110,7 @@ class ViewController: UIViewController {
         }
 
         coloraButtons()
-        
-         var grandezza = UserDefaults.standard.integer(forKey: "GrandezzaNumeri")
-        if grandezza == 0 {
-            grandezza = 10
-        }
-        for button in numbers {
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: CGFloat(grandezza))
-        }
+        modificaGrandezzaNumeri()
         
         
     }
@@ -204,7 +197,17 @@ class ViewController: UIViewController {
     }
     
     
+    func modificaGrandezzaNumeri() {
+        var grandezza = UserDefaults.standard.float(forKey: "GrandezzaNumeri")
+        if grandezza <= 1.0 {
+            grandezza = 30
+        }
+            for number in numbers {
+                number.titleLabel?.font = UIFont.boldSystemFont(ofSize: CGFloat(grandezza))
+            }
+        
     
+    }
     
     
 }
