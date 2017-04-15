@@ -24,7 +24,6 @@ var linksModificati:Bool?
 class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
     
     
-    @IBOutlet weak var classeTextField: UITextField!
     @IBOutlet weak var labeldarkMode: UILabel!
     @IBOutlet weak var switchLabel: UISwitch!
     
@@ -34,6 +33,16 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     @IBOutlet weak var darkButton: CircleButton!
     @IBOutlet weak var greenButton: CircleButton!
     
+    
+    var pEcenter:CGPoint!
+    var sEcenter:CGPoint!
+    var tEcenter:CGPoint!
+    var qEcenter:CGPoint!
+    
+    var pMcenter:CGPoint!
+    var sMcenter:CGPoint!
+    var tMcenter:CGPoint!
+    var qMcenter:CGPoint!
     
     var altroPressedperLaPrimaVolta:Bool = false
     var setColorNumbersPressedLaPrimaVolta:Bool = false
@@ -54,21 +63,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     
-    @IBAction func salvaClasseButton() {
-        if classeTextField.text != nil && classeTextField.text != "" {
-            UserDefaults.standard.set(classeTextField.text, forKey: "classe")
-        }
-        if let classe = UserDefaults.standard.string(forKey: "classe") {
-            if classe == classeTextField.text {
-                let alert1 = UIAlertController(title: "Fatto", message: "Classe Salvata", preferredStyle: .alert)
-                alert1.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                present(alert1, animated: true, completion: nil)
-
-              classeTextField.endEditing(true)
-                classeTextField.resignFirstResponder()
-            }
-        }
-    }
+    
     
     @IBAction func verificaAggiornamenti() {
       
@@ -134,13 +129,13 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        salvaClasseButton()
+        
         textField.resignFirstResponder()
         return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.classeTextField.endEditing(true)
+        
     }
 
     
@@ -293,9 +288,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         
         altroPressedperLaPrimaVolta = false
         
-        self.classeTextField.delegate = self
+        setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
         
-        classeTextField.text = UserDefaults.standard.string(forKey: "classe")
+       
         
         blueCenter = blueButton.center
         redCenter = redButton.center
@@ -315,6 +310,18 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         blackFontCenter = BlackFontOutlet.center
         whiteFontCenter = WhiteFontOutlet.center
         
+        
+        pEcenter = pElettroOutlet.center
+        sEcenter = sElettroOutlet.center
+        tEcenter = tElettroOutlet.center
+        qEcenter = qElettroOutlet.center
+        
+        pMcenter = pMotoOutlet.center
+        sMcenter = sMotoOutlet.center
+        tMcenter = tMotoOutlet.center
+        qMcenter = qMotoOutlet.center
+        
+        
         portaButtonAStatoInziale()
         
     }
@@ -324,7 +331,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        classeTextField.text = UserDefaults.standard.string(forKey: "classe")
+        
         tickDone.alpha = 0
 
         stepperOutlet.value = Double(UserDefaults.standard.float(forKey: "GrandezzaNumeri"))
@@ -334,6 +341,19 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         labelGrandezzaNumeri.text = String(stepperOutlet.value)
         
         
+        
+        if let classe = UserDefaults.standard.string(forKey: "classe") {
+            switch classe {
+            case "1E", "2E", "3E", "4E":
+                setClasseOutlet.backgroundColor = UIColor.yellow
+                setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
+            case "1M", "2M", "3M", "4M":
+                setClasseOutlet.backgroundColor = UIColor.darkGray
+                setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
+            default:
+                print("Error in color setClasseOutlet")
+            }
+        }
         
         if let color = UserDefaults.standard.string(forKey: "ColorMode") {
             switch color {
@@ -454,6 +474,25 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         RedFontOutlet.alpha = 0
         BlackFontOutlet.alpha = 0
         WhiteFontOutlet.alpha = 0
+        
+        pElettroOutlet.center = setClasseOutlet.center
+        sElettroOutlet.center = setClasseOutlet.center
+        tElettroOutlet.center = setClasseOutlet.center
+        qElettroOutlet.center = setClasseOutlet.center
+        pElettroOutlet.alpha = 0
+        sElettroOutlet.alpha = 0
+        tElettroOutlet.alpha = 0
+        qElettroOutlet.alpha = 0
+        
+        pMotoOutlet.center = setClasseOutlet.center
+        sMotoOutlet.center = setClasseOutlet.center
+        tMotoOutlet.center = setClasseOutlet.center
+        qMotoOutlet.center = setClasseOutlet.center
+        pMotoOutlet.alpha = 0
+        sMotoOutlet.alpha = 0
+        tMotoOutlet.alpha = 0
+        qMotoOutlet.alpha = 0
+        
     }
     
     @IBAction func setBlueMode(_ sender: UIButton) {
@@ -801,7 +840,108 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         labelGrandezzaNumeri.text = String(30.0)
     }
     
+    //CLASSI
     
+    @IBOutlet weak var setClasseOutlet: CircleButton!
+    
+    @IBOutlet weak var pElettroOutlet: CircleButton!
+    @IBOutlet weak var sElettroOutlet: CircleButton!
+    @IBOutlet weak var tElettroOutlet: CircleButton!
+    @IBOutlet weak var qElettroOutlet: CircleButton!
+    
+    @IBOutlet weak var pMotoOutlet: CircleButton!
+    @IBOutlet weak var sMotoOutlet: CircleButton!
+    @IBOutlet weak var tMotoOutlet: CircleButton!
+    @IBOutlet weak var qMotoOutlet: CircleButton!
+    
+    var classeSelected:Bool = false
+    
+    
+    
+    @IBAction func setClasseAction(_ sender: Any) {
+        classeSelected = !classeSelected
+        
+        if classeSelected == true {
+            animaCassi()
+            classeSelected = true
+        }
+        else {
+            animClassiInversa()
+        }
+    }
+    
+    @IBAction func setClassebySender(_ sender: UIButton) {
+        if let classe = sender.currentTitle {
+            setClasse(classe)
+            print(classe)
+        }
+        animClassiInversa()
+        classeSelected = false
+        setClasseOutlet.titleLabel?.textColor = UIColor.white
+        if let classe = UserDefaults.standard.string(forKey: "classe") {
+            switch classe {
+            case "1E", "2E", "3E", "4E":
+                setClasseOutlet.backgroundColor = UIColor.yellow
+                setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
+            case "1M", "2M", "3M", "4M":
+                setClasseOutlet.backgroundColor = UIColor.darkGray
+                setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
+            default:
+                print("Error in color setClasseOutlet")
+            }
+        }
+        
+    }
+    
+    func animClassiInversa() {
+        UIView.animate(withDuration: 0.3) { 
+            self.pElettroOutlet.center = self.setClasseOutlet.center
+            self.pElettroOutlet.alpha = 0
+            self.sElettroOutlet.center = self.setClasseOutlet.center
+            self.sElettroOutlet.alpha = 0
+            self.tElettroOutlet.center = self.setClasseOutlet.center
+            self.tElettroOutlet.alpha = 0
+            self.qElettroOutlet.center = self.setClasseOutlet.center
+            self.qElettroOutlet.alpha = 0
+            
+            self.pMotoOutlet.center = self.setClasseOutlet.center
+            self.pMotoOutlet.alpha = 0
+            self.sMotoOutlet.center = self.setClasseOutlet.center
+            self.sMotoOutlet.alpha = 0
+            self.tMotoOutlet.center = self.setClasseOutlet.center
+            self.tMotoOutlet.alpha = 0
+            self.qMotoOutlet.center = self.setClasseOutlet.center
+            self.qMotoOutlet.alpha = 0
+        }
+    }
+    
+    func animaCassi() {
+        UIView.animate(withDuration: 0.3) {
+            self.pElettroOutlet.center = self.pEcenter
+            self.pElettroOutlet.alpha = 1
+            self.sElettroOutlet.center = self.sEcenter
+            self.sElettroOutlet.alpha = 1
+            self.tElettroOutlet.center = self.tEcenter
+            self.tElettroOutlet.alpha = 1
+            self.qElettroOutlet.center = self.qEcenter
+            self.qElettroOutlet.alpha = 1
+            
+            self.pMotoOutlet.center = self.pMcenter
+            self.pMotoOutlet.alpha = 1
+            self.sMotoOutlet.center = self.sMcenter
+            self.sMotoOutlet.alpha = 1
+            self.tMotoOutlet.center = self.tMcenter
+            self.tMotoOutlet.alpha = 1
+            self.qMotoOutlet.center = self.qMcenter
+            self.qMotoOutlet.alpha = 1
+        }
+    }
+    
+    
+    func setClasse(_ classe: String) {
+        UserDefaults.standard.set(classe, forKey: "classe")
+        
+    }
     
     
     }
