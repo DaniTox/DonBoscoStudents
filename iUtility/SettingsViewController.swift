@@ -325,7 +325,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     
     override func viewWillAppear(_ animated: Bool) {
         classeTextField.text = UserDefaults.standard.string(forKey: "classe")
-        
+        tickDone.alpha = 0
+
         stepperOutlet.value = Double(UserDefaults.standard.float(forKey: "GrandezzaNumeri"))
         if stepperOutlet.value <= 1 {
             stepperOutlet.value = 30
@@ -366,6 +367,24 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             }
         }
         
+        
+        if let colorFont = UserDefaults.standard.string(forKey: "FontNumeriColor") {
+            switch colorFont {
+            case "black":
+                selectFontColor.backgroundColor = UIColor.darkGray
+            case "red":
+                selectFontColor.backgroundColor = UIColor.red
+            case "blue":
+                selectFontColor.backgroundColor = UIColor.blue
+            case "green":
+                selectFontColor.backgroundColor = UIColor.green
+            case "white":
+                selectFontColor.backgroundColor = UIColor.white
+            default:
+                print("Erro")
+            }
+        }
+
         
     }
 
@@ -678,7 +697,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     
     @IBAction func setBlackFont(_ sender: Any) {
         changeFontColor(color: "black")
-        selectFontColor.backgroundColor = UIColor.black
+        selectFontColor.backgroundColor = UIColor.darkGray
         animFontColorContraria()
         setColorFontNumbers = false
     }
@@ -736,6 +755,51 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     
     }
     
+    @IBOutlet weak var tickDone: UILabel!
+    @IBAction func resetColors(_ sender: Any) {
+        UserDefaults.standard.set("white", forKey: "ColorNumbers")
+        UserDefaults.standard.set("black", forKey: "FontNumeriColor")
+        UserDefaults.standard.set(30.0, forKey: "GrandezzaNumeri")
+        tickDone.alpha = 1
+        
+        if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
+            switch color {
+            case "black":
+                selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
+            case "red":
+                selectNumbersColorOutlet.backgroundColor = UIColor.red
+            case "blue":
+                selectNumbersColorOutlet.backgroundColor = UIColor.blue
+            case "green":
+                selectNumbersColorOutlet.backgroundColor = UIColor.green
+            case "white":
+                selectNumbersColorOutlet.backgroundColor = UIColor.white
+            default:
+                print("Erro")
+            }
+        }
+        
+        
+        if let colorFont = UserDefaults.standard.string(forKey: "FontNumeriColor") {
+            switch colorFont {
+            case "black":
+                selectFontColor.backgroundColor = UIColor.darkGray
+            case "red":
+                selectFontColor.backgroundColor = UIColor.red
+            case "blue":
+                selectFontColor.backgroundColor = UIColor.blue
+            case "green":
+                selectFontColor.backgroundColor = UIColor.green
+            case "white":
+                selectFontColor.backgroundColor = UIColor.white
+            default:
+                print("Erro")
+            }
+        }
+        
+        stepperOutlet.value = 30.0
+        labelGrandezzaNumeri.text = String(30.0)
+    }
     
     
     
