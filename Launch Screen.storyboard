@@ -34,7 +34,7 @@
                                     <constraint firstAttribute="height" constant="183" id="qsc-W9-v86"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versione: Studenti v0.5 ALPHA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKF-Qm-196">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versione: Studenti v0.7 ALPHA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKF-Qm-196">
                                 <rect key="frame" x="82" y="647" width="250" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5iZ-l2-PpY"/>

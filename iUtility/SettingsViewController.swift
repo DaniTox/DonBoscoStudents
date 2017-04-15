@@ -882,10 +882,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             switch classe {
             case "1E", "2E", "3E", "4E":
                 setClasseOutlet.backgroundColor = UIColor.yellow
-                setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
             case "1M", "2M", "3M", "4M":
                 setClasseOutlet.backgroundColor = UIColor.darkGray
-                setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
             default:
                 print("Error in color setClasseOutlet")
             }
