@@ -48,18 +48,18 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     var setColorNumbersPressedLaPrimaVolta:Bool = false
     
     @IBAction func notificheAttivateSwitch(_ sender: UISwitch) {
-        if sender.isOn == true {
-            
-            if #available(iOS 10.0, *) {
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge] , completionHandler: {didAllow, error in })
-                
-            } else {
-                let setting = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-                UIApplication.shared.registerUserNotificationSettings(setting)
-                
-            }
-            
-        }
+//        if sender.isOn == true {
+//            
+//            if #available(iOS 10.0, *) {
+//                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge] , completionHandler: {didAllow, error in })
+//                
+//            } else {
+//                let setting = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//                UIApplication.shared.registerUserNotificationSettings(setting)
+//                
+//            }
+//            
+//        }
     }
     
     

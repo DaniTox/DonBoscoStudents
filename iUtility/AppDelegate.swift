@@ -9,16 +9,19 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
+import UserNotifications
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+       
+ 
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -26,9 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UserDefaults.standard.string(forKey: "OnboardingEffettuato") == nil {
             vc = storyboard.instantiateViewController(withIdentifier: "onboarding")
+            
         }
         else {
             vc = storyboard.instantiateInitialViewController()!
+            
+//            let notificationTypes : UIUserNotificationType = [.alert, .badge, .sound]
+//            let notificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
+//            application.registerForRemoteNotifications()
+//            application.registerUserNotificationSettings(notificationSettings)
+            
         }
         
         self.window?.rootViewController = vc
@@ -36,10 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
-//        let notificationTypes : UIUserNotificationType = [.alert, .badge, .sound]
-//        let notificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
-//        application.registerForRemoteNotifications()
-//        application.registerUserNotificationSettings(notificationSettings)
+
         
         
         
@@ -48,6 +55,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        completionHandler(
+            [UNNotificationPresentationOptions.alert,
+             UNNotificationPresentationOptions.sound,
+             UNNotificationPresentationOptions.badge])
+    }
+    
+    
+    
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -60,6 +80,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        if #available(iOS 10.0, *) {
+                // For iOS 10 display notification (sent via APNS)
+                UNUserNotificationCenter.current().delegate = self
+                
+                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+                UNUserNotificationCenter.current().requestAuthorization(
+                    options: authOptions,
+                    completionHandler: {_, _ in })
+                
+                // For iOS 10 data message (sent via FCM)
+                //                FIRMessaging.messaging().remoteMessageDelegate = self
+                
+            } else {
+                let settings: UIUserNotificationSettings =
+                    UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+                application.registerUserNotificationSettings(settings)
+            }
+            
+            application.registerForRemoteNotifications()
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -73,7 +117,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         print(userInfo)
         print("MessageID : \(userInfo["gmc_message_id"])!")
+        
+        //if application.applicationState == UIApplicationState.active {
+        DispatchQueue.main.async {
+            let importantAlert: UIAlertController = UIAlertController(title: "Action Sheet", message: "Hello I was presented from appdelegate ;)", preferredStyle: .actionSheet)
+            self.window?.rootViewController?.present(importantAlert, animated: true, completion: nil)
+            }
+        
+        
+        //}
+        
     }
+    
+    
 
 }
 
