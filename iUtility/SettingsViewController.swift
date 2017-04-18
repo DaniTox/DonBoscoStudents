@@ -358,7 +358,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         if let color = UserDefaults.standard.string(forKey: "ColorMode") {
             switch color {
             case "dark":
-                altroButton.backgroundColor = UIColor.darkGray
+                altroButton.backgroundColor = UIColor.black
+                altroButton.borderWidth = 2.0
+                altroButton.borderColor = UIColor.darkGray
             case "red":
                 altroButton.backgroundColor = UIColor.red
             case "blue":
@@ -373,6 +375,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
             switch color {
             case "black":
+                selectNumbersColorOutlet.backgroundColor = UIColor.black
+                selectNumbersColorOutlet.borderWidth = 2.0
                 selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
             case "red":
                 selectNumbersColorOutlet.backgroundColor = UIColor.red
@@ -391,6 +395,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         if let colorFont = UserDefaults.standard.string(forKey: "FontNumeriColor") {
             switch colorFont {
             case "black":
+                selectFontColor.backgroundColor = UIColor.black
+                selectFontColor.borderWidth = 2.0
                 selectFontColor.backgroundColor = UIColor.darkGray
             case "red":
                 selectFontColor.backgroundColor = UIColor.red
