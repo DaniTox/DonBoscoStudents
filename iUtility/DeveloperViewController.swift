@@ -8,12 +8,14 @@
 
 import UIKit
 import SwiftyJSON
+import GoogleMobileAds
 
 var avvisiArray = [String]()
 
-class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
 
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -24,7 +26,6 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(named: "dark")
         statusBar.backgroundColor = UIColor.clear
         
         ricaricaControl.addTarget(self, action: #selector(self.aggiornaTuttoCompresoLaView), for: UIControlEvents.valueChanged)
@@ -36,8 +37,25 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
             tableView.addSubview(ricaricaControl)
         }
         
+        NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
+            self.settaImageView()
+        }
+        
+        settaImageView()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID, "a9484684fa3d0b184eb1926824c424926e90dedb", "013ecc8866dae7a4f9d1ef7a0e14c650"]
+        bannerView.delegate = self
+        bannerView.adUnitID = "ca-app-pub-3178427291726733/6133430803"
+        bannerView.rootViewController = self
+        bannerView.load(request)
         
     }
+    
+    func settaImageView() {
+        imageView.image = UIImage(named: GETcolorMode())
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return avvisiArray.count
@@ -81,26 +99,6 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
-            switch UserDefaults.standard.string(forKey: "ColorMode")! {
-            case "dark":
-                imageView.image = UIImage(named: "dark")
-            case "blue":
-                imageView.image = UIImage(named: "blue")
-            case "red":
-                imageView.image = UIImage(named: "red")
-            case "green":
-                imageView.image = UIImage(named: "green")
-            default:
-                imageView.image = UIImage(named: "dark")
-                print("Error in colormode")
-            }
-        }
-        else {
-            print("Error in CM")
-        }
-    }
     
     func presentaAvvisoErrore() {
         print("No Connection")

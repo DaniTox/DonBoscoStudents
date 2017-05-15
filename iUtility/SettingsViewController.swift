@@ -21,8 +21,8 @@ extension Sequence {
 
 var linksModificati:Bool?
 
+
 class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
-    
     
     @IBOutlet weak var labeldarkMode: UILabel!
     @IBOutlet weak var switchLabel: UISwitch!
@@ -60,9 +60,12 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 //            }
 //            
 //        }
+        
+        print("Notificehe in fase di miglioramento")
     }
     
     
+
     
     
     @IBAction func verificaAggiornamenti() {
@@ -166,7 +169,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients(["d.bazzani.cfp@gmail.com"])
             mailVC.setSubject("BUG DBStudenti " + appVersion)
-            mailVC.setMessageBody("SCRIVI QUA SOTTO INFORMAZIONI UTILI SUL BUG E SU COME POSSO TROVARLO:\n\n\n\nINFORMAZIONI DEL TUO DISPOSITIVO PER CAPIRE COME RIPRODURRE IL BUG. NON MODIFICARLE\n---------------\nDEVICE/APP INFO:\nVersione Applicazione: \(appVersion)\nNumero Build: \(numeroBuild)\nType: \(appTypeOfRun)\nDispositivo: \(deviceModel)\nDevice Type: \(deviceModelIdentifier)\nOS: \(deviceOSVersion)\nOrientation: \(orientationValue)\nLink aggiornati dalle impostazioni: \(linkSonoCorretti)\nLinks aggiornati: \(allLinks)\nBundle ID: \(bundleIdentifier)\n------------\n", isHTML: false)
+            mailVC.setMessageBody("SCRIVI QUA SOTTO INFORMAZIONI UTILI SUL BUG E SU COME POSSO TROVARLO:\n\n\n\nINFORMAZIONI DEL TUO DISPOSITIVO PER CAPIRE COME RIPRODURRE IL BUG. NON MODIFICARLE\n---------------\nDEVICE/APP INFO:\nVersione Applicazione: \(appVersion)\nNumero Build: \(numeroBuild)\nType: \(appTypeOfRun)\nDispositivo: \(deviceModel)\nDevice Type: \(deviceModelIdentifier)\nOS: \(deviceOSVersion)\nOrientation: \(orientationValue)\nLink aggiornati dalle impostazioni: \(linkSonoCorretti)\nLinks aggiornati: \(allLinks)\nBundle ID: \(String(describing: bundleIdentifier))\n------------\n", isHTML: false)
             
             present(mailVC, animated: true, completion: nil)
         }
@@ -377,7 +380,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             case "black":
                 selectNumbersColorOutlet.backgroundColor = UIColor.black
                 selectNumbersColorOutlet.borderWidth = 2.0
-                selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
+                selectNumbersColorOutlet.borderColor = UIColor.darkGray
             case "red":
                 selectNumbersColorOutlet.backgroundColor = UIColor.red
             case "blue":
@@ -397,7 +400,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             case "black":
                 selectFontColor.backgroundColor = UIColor.black
                 selectFontColor.borderWidth = 2.0
-                selectFontColor.backgroundColor = UIColor.darkGray
+                selectFontColor.borderColor = UIColor.darkGray
             case "red":
                 selectFontColor.backgroundColor = UIColor.red
             case "blue":
@@ -502,29 +505,41 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     @IBAction func setBlueMode(_ sender: UIButton) {
-        changeColorModeInUserDefaults(mode: "blue")
+        SETBackgroundColor(color: "blue")
         animContraria()
+        altroButton.borderWidth = 0
+        altroButton.borderColor = UIColor.darkGray
+        altroButton.backgroundColor = UIColor.blue
         altroPressedperLaPrimaVolta = false
 
     }
     
     @IBAction func setRedMode(_ sender: UIButton) {
-        changeColorModeInUserDefaults(mode: "red")
+        SETBackgroundColor(color: "red")
         animContraria()
+        altroButton.borderWidth = 0
+        altroButton.borderColor = UIColor.darkGray
+        altroButton.backgroundColor = UIColor.red
         altroPressedperLaPrimaVolta = false
 
     }
     
     @IBAction func setDarkMode(_ sender: UIButton) {
-        changeColorModeInUserDefaults(mode: "dark")
+        SETBackgroundColor(color: "dark")
         animContraria()
+        altroButton.borderWidth = 2.0
+        altroButton.borderColor = UIColor.darkGray
+        altroButton.backgroundColor = UIColor.black
         altroPressedperLaPrimaVolta = false
 
     }
     
     @IBAction func setGreenMode(_ sender: UIButton) {
-        changeColorModeInUserDefaults(mode: "green")
+        SETBackgroundColor(color: "green")
         animContraria()
+        altroButton.borderWidth = 0
+        altroButton.borderColor = UIColor.darkGray
+        altroButton.backgroundColor = UIColor.green
         altroPressedperLaPrimaVolta = false
 
     }
@@ -546,30 +561,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         }
     }
     
-    func changeColorModeInUserDefaults(mode: String) {
-        UserDefaults.standard.set(mode, forKey: "ColorMode")
-        if let color = UserDefaults.standard.string(forKey: "ColorMode") {
-            switch color {
-            case "dark":
-                altroButton.backgroundColor = UIColor.darkGray
-                altroButton.setImage(nil, for: .normal)
-            case "red":
-                altroButton.backgroundColor = UIColor.red
-                altroButton.setImage(nil, for: .normal)
-            case "blue":
-                altroButton.backgroundColor = UIColor.blue
-                altroButton.setImage(nil, for: .normal)
-            case "green":
-                altroButton.backgroundColor = UIColor.green
-                altroButton.setImage(nil, for: .normal)
-            default:
-                print("Erro")
-            }
-        }
-        print("ColorMode cambiata")
-    }
-    
-    
+
     
     @IBAction func setWhiteNumbers(_ sender: UIButton) {
         setColorNumbers(mode: "white")
@@ -607,7 +599,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
             switch color {
             case "black":
-                selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
+                selectNumbersColorOutlet.borderWidth = 2.0
+                selectNumbersColorOutlet.borderColor = UIColor.darkGray
+                selectNumbersColorOutlet.backgroundColor = UIColor.black
                 selectNumbersColorOutlet.setImage(nil, for: .normal)
             case "red":
                 selectNumbersColorOutlet.backgroundColor = UIColor.red
@@ -810,7 +804,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         if let color = UserDefaults.standard.string(forKey: "ColorNumbers") {
             switch color {
             case "black":
-                selectNumbersColorOutlet.backgroundColor = UIColor.darkGray
+                selectNumbersColorOutlet.backgroundColor = UIColor.black
+                selectNumbersColorOutlet.borderColor = UIColor.darkGray
+                selectNumbersColorOutlet.borderWidth = 2.0
             case "red":
                 selectNumbersColorOutlet.backgroundColor = UIColor.red
             case "blue":
@@ -828,7 +824,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         if let colorFont = UserDefaults.standard.string(forKey: "FontNumeriColor") {
             switch colorFont {
             case "black":
-                selectFontColor.backgroundColor = UIColor.darkGray
+                selectFontColor.backgroundColor = UIColor.black
+                selectFontColor.borderWidth = 2.0
+                selectFontColor.borderColor = UIColor.darkGray
             case "red":
                 selectFontColor.backgroundColor = UIColor.red
             case "blue":

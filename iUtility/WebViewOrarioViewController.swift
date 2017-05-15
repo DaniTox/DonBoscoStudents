@@ -26,44 +26,22 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
         orarioWebView.reload()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        caricaPagina()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let urlOrario = URL(string: "http://www.donboscobrescia.it/file/orario.pdf")
-        //orarioWebView.loadRequest(URLRequest(url: urlOrario!))
-        //orarioWebView.delegate = self
-        //caricaPagina()
+       
+        NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
+            self.settaImageView()
+        }
         
-
-        
-        //imageView.image = UIImage(named: "dark")
+        settaImageView()
         }
 
-    
-    override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.global(qos: .background).async {
-            self.caricaPagina()
-        }
-        
-        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
-            switch UserDefaults.standard.string(forKey: "ColorMode")! {
-            case "dark":
-                imageView.image = UIImage(named: "dark")
-            case "blue":
-                imageView.image = UIImage(named: "blue")
-            case "red":
-                imageView.image = UIImage(named: "red")
-            case "green":
-                imageView.image = UIImage(named: "green")
-            default:
-                imageView.image = UIImage(named: "dark")
-                print("Error in colormode")
-            }
-        }
-        else {
-            print("Error in CM")
-        }
-        
+    func settaImageView() {
+        imageView.image = UIImage(named: GETcolorMode())
     }
     
     func caricaPagina() {

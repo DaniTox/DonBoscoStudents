@@ -8,9 +8,14 @@
 
 import UIKit
 import FirebaseDatabase
+import GoogleMobileAds
 
-class VerificheViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class VerificheViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate {
 
+    
+    @IBOutlet weak var bannerAdView: GADBannerView!
+    
+    
     var materieArray = [String]()
     var materieDataArray = [String]()
     var materieArgomentoArray = [String]()
@@ -52,28 +57,10 @@ class VerificheViewController: UIViewController, UITableViewDelegate, UITableVie
         let end = Date()
         print("Tempo impiegato per caricare le verifiche dalla Cache: \(end.timeIntervalSince(start))")
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
-            switch UserDefaults.standard.string(forKey: "ColorMode")! {
-            case "dark":
-                imageView.image = UIImage(named: "dark")
-            case "blue":
-                imageView.image = UIImage(named: "blue")
-            case "red":
-                imageView.image = UIImage(named: "red")
-            case "green":
-                imageView.image = UIImage(named: "green")
-            default:
-                imageView.image = UIImage(named: "dark")
-                print("Error in colormode")
-            }
-        }
-        else {
-            print("Error in CM")
-        }
-    }
     
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print(error)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +68,19 @@ class VerificheViewController: UIViewController, UITableViewDelegate, UITableVie
         materieDataArray.removeAll()
         materieArgomentoArray.removeAll()
         
-
+        
+        NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
+            self.settaImageView()
+        }
+        
+        settaImageView()
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID, "a9484684fa3d0b184eb1926824c424926e90dedb", "013ecc8866dae7a4f9d1ef7a0e14c650"]
+        bannerAdView.delegate = self
+        bannerAdView.adUnitID = "ca-app-pub-3178427291726733/3190297606"
+        bannerAdView.rootViewController = self
+        bannerAdView.load(request)
         
         
         statusBar.backgroundColor = UIColor.clear
@@ -118,6 +117,10 @@ class VerificheViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         
+    }
+    
+    func settaImageView() {
+        imageView.image = UIImage(named: GETcolorMode())
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

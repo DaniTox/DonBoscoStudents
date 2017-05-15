@@ -11,45 +11,28 @@ import UIKit
 class ContainerViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //imageView.image = UIImage(named: "dark")
+        
+        NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
+            self.settaImageView()
+        }
+        
+        settaImageView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+ 
     
-    func changeBackgroundProva() {
-       
-        print("Changing background")
-    }
-  
-
-    override func viewWillAppear(_ animated: Bool) {
-        checkAndSetColorMode()
+    
+    func settaImageView() {
+        imageView.image = UIImage(named: GETcolorMode())
     }
     
-    func checkAndSetColorMode() {
-        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
-            switch UserDefaults.standard.string(forKey: "ColorMode")! {
-            case "dark":
-                imageView.image = UIImage(named: "dark")
-            case "blue":
-                imageView.image = UIImage(named: "blue")
-            case "red":
-                imageView.image = UIImage(named: "red")
-            case "green":
-                imageView.image = UIImage(named: "green")
-            default:
-                imageView.image = UIImage(named: "dark")
-                print("Error in colormode")
-            }
-        }
-        else {
-            print("Error in CM")
-        }
-
-    }
+    
+    
     
 }

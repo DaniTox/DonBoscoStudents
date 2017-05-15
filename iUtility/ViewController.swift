@@ -18,6 +18,7 @@ extension Double {
 }
 
 class ViewController: UIViewController {
+    //let colorMode = ColorMode()
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -89,27 +90,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
 
-        
-        if UserDefaults.standard.string(forKey: "ColorMode") != nil {
-            switch UserDefaults.standard.string(forKey: "ColorMode")! {
-            case "dark":
-                imageView.image = UIImage(named: "dark")
-            case "blue":
-                imageView.image = UIImage(named: "blue")
-            case "red":
-                imageView.image = UIImage(named: "red")
-            case "green":
-                imageView.image = UIImage(named: "green")
-            default:
-                imageView.image = UIImage(named: "dark")
-                print("Error in colormode")
-            }
-        }
-        else {
-            print("Error in CM")
-        }
-       
-
         coloraButtons()
         modificaGrandezzaNumeri()
 
@@ -127,13 +107,19 @@ class ViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .lightContent
         
         UINavigationBar.appearance().clipsToBounds = true
-        
-        imageView.image = UIImage(named: "dark")
         statusBar.backgroundColor = UIColor.clear
         
+        NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
+            self.settaImageView()
+        }
         
+        settaImageView()
     }
 
+    func settaImageView() {
+        imageView.image = UIImage(named: GETcolorMode())
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
