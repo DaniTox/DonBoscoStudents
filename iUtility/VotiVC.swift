@@ -58,6 +58,10 @@ class VotiVC: UIViewController {
             UserDefaults.standard.set(nil, forKey: "usernameAccount")
         }
         
+        NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
+            self.imageView.image = UIImage(named: GETcolorMode())
+        }
+        
         checkIfLogged()
     }
 

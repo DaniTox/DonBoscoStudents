@@ -58,6 +58,7 @@ class ViewController: UIViewController {
             display.text = digit
             userIsInTheMiddleOfTyping = true
         }
+
     }
     
     var displayValue: Double  {
@@ -69,6 +70,7 @@ class ViewController: UIViewController {
             
             display.text = String(newValue.cleanValue)
         }
+        
     }
     
     private var brain = CalculatorBrain()
@@ -110,16 +112,12 @@ class ViewController: UIViewController {
         statusBar.backgroundColor = UIColor.clear
         
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.settaImageView()
+            self.imageView.image = UIImage(named: GETcolorMode())
         }
         
-        settaImageView()
-    }
-
-    func settaImageView() {
         imageView.image = UIImage(named: GETcolorMode())
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -151,6 +149,7 @@ class ViewController: UIViewController {
             default:
                 for button in numbers {
                     button.backgroundColor = UIColor.white
+                    
                 }
                 print("Error in ColorNumbers. Set to default white")
             }
@@ -196,27 +195,33 @@ class ViewController: UIViewController {
             switch colorFontNumbers {
             case "blue":
                 for button in numbers {
-                    button.titleLabel?.textColor = UIColor.blue
+                    //button.titleLabel?.textColor = UIColor.blue
+                    button.setTitleColor(.blue, for: .normal)
                 }
             case "green":
                 for button in numbers {
-                    button.titleLabel?.textColor = UIColor.green
+                    //button.titleLabel?.textColor = UIColor.green
+                    button.setTitleColor(.green, for: .normal)
                 }
             case "red":
                 for button in numbers {
-                    button.titleLabel?.textColor = UIColor.red
+                    //button.titleLabel?.textColor = UIColor.red
+                    button.setTitleColor(.red, for: .normal)
                 }
             case "black":
                 for button in numbers {
-                    button.titleLabel?.textColor = UIColor.black
+                    //button.titleLabel?.textColor = UIColor.black
+                    button.setTitleColor(.black, for: .normal)
                 }
             case "white":
                 for button in numbers {
-                    button.titleLabel?.textColor = UIColor.white
+                    //button.titleLabel?.textColor = UIColor.white
+                    button.setTitleColor(.white, for: .normal)
                 }
             default:
                 for button in numbers {
-                    button.titleLabel?.textColor = UIColor.black
+                    //button.titleLabel?.textColor = UIColor.black
+                    button.setTitleColor(.black, for: .normal)
                     print("Error in font color")
                 }
             }

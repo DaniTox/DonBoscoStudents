@@ -45,6 +45,8 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
         risultatoValue = 0
         numeriUscitiLabel.text = nil
         
+        
+        
         avvisoLabel.text = nil
         
         avvisoLabel.numberOfLines = 0
