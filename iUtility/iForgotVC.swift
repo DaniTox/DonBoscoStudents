@@ -93,24 +93,25 @@ class iForgotVC: UIViewController {
     }
     
     @IBAction func confermaCodice() {
-        if codeTextField.text != nil && codeTextField.text != "" {
+        if !codeTextField.text!.isEmpty {
             codeTyped = Int(codeTextField.text!)
+            ref.child("Utenti").child(username!).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let credentials = snapshot.value as? NSDictionary {
+                    let code = credentials["Codice"]
+                    if self.codeTyped! == code as! Int {
+                        self.sendiForgotRequestView.isHidden = true
+                        self.changePasswdView.isHidden = false
+                    }
+                    else {
+                        self.mostraAlert(titolo: "Errore", messaggio: "Codice Errato", tipo: .alert)
+                    }
+                }
+            })
         }
         else {
             mostraAlert(titolo: "Errore", messaggio: "Non hai inserito il codice", tipo: .alert)
         }
-        ref.child("Utenti").child(username!).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let credentials = snapshot.value as? NSDictionary {
-                let code = credentials["Codice"]
-                if self.codeTyped! == code as! Int {
-                    self.sendiForgotRequestView.isHidden = true
-                    self.changePasswdView.isHidden = false
-                }
-                else {
-                    self.mostraAlert(titolo: "Errore", messaggio: "Codice Errato", tipo: .alert)
-                }
-            }
-        })
+        
     }
 
     @IBAction func finallyChangePasswd() {
