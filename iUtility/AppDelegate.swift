@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
        
         IQKeyboardManager.sharedManager().enable = true
-        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        IQKeyboardManager.sharedManager().enableAutoToolbar = true
         
         
         
@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     options: authOptions,
                     completionHandler: {_, _ in })
                 
+                
                 // For iOS 10 data message (sent via FCM)
                 //                FIRMessaging.messaging().remoteMessageDelegate = self
                 
@@ -77,16 +78,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FIRApp.configure()
         
         if let username = UserDefaults.standard.string(forKey: "usernameAccount") {
-            let date = Date()
-            let now = Calendar.current
-            let hour = now.component(.hour, from: date)
-            let minute = now.component(.minute, from: date)
-            let day = now.component(.day, from: date)
-            let month = now.component(.month, from: date)
-            let year = now.component(.year, from: date)
-            
-            ref = FIRDatabase.database().reference()
-            ref.child("Utenti").child(username).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
+            if username != "" {
+                let date = Date()
+                let now = Calendar.current
+                let hour = now.component(.hour, from: date)
+                let minute = now.component(.minute, from: date)
+                let day = now.component(.day, from: date)
+                let month = now.component(.month, from: date)
+                let year = now.component(.year, from: date)
+                
+                ref = FIRDatabase.database().reference()
+                ref.child("Utenti").child(username).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
+            }
         }
         
         

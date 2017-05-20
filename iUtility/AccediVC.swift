@@ -72,48 +72,88 @@ class AccediVC: UIViewController {
         let passwdTyped = passwordTextField.text
         let username = usernameTextField.text?.trimTrailingWhitespace()
         ref.child("Utenti").child(username!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
             if let credentials = snapshot.value as? NSDictionary {
-                let passwd = credentials["Password"] as? String
                 
-                let passwdRightString = passwd
-                let passwdTypedCripted = passwdTyped?.sha512()
-                
-                
-                if passwdRightString == passwdTypedCripted {
-                    //self.presentaAlertSuccess()
-                    let date = Date()
-                    let now = Calendar.current
-                    let hour = now.component(.hour, from: date)
-                    let minute = now.component(.minute, from: date)
-                    let day = now.component(.day, from: date)
-                    let month = now.component(.month, from: date)
-                    let year = now.component(.year, from: date)
+                if let salt = credentials["Salt"] as? String {
                     
-                    self.ref.child("Utenti").child(username!).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
+                    print("Trovato salt nel database")
+                    let passwdShaSalt = (passwdTyped! + salt).sha512()
                     
-                    self.dismiss(animated: true, completion: nil)
-                    self.progressView.stopAnimating()
-                    
-                    UserDefaults.standard.set(username!, forKey: "usernameAccount")
-                    NotificationCenter.default.post(name: NOTIF_ACCEDUTO, object: nil)
-                    if let token = credentials["Access Token"] as? Int {
-                        UserDefaults.standard.set(token, forKey: "AccessToken")
-                        UserDefaults.standard.set(true, forKey: "accountLoggato")
-                        
-                    }
-                    else {
-                        print("C'è stato un errore mentre stavo ricevendo il token del tuo account. Contattami via mail scrivendo il tuo username in modo che possa aiutarti")
-                        self.mostraAlert(titolo: "Errore Token", messaggio: "C'è stato un errore mentre stavo ricevendo il token del tuo account. Contattami via mail scrivendo il tuo username in modo che possa aiutarti", tipo: .alert)
-                        
-                        self.progressView.stopAnimating()
+                    if let passwordServer = credentials["Password"] as? String {
+                        if passwordServer == passwdShaSalt {
+                            self.setValuesAcceduto(username: username!)
+                            self.dismiss(animated: true, completion: nil)
+                            self.progressView.stopAnimating()
+                            
+                            UserDefaults.standard.set(username!, forKey: "usernameAccount")
+                            NotificationCenter.default.post(name: NOTIF_ACCEDUTO, object: nil)
+                            
+                            if let token = credentials["Access Token"] as? Int {
+                                UserDefaults.standard.set(token, forKey: "AccessToken")
+                                UserDefaults.standard.set(true, forKey: "accountLoggato")
+                                
+                            }
+                            else {
+                                print("C'è stato un errore mentre stavo ricevendo il token del tuo account. Contattami via mail scrivendo il tuo username in modo che possa aiutarti")
+                                self.mostraAlert(titolo: "Errore Token", messaggio: "C'è stato un errore mentre stavo ricevendo il token del tuo account. Contattami via mail scrivendo il tuo username in modo che possa aiutarti", tipo: .alert)
+                                
+                                self.progressView.stopAnimating()
+                            }
+                        }
+                        else {
+                            
+                            self.mostraAlert(titolo: "Errore", messaggio: "Password sbagliata", tipo: .alert)
+                            self.progressView.stopAnimating()
+                        }
                     }
                     
                     
                 }
+                
+                
                 else {
-                    print("Password che hai scritto: \(passwdTyped!)\nPassword giusta: \(passwdRightString!)\nPassword che hai scritto CRIPTATA: \(passwdTypedCripted!)\n")
-                    self.mostraAlert(titolo: "Errore", messaggio: "Password sbagliata", tipo: .alert)
-                    self.progressView.stopAnimating()
+                    
+                    let passwdServer = credentials["Password"] as? String
+                    let passwdTypedCripted = passwdTyped?.sha512()
+                    
+                    if passwdTypedCripted == passwdServer {
+                        self.setValuesAcceduto(username: username!)
+                        
+                        self.dismiss(animated: true, completion: nil)
+                        self.progressView.stopAnimating()
+                        
+                        UserDefaults.standard.set(username!, forKey: "usernameAccount")
+                        NotificationCenter.default.post(name: NOTIF_ACCEDUTO, object: nil)
+                        
+                        let salt = randomString(length: 30)
+                        let passwdHashSaltata = (passwdTyped! + salt).sha512()
+                        
+                        self.ref.child("Utenti").child(username!).child("Salt").setValue(salt)
+                        self.ref.child("Utenti").child(username!).child("Password").setValue(passwdHashSaltata)
+                        
+                        
+                        if let token = credentials["Access Token"] as? Int {
+                            UserDefaults.standard.set(token, forKey: "AccessToken")
+                            UserDefaults.standard.set(true, forKey: "accountLoggato")
+                            
+                        }
+                        else {
+                            print("C'è stato un errore mentre stavo ricevendo il token del tuo account. Contattami via mail scrivendo il tuo username in modo che possa aiutarti")
+                            self.mostraAlert(titolo: "Errore Token", messaggio: "C'è stato un errore mentre stavo ricevendo il token del tuo account. Contattami via mail scrivendo il tuo username in modo che possa aiutarti", tipo: .alert)
+                            
+                            self.progressView.stopAnimating()
+                        }
+
+                        
+                        
+                    }
+                    else {
+                        
+                        self.mostraAlert(titolo: "Errore", messaggio: "Password sbagliata", tipo: .alert)
+                        self.progressView.stopAnimating()
+                    }
+                    
                 }
                 
                 
@@ -124,6 +164,22 @@ class AccediVC: UIViewController {
         
     }
 
+    
+    func setValuesAcceduto(username:String) {
+        let date = Date()
+        let now = Calendar.current
+        let hour = now.component(.hour, from: date)
+        let minute = now.component(.minute, from: date)
+        let day = now.component(.day, from: date)
+        let month = now.component(.month, from: date)
+        let year = now.component(.year, from: date)
+        
+        self.ref.child("Utenti").child(username).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
+        
+        self.ref.child("Utenti").child(username).child("iForgot").setValue(false)
+        
+        self.ref.child("Utenti").child(username).child("iForgot_sent").setValue(false)
+    }
     
     func presentaAlertSuccess() {
         let alert = UIAlertController(title: "Login", message: "Il login è stato completato con successo", preferredStyle: .alert)

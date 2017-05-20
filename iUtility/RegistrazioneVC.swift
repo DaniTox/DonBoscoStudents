@@ -123,9 +123,16 @@ class RegistrazioneVC: UIViewController {
             let password = passwordTextField.text?.trimTrailingWhitespace()
             let token = generaNumero(nMin: 10001, nMax: UINT32_MAX - 1)
             
+            let salt = randomString(length: 30)
+            print("Salt: \(salt)")
+            
+            let passwdHashSalt = (password! + salt).sha512()
+            
+            
             ref.child("Utenti").child(username).child("Username").setValue(username)
             ref.child("Utenti").child(username).child("E-Mail").setValue(email)
-            ref.child("Utenti").child(username).child("Password").setValue(password?.sha512())
+            ref.child("Utenti").child(username).child("Password").setValue(passwdHashSalt)
+            ref.child("Utenti").child(username).child("Salt").setValue(salt)
             ref.child("Utenti").child(username).child("Codice").setValue(generaNumero(nMin: 1001, nMax: 9999))
             ref.child("Utenti").child(username).child("Access Token").setValue(token)
             ref.child("Utenti").child(username).child("iForgot").setValue(false)
