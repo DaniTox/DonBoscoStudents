@@ -120,20 +120,29 @@ class iForgotVC: UIViewController {
         
         if newPasswd != "" && newPasswd != nil {
         if newPasswd == confirmNewPasswd {
-            let newPasswdCripted = newPasswd?.sha512()
+            
+            //var newPasswdRight = ""
+            
             let newCodeForVerification = generaNumero(nMin: 1001, nMax: 9999)
-            ref.child("Utenti").child(username!).child("Password").setValue(newPasswdCripted)
+            
+            ref.child("Utenti").child(username!).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let credentials = snapshot.value as? NSDictionary {
+                    if let salt = credentials["Salt"] as? String {
+                       let newPasswdRight = (newPasswd! + salt).sha512()
+                        self.ref.child("Utenti").child(self.username!).child("Password").setValue(newPasswdRight)
+
+                    }
+                }
+            })
+            
+            
+//            ref.child("Utenti").child(username!).child("Password").setValue("CAMBIA")
             ref.child("Utenti").child(username!).child("iForgot").setValue(false)
             ref.child("Utenti").child(username!).child("Codice").setValue(newCodeForVerification)
             ref.child("Utenti").child(username!).child("iForgot_sent").setValue(false)
-//            ref.child("Utenti").child(username!).child("Access Token").observeSingleEvent(of: .value, with: { (snapshot) in
-//                if let tokenServer = snapshot.value as? Int {
-//                    UserDefaults.standard.set(tokenServer, forKey: "AccessToken")
-//                }
-//            })
-//            UserDefaults.standard.set(username!, forKey: "usernameAccount")
-//            UserDefaults.standard.set(true, forKey: "accountLoggato")
-//            NotificationCenter.default.post(name: NOTIF_ACCEDUTO, object: nil)
+
+            
+            
             
             let alert = UIAlertController(title: "Password Cambiata", message: "La password è stata modificata. Ora puoi loggare con i nuovi dati di accesso", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (pressed) in
