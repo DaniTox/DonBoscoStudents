@@ -26,7 +26,7 @@ class StatisticheVC: UIViewController {
                 "Inglese" : [Int](),
                 "Matematica" : [Int](),
                 "Laboratorio" : [Int](),
-                "Tecnologia" : [Int](),
+                "Tec. Elettrica" : [Int](),
                 "Disegno" : [Int](),
                 "Informatica" : [Int](),
                 "Scienze" : [Int](),
@@ -34,7 +34,7 @@ class StatisticheVC: UIViewController {
                 "Religione" : [Int](),
                 "Pneumatica" : [Int](),
                 "PLC" : [Int](),
-                "EDFisica" : [Int](),
+                "Ed. Fisica" : [Int](),
                 "Elettrotecnica" : [Int](),
                 ]
     
@@ -45,6 +45,10 @@ class StatisticheVC: UIViewController {
         
         imageView.image = UIImage(named: GETcolorMode())
         
+        if UserDefaults.standard.dictionary(forKey: "voti") == nil {
+            
+        }
+        
     }
     
     func updateView() {
@@ -52,7 +56,7 @@ class StatisticheVC: UIViewController {
         mediaLabel.text = String(format: "%.2f", calcMedia(voti: voti[materiaStats!]!))
         allMarks.text = String(describing: voti[materiaStats!]!).replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
         
-        
+        usrDef(value: voti, chiave: "voti")
         
     }
     
@@ -90,7 +94,7 @@ class StatisticheVC: UIViewController {
             
             addMarkTxtField.text = nil
             
-            usrDef(value: voti, chiave: "voti")
+            
             
         } else {
             mostraAlert(titolo: "Errore", messaggio: "Hai scritto il voto in modo sbagliato", tipo: .alert)
@@ -121,4 +125,18 @@ class StatisticheVC: UIViewController {
         return media
     }
 
+    
+    @IBAction func deleteLast() {
+        voti[materiaStats!]?.removeLast()
+        NotificationCenter.default.post(name: NOTIF_UPDATE_VOTI, object: nil)
+    }
+    
+    
+    @IBAction func deleteAll() {
+        voti[materiaStats!]?.removeAll()
+        NotificationCenter.default.post(name: NOTIF_UPDATE_VOTI, object: nil)
+    }
+    
+    
+    
 }
