@@ -87,8 +87,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 let month = now.component(.month, from: date)
                 let year = now.component(.year, from: date)
                 
-                ref = FIRDatabase.database().reference()
-                ref.child("Utenti").child(username).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
+                let versione = Bundle.main.releaseVersionNumber
+                
+                DispatchQueue.global(qos: .background).async {
+                    self.ref = FIRDatabase.database().reference()
+                    self.ref.child("Utenti").child(username).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
+                    self.ref.child("Utenti").child(username).child("Versione App").setValue("v" + String(describing : versione!))
+                }
+                
             }
         }
         

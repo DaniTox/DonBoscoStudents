@@ -56,6 +56,9 @@ class VotiVC: UIViewController {
             UserDefaults.standard.set(false, forKey: "accountLoggato")
             UserDefaults.standard.set(0, forKey: "AccessToken")
             UserDefaults.standard.set(nil, forKey: "usernameAccount")
+            
+            
+            UserDefaults.standard.set(nil, forKey: "voti")
         }
         
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in

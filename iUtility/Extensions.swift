@@ -11,6 +11,7 @@ import UIKit
     let NOTIF_COLORMODE = NSNotification.Name("ColorMode")
     let NOTIF_ACCEDUTO = NSNotification.Name("loginAccount")
     let NOTIF_LOGOUT = NSNotification.Name("Logout")
+    let NOTIF_UPDATE_VOTI = NSNotification.Name("updateVotiView")
 
     func GETcolorMode() -> String {
         if let colorMode = UserDefaults.standard.string(forKey: "ColorMode") {

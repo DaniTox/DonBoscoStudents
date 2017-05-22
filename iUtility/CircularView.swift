@@ -16,3 +16,12 @@ import UIKit
         }
     }
 }
+
+@IBDesignable class CircularLabel: UILabel {
+    
+    @IBInspectable var cornerRadius : CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+}

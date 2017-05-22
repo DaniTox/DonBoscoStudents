@@ -27,7 +27,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="donboscologo.png" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-D6-BIk">
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="donboscologo" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-D6-BIk">
                                 <rect key="frame" x="122" y="277" width="170" height="183"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="giE-4v-E62"/>
@@ -83,6 +83,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="donboscologo.png" width="160" height="190"/>
+        <image name="donboscologo" width="160" height="190"/>
     </resources>
 </document>

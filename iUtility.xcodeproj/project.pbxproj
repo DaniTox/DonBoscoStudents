@@ -14,7 +14,6 @@
 		DB06BABB1EABD5F500FD06D9 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB06BABA1EABD5F500FD06D9 /* GoogleMobileAds.framework */; };
 		DB0A06DA1E4531AC00D7F9CC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */; };
 		DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */; };
-		DB0B46FA1E3CFACC00DF7CC7 /* donboscologo.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0B46F91E3CFACC00DF7CC7 /* donboscologo.png */; };
 		DB171B431EB2509F002F91B7 /* VotiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B421EB2509F002F91B7 /* VotiVC.swift */; };
 		DB171B451EB25767002F91B7 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B441EB25767002F91B7 /* CircularView.swift */; };
 		DB171B471EB25AAB002F91B7 /* RegistrazioneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B461EB25AAB002F91B7 /* RegistrazioneVC.swift */; };
@@ -78,7 +77,6 @@
 		DB06BABA1EABD5F500FD06D9 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/iUtility-auuluzxdtjglungwowhcyjpdyzgk/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewOrarioViewController.swift; sourceTree = "<group>"; };
-		DB0B46F91E3CFACC00DF7CC7 /* donboscologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donboscologo.png; sourceTree = "<group>"; };
 		DB0B46FD1E3D1A8400DF7CC7 /* iUtility.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iUtility.entitlements; sourceTree = "<group>"; };
 		DB171B421EB2509F002F91B7 /* VotiVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotiVC.swift; sourceTree = "<group>"; };
 		DB171B441EB25767002F91B7 /* CircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 				DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */,
 				DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */,
 				DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */,
-				DB0B46F91E3CFACC00DF7CC7 /* donboscologo.png */,
 				DB33432C1E1437C8007535E6 /* Info.plist */,
 				DBB310581E9F781B000A926C /* CircleButton.swift */,
 			);
@@ -459,7 +456,6 @@
 				DB1A7C8E1E857BE500B73044 /* Images.xcassets in Resources */,
 				DB368B151E3FCA5E00B185DC /* Launch Screen.storyboard in Resources */,
 				DB06BAB91EABD57E00FD06D9 /* GoogleService-Info.plist in Resources */,
-				DB0B46FA1E3CFACC00DF7CC7 /* donboscologo.png in Resources */,
 				DB3343261E1437C8007535E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
