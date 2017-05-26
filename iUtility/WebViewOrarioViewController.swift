@@ -57,9 +57,13 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
                     print("LOG: UserDefault per i link corretti SETTATO a TRUE. Vuol dire che sono stati corretti e il link usato è quello negli UserDefault")
                 }
                 if let urlOrario = URL(string: orarioStringUrl!) {
-                    orarioWebView.loadRequest(URLRequest(url: urlOrario))
-                    orarioWebView.delegate = self
-                    giaCaricato = true
+                    DispatchQueue.global(qos: .background).async {
+                        self.orarioWebView.loadRequest(URLRequest(url: urlOrario))
+                        self.orarioWebView.delegate = self
+                        self.giaCaricato = true
+                    }
+                    
+                    
                 }
                 else {
                     let alert = UIAlertController(title: "Errore", message: "Probabilmente c'è qualche errore con i link. Prova a coreggerli nelle impostazioni", preferredStyle: .alert)

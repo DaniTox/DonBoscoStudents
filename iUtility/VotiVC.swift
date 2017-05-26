@@ -58,6 +58,7 @@ class VotiVC: UIViewController {
             UserDefaults.standard.set(nil, forKey: "usernameAccount")
             
             
+            
             UserDefaults.standard.set(nil, forKey: "voti")
         }
         
@@ -108,6 +109,8 @@ class VotiVC: UIViewController {
                             self.loginIndicator.stopAnimating()
                             self.blurView.isHidden = true
                         }
+                    } else {
+                        self.mostraAlert(titolo: "Errore", messaggio: "Firebase Error VotiVC", tipo: .alert)
                     }
                 })
             }

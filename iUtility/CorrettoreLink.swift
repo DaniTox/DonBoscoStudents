@@ -12,31 +12,33 @@ import SwiftyJSON
 class CorrettoreLink: NSObject {
     
     func correggiLink() {
-       
-        let url = URL(string: "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/correttoreLink.json")
-        let jsonData = try? Data(contentsOf: url!) as Data
-        let readableJson = JSON(data: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
+        DispatchQueue.global(qos: .background).async {
+            let url = URL(string: "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/correttoreLink.json")
+            let jsonData = try? Data(contentsOf: url!) as Data
+            let readableJson = JSON(data: jsonData!, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
+            
+            let linkAvvisiGiusto = String(describing: readableJson["DeveloperNotes"])
+            UserDefaults.standard.setValue(linkAvvisiGiusto, forKey: "LinkAvvisi")
+            
+            let linkAggiornamentiDisponibili = String(describing: readableJson["LatestAppVersion"])
+            UserDefaults.standard.setValue(linkAggiornamentiDisponibili, forKey: "LinkControllaAggiornamenti")
+            
+            let linkMsgTester = String(describing: readableJson["msgForTestersUpdates"])
+            UserDefaults.standard.setValue(linkMsgTester, forKey: "LinkMsgTester")
+            
+            let linkChangelog = String(describing: readableJson["changelog"])
+            UserDefaults.standard.set(linkChangelog, forKey: "LinkChangeLog")
+            
+            let linkOrario = String(describing: readableJson["orarioLink"])
+            UserDefaults.standard.setValue(linkOrario, forKey: "LinkOrario")
+            
+            let linkBugs = String(describing: readableJson["bugs"])
+            UserDefaults.standard.set(linkBugs, forKey: "LinkBugs")
+            
+            //linksModificati = true
+            UserDefaults.standard.set(true, forKey: "linkCorretti")
+        }
         
-        let linkAvvisiGiusto = String(describing: readableJson["DeveloperNotes"])
-        UserDefaults.standard.setValue(linkAvvisiGiusto, forKey: "LinkAvvisi")
-        
-        let linkAggiornamentiDisponibili = String(describing: readableJson["LatestAppVersion"])
-        UserDefaults.standard.setValue(linkAggiornamentiDisponibili, forKey: "LinkControllaAggiornamenti")
-        
-        let linkMsgTester = String(describing: readableJson["msgForTestersUpdates"])
-        UserDefaults.standard.setValue(linkMsgTester, forKey: "LinkMsgTester")
-        
-        let linkChangelog = String(describing: readableJson["changelog"])
-        UserDefaults.standard.set(linkChangelog, forKey: "LinkChangeLog")
-        
-        let linkOrario = String(describing: readableJson["orarioLink"])
-        UserDefaults.standard.setValue(linkOrario, forKey: "LinkOrario")
-        
-        let linkBugs = String(describing: readableJson["bugs"])
-        UserDefaults.standard.set(linkBugs, forKey: "LinkBugs")
-        
-        //linksModificati = true
-        UserDefaults.standard.set(true, forKey: "linkCorretti")
         
     }
     

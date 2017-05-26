@@ -26,7 +26,7 @@ class StatisticheVC: UIViewController {
                 "Inglese" : [Int](),
                 "Matematica" : [Int](),
                 "Laboratorio" : [Int](),
-                "Tec. Elettrica" : [Int](),
+                "Tec Elettrica" : [Int](),
                 "Disegno" : [Int](),
                 "Informatica" : [Int](),
                 "Scienze" : [Int](),
@@ -34,7 +34,7 @@ class StatisticheVC: UIViewController {
                 "Religione" : [Int](),
                 "Pneumatica" : [Int](),
                 "PLC" : [Int](),
-                "Ed. Fisica" : [Int](),
+                "Ed Fisica" : [Int](),
                 "Elettrotecnica" : [Int](),
                 ]
     
@@ -45,29 +45,44 @@ class StatisticheVC: UIViewController {
         
         imageView.image = UIImage(named: GETcolorMode())
         
-        if UserDefaults.standard.dictionary(forKey: "voti") == nil {
-            
+        if let votiS = UserDefaults.standard.dictionary(forKey: "voti") {
+            voti = votiS as! [String : [Int]]
+        } else {
+            if let username = UserDefaults.standard.string(forKey: "usernameAccount") {
+                ref = FIRDatabase.database().reference()
+                ref.child("Utenti").child(username).child("Voti").observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let votiS = snapshot.value as? NSDictionary {
+                        self.usrDef(value: votiS, chiave: "voti")
+                        self.voti = votiS as! [String : [Int]]
+                        self.updateView()
+                    }
+                })
+            }
         }
+        
+        updateView()
+        
         
     }
     
     func updateView() {
        
-        mediaLabel.text = String(format: "%.2f", calcMedia(voti: voti[materiaStats!]!))
-        allMarks.text = String(describing: voti[materiaStats!]!).replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+        if voti[materiaStats!] != nil {
+            mediaLabel.text = String(format: "%.2f", calcMedia(voti: voti[materiaStats!]!))
+            allMarks.text = String(describing: voti[materiaStats!]!).replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+        }
+        else {
+            voti[materiaStats!] = [Int]()
+        }
         
-        usrDef(value: voti, chiave: "voti")
+        
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
       
-        if let votiSaved = UserDefaults.standard.dictionary(forKey: "voti") {
-            voti = votiSaved as! [String : [Int]]
-        }
        
         
-        updateView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,12 +104,18 @@ class StatisticheVC: UIViewController {
         
         if let voto = Int(addMarkTxtField.text!) {
             
+            if voto <= 100 {
+            
             voti[materiaStats!]!.append(voto)
-            NotificationCenter.default.post(name: NOTIF_UPDATE_VOTI, object: nil)
+            updateView()
+            usrDef(value: voti, chiave: "voti")
             
             addMarkTxtField.text = nil
             
-            
+            }
+            else {
+                mostraAlert(titolo: "Errore", messaggio: "I voti non possono superare il 100", tipo: .alert)
+            }
             
         } else {
             mostraAlert(titolo: "Errore", messaggio: "Hai scritto il voto in modo sbagliato", tipo: .alert)
@@ -110,6 +131,7 @@ class StatisticheVC: UIViewController {
             if let username = UserDefaults.standard.string(forKey: "usernameAccount") {
                 self.ref = FIRDatabase.database().reference()
                 self.ref.child("Utenti").child(username).child("Voti").setValue(self.voti)
+                
             }
         }
     }
@@ -128,12 +150,14 @@ class StatisticheVC: UIViewController {
     
     @IBAction func deleteLast() {
         voti[materiaStats!]?.removeLast()
+        usrDef(value: voti, chiave: "voti")
         NotificationCenter.default.post(name: NOTIF_UPDATE_VOTI, object: nil)
     }
     
     
     @IBAction func deleteAll() {
         voti[materiaStats!]?.removeAll()
+        usrDef(value: voti, chiave: "voti")
         NotificationCenter.default.post(name: NOTIF_UPDATE_VOTI, object: nil)
     }
     

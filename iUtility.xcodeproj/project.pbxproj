@@ -21,6 +21,8 @@
 		DB171B4B1EB652C6002F91B7 /* iForgotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B4A1EB652C6002F91B7 /* iForgotVC.swift */; };
 		DB1A7C8E1E857BE500B73044 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB1A7C8D1E857BE500B73044 /* Images.xcassets */; };
 		DB1A7C901E85864200B73044 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */; };
+		DB30005A1ED5F8FE005BA0C8 /* WordsCountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3000591ED5F8FE005BA0C8 /* WordsCountVC.swift */; };
+		DB30005C1ED60586005BA0C8 /* CircularTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB30005B1ED60586005BA0C8 /* CircularTextView.swift */; };
 		DB3343211E1437C7007535E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343201E1437C7007535E6 /* AppDelegate.swift */; };
 		DB3343231E1437C7007535E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343221E1437C7007535E6 /* ViewController.swift */; };
 		DB3343261E1437C8007535E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB3343241E1437C8007535E6 /* Main.storyboard */; };
@@ -85,6 +87,8 @@
 		DB171B4A1EB652C6002F91B7 /* iForgotVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iForgotVC.swift; sourceTree = "<group>"; };
 		DB1A7C8D1E857BE500B73044 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		DB3000591ED5F8FE005BA0C8 /* WordsCountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsCountVC.swift; sourceTree = "<group>"; };
+		DB30005B1ED60586005BA0C8 /* CircularTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTextView.swift; sourceTree = "<group>"; };
 		DB33431D1E1437C7007535E6 /* iUtility.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iUtility.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3343201E1437C7007535E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB3343221E1437C7007535E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +176,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DB0AD2A51ED8DCFE00D3E579 /* Words Counter */ = {
+			isa = PBXGroup;
+			children = (
+				DB3000591ED5F8FE005BA0C8 /* WordsCountVC.swift */,
+			);
+			name = "Words Counter";
+			sourceTree = "<group>";
+		};
 		DB3343141E1437C7007535E6 = {
 			isa = PBXGroup;
 			children = (
@@ -204,9 +216,10 @@
 				DBF2025F1E7DC35900A1548E /* Verifiche */,
 				DBF202601E7DC36000A1548E /* Orario */,
 				DBF202611E7DC36700A1548E /* Impostazioni */,
+				DB7957641EBF6F3C00829574 /* Voti */,
+				DB0AD2A51ED8DCFE00D3E579 /* Words Counter */,
 				DB33434E1E1437D2007535E6 /* Others */,
 				DB1A7C8D1E857BE500B73044 /* Images.xcassets */,
-				DB7957641EBF6F3C00829574 /* Voti */,
 				DB3343241E1437C8007535E6 /* Main.storyboard */,
 			);
 			path = iUtility;
@@ -233,6 +246,7 @@
 		DB33434E1E1437D2007535E6 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				DB30005B1ED60586005BA0C8 /* CircularTextView.swift */,
 				DB171B441EB25767002F91B7 /* CircularView.swift */,
 				DBCBDF091EAD3CF30027FFC1 /* Extensions.swift */,
 				DB06BABA1EABD5F500FD06D9 /* GoogleMobileAds.framework */,
@@ -621,6 +635,7 @@
 			files = (
 				DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */,
 				DB89B1A41E902F7F006E727E /* ChangeLog.swift in Sources */,
+				DB30005C1ED60586005BA0C8 /* CircularTextView.swift in Sources */,
 				DB171B431EB2509F002F91B7 /* VotiVC.swift in Sources */,
 				DBB310591E9F781B000A926C /* CircleButton.swift in Sources */,
 				DB171B491EB3BC5A002F91B7 /* AccediVC.swift in Sources */,
@@ -635,6 +650,7 @@
 				DB171B471EB25AAB002F91B7 /* RegistrazioneVC.swift in Sources */,
 				DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */,
 				DB3343211E1437C7007535E6 /* AppDelegate.swift in Sources */,
+				DB30005A1ED5F8FE005BA0C8 /* WordsCountVC.swift in Sources */,
 				DBB310321E9C03EE000A926C /* ContainerViewController.swift in Sources */,
 				DB6C30691E71FD85004FC96A /* CalculatorBrain.swift in Sources */,
 				DB171B451EB25767002F91B7 /* CircularView.swift in Sources */,

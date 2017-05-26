@@ -62,8 +62,14 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        controllaConnessioneECaricaAvvisi()
-        tableView.reloadData()
+        DispatchQueue.global(qos: .background).async {
+            self.controllaConnessioneECaricaAvvisi()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,15 +83,23 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func aggiornaTuttoCompresoLaView() {
-        controllaConnessioneECaricaAvvisi()
-        tableView.reloadData()
-        ricaricaControl.endRefreshing()
+        DispatchQueue.global(qos: .background).async {
+            self.controllaConnessioneECaricaAvvisi()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.ricaricaControl.endRefreshing()
+            }
+            
+        }
+        
     }
     
     func controllaConnessioneECaricaAvvisi() {
         
         //SE C'È CONNESSIONE, ESEGUI QUESTO BLOCCO
         if Reachability.isConnectedToNetwork() == true {
+            
             developerModel.estrapolaAvvisiDaInternet()
             ricaricaControl.endRefreshing()
         }
