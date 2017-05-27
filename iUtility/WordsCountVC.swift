@@ -51,7 +51,11 @@ class WordsCountVC: UIViewController {
         if textView.text == "" {
             countLabel.text = "0"
         } else {
-        countLabel.text = String(describing: textView.text.components(separatedBy: " ").count)
+            let string = textView.text!
+            let components = string.components(separatedBy: .whitespacesAndNewlines)
+            let words = components.filter({!$0.isEmpty})
+            
+            countLabel.text = String(describing: words.count)
         }
     }
     
