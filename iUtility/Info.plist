@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>In questo modo puoi selezionare uno sfondo da un&apos;immagine.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Studenti</string>
 	<key>CFBundleExecutable</key>

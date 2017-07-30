@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "donboscologo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "settingsBlack1.png",
       "scale" : "2x"
     },
     {

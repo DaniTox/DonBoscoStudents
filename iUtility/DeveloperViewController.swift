@@ -38,10 +38,10 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
         }
         
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.settaImageView()
+            self.changeBackground()
         }
         
-        settaImageView()
+        changeBackground()
         
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID, "a9484684fa3d0b184eb1926824c424926e90dedb", "013ecc8866dae7a4f9d1ef7a0e14c650"]
@@ -52,8 +52,18 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
         
     }
     
-    func settaImageView() {
-        imageView.image = UIImage(named: GETcolorMode())
+    func changeBackground() {
+        if GETcolorMode() == "customImage" {
+            let imageURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/customImage.jpg")
+            print("URL dell'immagine: \(imageURL)")
+            if let image = UIImage(contentsOfFile: imageURL) {
+                imageView.image = image
+            }
+            
+        }
+        else {
+            imageView.image = UIImage(named: GETcolorMode())
+        }
     }
     
     

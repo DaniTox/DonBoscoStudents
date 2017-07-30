@@ -118,7 +118,7 @@ class iForgotVC: UIViewController {
         let newPasswd = newPasswdTextField.text
         let confirmNewPasswd = confirmPasswdTextField.text
         
-        if newPasswd != "" && newPasswd != nil {
+        if newPasswd != "" && newPasswd != nil && (newPasswd?.characters.count)! >= 4 {
         if newPasswd == confirmNewPasswd {
             
             //var newPasswdRight = ""
@@ -156,7 +156,7 @@ class iForgotVC: UIViewController {
         }
         }
         else {
-            mostraAlert(titolo: "Errore", messaggio: "La password deve contenere almeno un carattere", tipo: .alert)
+            mostraAlert(titolo: "Errore", messaggio: "La password deve contenere almeno 4 caratteri", tipo: .alert)
         }
     }
     

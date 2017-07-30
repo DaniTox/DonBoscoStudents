@@ -132,6 +132,9 @@ class AccediVC: UIViewController {
                         self.ref.child("Utenti").child(username!).child("Salt").setValue(salt)
                         self.ref.child("Utenti").child(username!).child("Password").setValue(passwdHashSaltata)
                         
+                        let versione = Bundle.main.releaseVersionNumber!
+                        self.ref.child("Utenti").child(username!).child("Versione App").setValue(versione)
+                        
                         
                         if let token = credentials["Access Token"] as? Int {
                             UserDefaults.standard.set(token, forKey: "AccessToken")

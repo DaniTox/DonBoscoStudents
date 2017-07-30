@@ -22,7 +22,7 @@ extension Sequence {
 var linksModificati:Bool?
 
 
-class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate {
+class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var labeldarkMode: UILabel!
     @IBOutlet weak var switchLabel: UISwitch!
@@ -64,8 +64,31 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         print("Notificehe in fase di miglioramento")
     }
     
+    @IBOutlet weak var sfogliaButtonOutlet: UIButton!
     
+    @IBOutlet weak var reimpostaButtonOut: UIButton!
 
+    @IBOutlet weak var segnalaButtonLabel: UIButton!
+    
+    
+    @IBOutlet weak var consigliamiButtonOut: UIButton!
+    
+    @IBOutlet weak var verificaButtonOUT: UIButton!
+    
+    @IBOutlet weak var CorreggiLinksButtonOut: UIButton!
+    
+    @IBOutlet weak var githubButtonOutlet: UIButton!
+    
+    @IBOutlet weak var changeLogButtonOut: UIButton!
+    
+    @IBOutlet weak var bugsButtonOut: UIButton!
+    
+    
+    
+    
+    
+    
+    
     
     
     @IBAction func verificaAggiornamenti() {
@@ -92,12 +115,12 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
                     print("Versione attuale: \(versionInstalled)\nVersione più aggiornata: \(latestVersion)")
                     
                     if versionInstalled == latestVersion {
-                        let alert = UIAlertController(title: "Nessun Aggiornamento", message: "Hai già la versione più aggiornata", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Nessun Aggiornamento", message: "Hai già la versione più aggiornata. (\(versionInstalled))", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         print("Nessun Aggiornamento Disponibile")
                     } else {
-                        let alert = UIAlertController(title: "Aggiornamento Disponibile", message: "Nuova versione disponibile: \(latestVersion)", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Aggiornamento Disponibile", message: "Nuova versione disponibile: \(latestVersion)\nTu hai la versione \(versionInstalled)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Non ora", style: UIAlertActionStyle.default, handler: nil))
                         alert.addAction(UIAlertAction(title: "Scarica", style: UIAlertActionStyle.default, handler: { (aggiorna) in
                             //AGGIORNARE L'URL QUANDO L'APP DOVRà USCIRE SULL'APP STORE
@@ -303,7 +326,17 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         
         setClasseOutlet.titleLabel?.text = UserDefaults.standard.string(forKey: "classe")
         
-       
+       sfogliaButtonOutlet.layer.cornerRadius = 10
+        segnalaButtonLabel.layer.cornerRadius = 10
+        consigliamiButtonOut.layer.cornerRadius = 10
+        verificaButtonOUT.layer.cornerRadius = 10
+        CorreggiLinksButtonOut.layer.cornerRadius = 10
+        
+        githubButtonOutlet.layer.cornerRadius = 10
+        changeLogButtonOut.layer.cornerRadius = 10
+        bugsButtonOut.layer.cornerRadius = 10
+        reimpostaButtonOut.layer.cornerRadius = 10
+        
         
         blueCenter = blueButton.center
         redCenter = redButton.center
@@ -381,6 +414,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
                 altroButton.backgroundColor = UIColor.blue
             case "green":
                 altroButton.backgroundColor = UIColor.green
+            case "customImage":
+                altroButton.alpha = 0.5
             default:
                 print("Erro")
             }
@@ -956,6 +991,80 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         UserDefaults.standard.set(classe, forKey: "classe")
         
     }
+    
+    
+    @IBAction func selectWallpapaer(_ sender: UIButton) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        
+        
+        self.present(imagePicker, animated: true, completion: {
+            statusBar.backgroundColor = UIColor.white
+        })
+        
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: {
+            statusBar.backgroundColor = UIColor.clear
+        })
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let fileManager = FileManager.default
+            
+            
+            let offset = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            
+            let url = offset.appending("/customImage.jpg")
+        
+            
+            let imageJPG = UIImageJPEGRepresentation(image, 1)
+            
+            if fileManager.fileExists(atPath: url) {
+                do {
+                    try fileManager.removeItem(atPath: url)
+                }
+                catch {
+                    print("Error: \(error)")
+                }
+            }
+            
+            let result = fileManager.createFile(atPath: url, contents: imageJPG, attributes: nil)
+            
+            
+            if result == true {
+                print("SUCCESS!")
+                
+                UserDefaults.standard.set("customImage", forKey: "ColorMode")
+            }
+            
+            NotificationCenter.default.post(name: NOTIF_COLORMODE, object: nil)
+            
+            self.dismiss(animated: true, completion: {
+                statusBar.backgroundColor = UIColor.clear
+            })
+            
+            
+            
+        }
+    }
+    
+    
+    
+    
+    
     
     
     }

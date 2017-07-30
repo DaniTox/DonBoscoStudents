@@ -13,6 +13,12 @@ import UIKit
     let NOTIF_LOGOUT = NSNotification.Name("Logout")
     let NOTIF_UPDATE_VOTI = NSNotification.Name("updateVotiView")
 
+func getDirectoryPath() -> String {
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+    let documentsDirectory = paths[0]
+    return documentsDirectory
+}
+
     func GETcolorMode() -> String {
         if let colorMode = UserDefaults.standard.string(forKey: "ColorMode") {
             switch colorMode {
@@ -24,6 +30,8 @@ import UIKit
                 return "blue"
             case "red" :
                 return "red"
+            case "customImage":
+                return "customImage"
             default:
                 print("error in colorMode In Userdefaults -- Func GETcolorMode() ")
                 return "dark"

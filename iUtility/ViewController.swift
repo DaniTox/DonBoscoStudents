@@ -116,12 +116,26 @@ class ViewController: UIViewController {
         statusBar.backgroundColor = UIColor.clear
         
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.imageView.image = UIImage(named: GETcolorMode())
+            self.changeBackground()
         }
         
-        imageView.image = UIImage(named: GETcolorMode())
+        changeBackground()
     }
 
+    func changeBackground() {
+        if GETcolorMode() == "customImage" {
+            let imageURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/customImage.jpg")
+            print("URL dell'immagine: \(imageURL)")
+            if let image = UIImage(contentsOfFile: imageURL) {
+                imageView.image = image
+            }
+            
+        }
+        else {
+            imageView.image = UIImage(named: GETcolorMode())
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         

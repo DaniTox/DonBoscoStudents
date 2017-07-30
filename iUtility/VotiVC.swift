@@ -28,13 +28,32 @@ class VotiVC: UIViewController {
     var ref: FIRDatabaseReference!
     var handle:FIRDatabaseHandle!
     
+    func changeBackground() {
+        if GETcolorMode() == "customImage" {
+            let imageURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/customImage.jpg")
+            print("URL dell'immagine: \(imageURL)")
+            if let image = UIImage(contentsOfFile: imageURL) {
+                imageView.image = image
+            }
+            
+        }
+        else {
+            imageView.image = UIImage(named: GETcolorMode())
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginIndicator.isHidden = true
         blurView.isHidden = true
         materieButtonsView.isHidden = true
         
-        imageView.image = UIImage(named: GETcolorMode())
+        accediOutlet.layer.cornerRadius = 18
+        registratiOutlet.layer.cornerRadius = 18
+        
+        
+        changeBackground()
         infoOutlet.numberOfLines = 0
         infoOutlet.lineBreakMode = NSLineBreakMode.byWordWrapping
         
@@ -63,7 +82,7 @@ class VotiVC: UIViewController {
         }
         
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.imageView.image = UIImage(named: GETcolorMode())
+            self.changeBackground()
         }
         
         checkIfLogged()

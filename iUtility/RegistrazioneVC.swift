@@ -47,6 +47,8 @@ class RegistrazioneVC: UIViewController {
         if usernameTextField.text != "" && usernameTextField.text != nil {
             if emailTextField.text != "" && emailTextField.text != nil {
                 if passwordTextField.text != "" && passwordTextField.text != nil {
+                    if (passwordTextField.text?.characters.count)! >= 4 {
+                        
                     
                     do {
                         let socket = try Socket.create()
@@ -58,7 +60,7 @@ class RegistrazioneVC: UIViewController {
                         print(availableMail ?? "Error server")
                         socket.close()
                     } catch {
-                        
+                        mostraAlert(titolo: "Errore", messaggio: "SOCKET ERROR\nContatta lo sviluppatore tramite Impostazioni > Segnala bug e spiega cosa è successo", tipo: .alert)
                     }
                     if availableMail == "True" {
                         ref = FIRDatabase.database().reference()
@@ -76,6 +78,15 @@ class RegistrazioneVC: UIViewController {
                         mostraAlert(titolo: "Errore", messaggio: "Probabilmente il server che gestisce il check delle mail non funziona. Riprova più tardi", tipo: .alert)
                         progressView.stopAnimating()
                     }
+                }
+                    else {
+                        mostraAlert(titolo: "Errore", messaggio: "La password deve essere lunga almeno 4 caratteri", tipo: .alert)
+                        progressView.stopAnimating()
+                    }
+                }
+                else {
+                    mostraAlert(titolo: "Errore", messaggio: "Inserisci una password di almeno 4 caratteri", tipo: .alert)
+                    progressView.stopAnimating()
                 }
             }
         }
@@ -128,6 +139,7 @@ class RegistrazioneVC: UIViewController {
             
             let passwdHashSalt = (password! + salt).sha512()
             
+            let versione = String(describing: Bundle.main.releaseVersionNumber!)
             
             ref.child("Utenti").child(username).child("Username").setValue(username)
             ref.child("Utenti").child(username).child("E-Mail").setValue(email)
@@ -138,7 +150,7 @@ class RegistrazioneVC: UIViewController {
             ref.child("Utenti").child(username).child("iForgot").setValue(false)
             ref.child("Utenti").child(username).child("iForgot_sent").setValue(false)
             ref.child("Utenti").child(username).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
-            
+            ref.child("Utenti").child(username).child("Versione App").setValue("v\(versione)")
             
             UserDefaults.standard.set(token, forKey: "AccessToken")
             

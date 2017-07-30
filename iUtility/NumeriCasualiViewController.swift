@@ -54,15 +54,25 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
         
         
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.settaImageView()
+            self.changeBackground()
         }
         
-        settaImageView()
+        changeBackground()
         
     }
 
-    func settaImageView() {
-        imageView.image = UIImage(named: GETcolorMode())
+    func changeBackground() {
+        if GETcolorMode() == "customImage" {
+            let imageURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/customImage.jpg")
+            print("URL dell'immagine: \(imageURL)")
+            if let image = UIImage(contentsOfFile: imageURL) {
+                imageView.image = image
+            }
+            
+        }
+        else {
+            imageView.image = UIImage(named: GETcolorMode())
+        }
     }
     
     
@@ -100,7 +110,7 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
                     if togliFunzioneArray == false {
                         
                      aggiungiInArray(numero: result)
-                     numeriUscitiLabel.text = String(describing: self.arrayNumeriUsciti)
+                     numeriUscitiLabel.text = String(describing: self.arrayNumeriUsciti).replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
                     }
                     else {
                         print("Array disabilitato")
@@ -121,7 +131,7 @@ class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func pulisciButton() {
         arrayNumeriUsciti.removeAll()
-        numeriUscitiLabel.text = String(describing: arrayNumeriUsciti)
+        numeriUscitiLabel.text = nil
         nMinTextField.text = nil
         nMaxTextField.text = nil
         risultatoValue = 0

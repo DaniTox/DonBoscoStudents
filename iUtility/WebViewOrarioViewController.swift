@@ -34,14 +34,24 @@ class WebViewOrarioViewController: UIViewController, UIWebViewDelegate, UIScroll
         super.viewDidLoad()
        
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.settaImageView()
+            self.changeBackground()
         }
         
-        settaImageView()
+        changeBackground()
         }
 
-    func settaImageView() {
-        imageView.image = UIImage(named: GETcolorMode())
+    func changeBackground() {
+        if GETcolorMode() == "customImage" {
+            let imageURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/customImage.jpg")
+            print("URL dell'immagine: \(imageURL)")
+            if let image = UIImage(contentsOfFile: imageURL) {
+                imageView.image = image
+            }
+            
+        }
+        else {
+            imageView.image = UIImage(named: GETcolorMode())
+        }
     }
     
     func caricaPagina() {

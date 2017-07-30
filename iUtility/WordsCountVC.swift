@@ -10,6 +10,9 @@ import UIKit
 
 class WordsCountVC: UIViewController {
 
+    @IBOutlet weak var cancellaButtonOutlet: UIButton!
+    @IBOutlet weak var incollaButtonOutlet: UIButton!
+    @IBOutlet weak var contaButtonOutlet: UIButton!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -19,10 +22,36 @@ class WordsCountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.text = nil
-        imageView.image = UIImage(named: GETcolorMode())
+        changeBackground()
         
         NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.imageView.image = UIImage(named: GETcolorMode())
+            self.changeBackground()
+        }
+        
+        textView.layer.masksToBounds = true
+        textView.layer.cornerRadius = 10
+        
+        countLabel.layer.masksToBounds = true
+        countLabel.layer.cornerRadius = 20
+        
+        contaButtonOutlet.layer.cornerRadius = 10
+        incollaButtonOutlet.layer.cornerRadius = 10
+        cancellaButtonOutlet.layer.cornerRadius = 10
+        
+        
+    }
+    
+    func changeBackground() {
+        if GETcolorMode() == "customImage" {
+            let imageURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/customImage.jpg")
+            print("URL dell'immagine: \(imageURL)")
+            if let image = UIImage(contentsOfFile: imageURL) {
+                imageView.image = image
+            }
+            
+        }
+        else {
+            imageView.image = UIImage(named: GETcolorMode())
         }
     }
 

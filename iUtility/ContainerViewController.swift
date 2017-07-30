@@ -29,7 +29,17 @@ class ContainerViewController: UIViewController {
     
     
     func settaImageView() {
-        imageView.image = UIImage(named: GETcolorMode())
+        if GETcolorMode() != "customImage" {
+            imageView.image = UIImage(named: GETcolorMode())
+        }
+        else {
+            let fileManager = FileManager.default
+            let path = (getDirectoryPath() as NSString).appendingPathComponent("customImage.jpg")
+            if fileManager.fileExists(atPath: path) {
+                print("esiste")
+                imageView.image = UIImage(contentsOfFile: path)
+            }
+        }
     }
     
     
