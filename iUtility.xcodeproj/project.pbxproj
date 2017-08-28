@@ -23,7 +23,6 @@
 		DB3343361E1437C8007535E6 /* iUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343351E1437C8007535E6 /* iUtilityTests.swift */; };
 		DB3343411E1437C9007535E6 /* iUtilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343401E1437C9007535E6 /* iUtilityUITests.swift */; };
 		DB368B151E3FCA5E00B185DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */; };
-		DB3A5D5F1EC8E0CE009EAA9C /* BlueSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3A5D5E1EC8E0CE009EAA9C /* BlueSocket.framework */; };
 		DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */; };
 		DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */; };
 		DB5A65C91E7C41960094FCC8 /* NumeriCasualiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */; };
@@ -109,7 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB3A5D5F1EC8E0CE009EAA9C /* BlueSocket.framework in Frameworks */,
 				DB0A06DA1E4531AC00D7F9CC /* SwiftyJSON.framework in Frameworks */,
 				B0853E8E8ADDCF259AA4BB26 /* Pods_iUtility.framework in Frameworks */,
 			);
