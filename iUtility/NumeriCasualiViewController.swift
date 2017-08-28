@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class NumeriCasualiViewController: UIViewController, UITextFieldDelegate {
 
     var togliFunzioneArray: Bool = false

@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseMessaging
-import FirebaseDatabase
 import UserNotifications
 import IQKeyboardManagerSwift
 
@@ -18,8 +15,7 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    var ref: FIRDatabaseReference!
-    var handle:FIRDatabaseHandle!
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -75,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         
-        FIRApp.configure()
+
         
     
         return true

@@ -6,14 +6,9 @@ target 'iUtility' do
   use_frameworks!
 
 pod 'SwiftyJSON'
-pod 'Firebase/Core'
-pod 'Firebase/Database'
 pod 'TextFieldEffects'
 pod 'LTMorphingLabel'
-pod 'Firebase/Messaging’
 pod 'IQKeyboardManagerSwift'
-pod 'CryptoSwift'
-pod 'BlueSocket'
 
   target 'iUtilityTests' do
     inherit! :search_paths

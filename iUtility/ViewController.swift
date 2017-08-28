@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseMessaging
+
 
 //let darkColor = UIColor(colorLiteralRed: 0.259, green: 0.259, blue: 0.259, alpha: 1)
 let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
@@ -107,9 +107,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
-        
-        //FIRMessaging.messaging().subscribe(toTopic: "orario")
-        
         
         UINavigationBar.appearance().clipsToBounds = true
         statusBar.backgroundColor = UIColor.clear

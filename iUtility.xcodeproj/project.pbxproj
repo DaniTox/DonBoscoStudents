@@ -10,8 +10,6 @@
 		0FE597FA3475563AB5644101 /* Pods_iUtilityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549AF0DC2DBE2A931DC4B237 /* Pods_iUtilityTests.framework */; };
 		B0853E8E8ADDCF259AA4BB26 /* Pods_iUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0577E57CCDFF34DC2BD0D4 /* Pods_iUtility.framework */; };
 		C5004816E812FC7821EBDF92 /* Pods_iUtilityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58329F89DAF8A98E94ABA0CF /* Pods_iUtilityUITests.framework */; };
-		DB06BAB91EABD57E00FD06D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB06BAB81EABD57E00FD06D9 /* GoogleService-Info.plist */; };
-		DB06BABB1EABD5F500FD06D9 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB06BABA1EABD5F500FD06D9 /* GoogleMobileAds.framework */; };
 		DB0A06DA1E4531AC00D7F9CC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */; };
 		DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */; };
 		DB171B451EB25767002F91B7 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B441EB25767002F91B7 /* CircularView.swift */; };
@@ -69,8 +67,6 @@
 		6C16D97F01B97C888CD35602 /* Pods-iUtility.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iUtility.release.xcconfig"; path = "Pods/Target Support Files/Pods-iUtility/Pods-iUtility.release.xcconfig"; sourceTree = "<group>"; };
 		9F8B85105CA7985578FE4BB9 /* Pods-iUtilityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iUtilityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iUtilityTests/Pods-iUtilityTests.release.xcconfig"; sourceTree = "<group>"; };
 		BD5E5CF1D8B1988BD5E2CC5E /* Pods-iUtilityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iUtilityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iUtilityUITests/Pods-iUtilityUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		DB06BAB81EABD57E00FD06D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DB06BABA1EABD5F500FD06D9 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/iUtility-auuluzxdtjglungwowhcyjpdyzgk/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewOrarioViewController.swift; sourceTree = "<group>"; };
 		DB0B46FD1E3D1A8400DF7CC7 /* iUtility.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iUtility.entitlements; sourceTree = "<group>"; };
@@ -114,7 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB3A5D5F1EC8E0CE009EAA9C /* BlueSocket.framework in Frameworks */,
-				DB06BABB1EABD5F500FD06D9 /* GoogleMobileAds.framework in Frameworks */,
 				DB0A06DA1E4531AC00D7F9CC /* SwiftyJSON.framework in Frameworks */,
 				B0853E8E8ADDCF259AA4BB26 /* Pods_iUtility.framework in Frameworks */,
 			);
@@ -236,8 +231,6 @@
 				DB30005B1ED60586005BA0C8 /* CircularTextView.swift */,
 				DB171B441EB25767002F91B7 /* CircularView.swift */,
 				DBCBDF091EAD3CF30027FFC1 /* Extensions.swift */,
-				DB06BABA1EABD5F500FD06D9 /* GoogleMobileAds.framework */,
-				DB06BAB81EABD57E00FD06D9 /* GoogleService-Info.plist */,
 				DB0B46FD1E3D1A8400DF7CC7 /* iUtility.entitlements */,
 				DB3343201E1437C7007535E6 /* AppDelegate.swift */,
 				DB98E7A71E86968700593168 /* InfoApp.swift */,
@@ -443,7 +436,6 @@
 			files = (
 				DB368B151E3FCA5E00B185DC /* Launch Screen.storyboard in Resources */,
 				DB1961011F2D101800C6FA41 /* Images.xcassets in Resources */,
-				DB06BAB91EABD57E00FD06D9 /* GoogleService-Info.plist in Resources */,
 				DB3343261E1437C8007535E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,9 +478,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iUtility/Pods-iUtility-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/LTMorphingLabel/LTMorphingLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTMorphingLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -516,13 +517,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iUtilityTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C69B7E6939750BFA15DD4ADE /* [CP] Check Pods Manifest.lock */ = {
@@ -531,13 +535,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iUtility-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF08C81B68953613AC2F00CF /* [CP] Embed Pods Frameworks */ = {
@@ -561,13 +568,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iUtilityUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F769DDA94AAE72CFE557F519 /* [CP] Copy Pods Resources */ = {
