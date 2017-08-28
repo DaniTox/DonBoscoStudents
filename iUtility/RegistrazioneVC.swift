@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import BlueSocket
+import SwiftyJSON
 
 class RegistrazioneVC: UIViewController {
     
@@ -49,36 +50,56 @@ class RegistrazioneVC: UIViewController {
                 if passwordTextField.text != "" && passwordTextField.text != nil {
                     if (passwordTextField.text?.characters.count)! >= 4 {
                         
-                    
-                    do {
-                        let socket = try Socket.create()
-                        try socket.connect(to: "checkmaildbapp.ddns.net", port: 1234)
-                        try socket.write(from: emailTextField.text!)
                         
-                        //try socket.listen(on: 1234, maxBacklogSize: Socket.SOCKET_DEFAULT_MAX_BACKLOG)
-                        availableMail = try socket.readString()
-                        print(availableMail ?? "Error server")
-                        socket.close()
-                    } catch {
-                        mostraAlert(titolo: "Errore", messaggio: "SOCKET ERROR\nContatta lo sviluppatore tramite Impostazioni > Segnala bug e spiega cosa è successo", tipo: .alert)
+                        //                    do {
+                        //                        let socket = try Socket.create()
+                        //                        try socket.connect(to: "checkmaildbapp.ddns.net", port: 1234)
+                        //                        try socket.write(from: emailTextField.text!)
+                        //
+                        //                        //try socket.listen(on: 1234, maxBacklogSize: Socket.SOCKET_DEFAULT_MAX_BACKLOG)
+                        //                        availableMail = try socket.readString()
+                        //                        print(availableMail ?? "Error server")
+                        //                        socket.close()
+                        //                    } catch {
+                        //                        mostraAlert(titolo: "Errore", messaggio: "SOCKET ERROR\nContatta lo sviluppatore tramite Impostazioni > Segnala bug e spiega cosa è successo", tipo: .alert)
+                        //                    }
+                        //                    else if availableMail == "None" {
+                        //                        mostraAlert(titolo: "Errore", messaggio: "La mail risulta non ancora in uso da nessuno. Please inserisci la tua mail giusta", tipo: .alert)
+                        //                        progressView.stopAnimating()
+                        //                    }
+                        //                    else {
+                        //                        mostraAlert(titolo: "Errore", messaggio: "Probabilmente il server che gestisce il check delle mail non funziona. Riprova più tardi", tipo: .alert)
+                        //                        progressView.stopAnimating()
+                        //                    }
+                        
+                        let request = URLRequest(url: URL(string: "http://ipswdownloaderpy.altervista.org/filesAppDonBosco/testMail.php?email=" + emailTextField.text!)!)
+                        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                            
+                            let json = JSON(data: data!, options: JSONSerialization.ReadingOptions.mutableContainers , error: nil)
+                            
+                            self.availableMail = json["response"].string!
+                            
+                            print(self.availableMail!)
+                            
+                            
+                            if self.availableMail == "valid" {
+                                self.ref = FIRDatabase.database().reference()
+                                self.isUsernameAvailable(usernameArg: self.usernameTextField.text!)
+                            }
+                            else if self.availableMail == "not_valid"{
+                                self.mostraAlert(titolo: "Errore", messaggio: "La mail non esiste. Please, inserisci la tua mail reale", tipo: .alert)
+                                self.progressView.stopAnimating()
+                            }
+                            
+                            
+                            
+                        }).resume()
+                        
+                        
+                        
+                        
+                        
                     }
-                    if availableMail == "True" {
-                        ref = FIRDatabase.database().reference()
-                        isUsernameAvailable(usernameArg: usernameTextField.text!)
-                    }
-                    else if availableMail == "False"{
-                        mostraAlert(titolo: "Errore", messaggio: "La mail non esiste. Please, inserisci la tua mail reale", tipo: .alert)
-                        progressView.stopAnimating()
-                    }
-                    else if availableMail == "None" {
-                        mostraAlert(titolo: "Errore", messaggio: "La mail risulta non ancora in uso da nessuno. Please inserisci la tua mail giusta", tipo: .alert)
-                        progressView.stopAnimating()
-                    }
-                    else {
-                        mostraAlert(titolo: "Errore", messaggio: "Probabilmente il server che gestisce il check delle mail non funziona. Riprova più tardi", tipo: .alert)
-                        progressView.stopAnimating()
-                    }
-                }
                     else {
                         mostraAlert(titolo: "Errore", messaggio: "La password deve essere lunga almeno 4 caratteri", tipo: .alert)
                         progressView.stopAnimating()

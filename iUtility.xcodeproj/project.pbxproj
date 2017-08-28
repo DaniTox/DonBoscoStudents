@@ -14,11 +14,7 @@
 		DB06BABB1EABD5F500FD06D9 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB06BABA1EABD5F500FD06D9 /* GoogleMobileAds.framework */; };
 		DB0A06DA1E4531AC00D7F9CC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */; };
 		DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */; };
-		DB171B431EB2509F002F91B7 /* VotiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B421EB2509F002F91B7 /* VotiVC.swift */; };
 		DB171B451EB25767002F91B7 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B441EB25767002F91B7 /* CircularView.swift */; };
-		DB171B471EB25AAB002F91B7 /* RegistrazioneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B461EB25AAB002F91B7 /* RegistrazioneVC.swift */; };
-		DB171B491EB3BC5A002F91B7 /* AccediVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B481EB3BC5A002F91B7 /* AccediVC.swift */; };
-		DB171B4B1EB652C6002F91B7 /* iForgotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B4A1EB652C6002F91B7 /* iForgotVC.swift */; };
 		DB1961011F2D101800C6FA41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB1961001F2D101800C6FA41 /* Images.xcassets */; };
 		DB1A7C901E85864200B73044 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */; };
 		DB30005A1ED5F8FE005BA0C8 /* WordsCountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3000591ED5F8FE005BA0C8 /* WordsCountVC.swift */; };
@@ -36,16 +32,14 @@
 		DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */; };
 		DB6C30691E71FD85004FC96A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C30681E71FD85004FC96A /* CalculatorBrain.swift */; };
 		DB6C6FD41E380CE2009C2578 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C6FD31E380CE2009C2578 /* SettingsViewController.swift */; };
-		DB7957661EBF7BA600829574 /* StatisticheVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7957651EBF7BA600829574 /* StatisticheVC.swift */; };
+		DB875F5E1F53CD3C006F21F4 /* VerificaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB875F5D1F53CD3C006F21F4 /* VerificaCell.swift */; };
+		DB875F601F53CD68006F21F4 /* VerificheVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB875F5F1F53CD68006F21F4 /* VerificheVC.swift */; };
 		DB89B1A41E902F7F006E727E /* ChangeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB89B1A31E902F7F006E727E /* ChangeLog.swift */; };
 		DB98E7A81E86968700593168 /* InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB98E7A71E86968700593168 /* InfoApp.swift */; };
-		DBB3102A1E9AC658000A926C /* DeveloperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB310291E9AC658000A926C /* DeveloperViewController.swift */; };
-		DBB3102C1E9BEAC1000A926C /* VerificheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB3102B1E9BEAC1000A926C /* VerificheViewController.swift */; };
 		DBB310321E9C03EE000A926C /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB310311E9C03EE000A926C /* ContainerViewController.swift */; };
 		DBB310591E9F781B000A926C /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB310581E9F781B000A926C /* CircleButton.swift */; };
 		DBB3105C1E9F7C44000A926C /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB3105B1E9F7C44000A926C /* OnBoardingViewController.swift */; };
 		DBCBDF0A1EAD3CF30027FFC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBDF091EAD3CF30027FFC1 /* Extensions.swift */; };
-		DBF202631E7DC38E00A1548E /* DeveopersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF202621E7DC38E00A1548E /* DeveopersModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,11 +74,7 @@
 		DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/iUtility-auuluzxdtjglungwowhcyjpdyzgk/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewOrarioViewController.swift; sourceTree = "<group>"; };
 		DB0B46FD1E3D1A8400DF7CC7 /* iUtility.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iUtility.entitlements; sourceTree = "<group>"; };
-		DB171B421EB2509F002F91B7 /* VotiVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotiVC.swift; sourceTree = "<group>"; };
 		DB171B441EB25767002F91B7 /* CircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
-		DB171B461EB25AAB002F91B7 /* RegistrazioneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrazioneVC.swift; sourceTree = "<group>"; };
-		DB171B481EB3BC5A002F91B7 /* AccediVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccediVC.swift; sourceTree = "<group>"; };
-		DB171B4A1EB652C6002F91B7 /* iForgotVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iForgotVC.swift; sourceTree = "<group>"; };
 		DB1961001F2D101800C6FA41 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		DB3000591ED5F8FE005BA0C8 /* WordsCountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsCountVC.swift; sourceTree = "<group>"; };
@@ -108,16 +98,14 @@
 		DB5A65CA1E7C452D0094FCC8 /* ModelNumeriCasuali.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelNumeriCasuali.swift; sourceTree = "<group>"; };
 		DB6C30681E71FD85004FC96A /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		DB6C6FD31E380CE2009C2578 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		DB7957651EBF7BA600829574 /* StatisticheVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticheVC.swift; sourceTree = "<group>"; };
+		DB875F5D1F53CD3C006F21F4 /* VerificaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificaCell.swift; sourceTree = "<group>"; };
+		DB875F5F1F53CD68006F21F4 /* VerificheVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificheVC.swift; sourceTree = "<group>"; };
 		DB89B1A31E902F7F006E727E /* ChangeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeLog.swift; sourceTree = "<group>"; };
 		DB98E7A71E86968700593168 /* InfoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
-		DBB310291E9AC658000A926C /* DeveloperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperViewController.swift; sourceTree = "<group>"; };
-		DBB3102B1E9BEAC1000A926C /* VerificheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificheViewController.swift; sourceTree = "<group>"; };
 		DBB310311E9C03EE000A926C /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		DBB310581E9F781B000A926C /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DBB3105B1E9F7C44000A926C /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		DBCBDF091EAD3CF30027FFC1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		DBF202621E7DC38E00A1548E /* DeveopersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveopersModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,7 +200,6 @@
 				DBB3105A1E9F7C04000A926C /* OnBoarding */,
 				DBF2025C1E7DC32E00A1548E /* Calculator */,
 				DBF2025D1E7DC33900A1548E /* Numeri casuali */,
-				DBF2025E1E7DC34300A1548E /* Developers */,
 				DBF2025F1E7DC35900A1548E /* Verifiche */,
 				DBF202601E7DC36000A1548E /* Orario */,
 				DBF202611E7DC36700A1548E /* Impostazioni */,
@@ -266,11 +253,6 @@
 		DB7957641EBF6F3C00829574 /* Voti */ = {
 			isa = PBXGroup;
 			children = (
-				DB171B4A1EB652C6002F91B7 /* iForgotVC.swift */,
-				DB171B481EB3BC5A002F91B7 /* AccediVC.swift */,
-				DB171B461EB25AAB002F91B7 /* RegistrazioneVC.swift */,
-				DB171B421EB2509F002F91B7 /* VotiVC.swift */,
-				DB7957651EBF7BA600829574 /* StatisticheVC.swift */,
 			);
 			name = Voti;
 			sourceTree = "<group>";
@@ -301,19 +283,11 @@
 			name = "Numeri casuali";
 			sourceTree = "<group>";
 		};
-		DBF2025E1E7DC34300A1548E /* Developers */ = {
-			isa = PBXGroup;
-			children = (
-				DBB310291E9AC658000A926C /* DeveloperViewController.swift */,
-				DBF202621E7DC38E00A1548E /* DeveopersModel.swift */,
-			);
-			name = Developers;
-			sourceTree = "<group>";
-		};
 		DBF2025F1E7DC35900A1548E /* Verifiche */ = {
 			isa = PBXGroup;
 			children = (
-				DBB3102B1E9BEAC1000A926C /* VerificheViewController.swift */,
+				DB875F5D1F53CD3C006F21F4 /* VerificaCell.swift */,
+				DB875F5F1F53CD68006F21F4 /* VerificheVC.swift */,
 			);
 			name = Verifiche;
 			sourceTree = "<group>";
@@ -636,28 +610,22 @@
 				DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */,
 				DB89B1A41E902F7F006E727E /* ChangeLog.swift in Sources */,
 				DB30005C1ED60586005BA0C8 /* CircularTextView.swift in Sources */,
-				DB171B431EB2509F002F91B7 /* VotiVC.swift in Sources */,
 				DBB310591E9F781B000A926C /* CircleButton.swift in Sources */,
-				DB171B491EB3BC5A002F91B7 /* AccediVC.swift in Sources */,
-				DBF202631E7DC38E00A1548E /* DeveopersModel.swift in Sources */,
 				DB1A7C901E85864200B73044 /* DeviceInfo.swift in Sources */,
-				DBB3102A1E9AC658000A926C /* DeveloperViewController.swift in Sources */,
 				DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */,
-				DB7957661EBF7BA600829574 /* StatisticheVC.swift in Sources */,
+				DB875F601F53CD68006F21F4 /* VerificheVC.swift in Sources */,
+				DB875F5E1F53CD3C006F21F4 /* VerificaCell.swift in Sources */,
 				DBCBDF0A1EAD3CF30027FFC1 /* Extensions.swift in Sources */,
 				DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */,
 				DB3343231E1437C7007535E6 /* ViewController.swift in Sources */,
-				DB171B471EB25AAB002F91B7 /* RegistrazioneVC.swift in Sources */,
 				DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */,
 				DB3343211E1437C7007535E6 /* AppDelegate.swift in Sources */,
 				DB30005A1ED5F8FE005BA0C8 /* WordsCountVC.swift in Sources */,
 				DBB310321E9C03EE000A926C /* ContainerViewController.swift in Sources */,
 				DB6C30691E71FD85004FC96A /* CalculatorBrain.swift in Sources */,
 				DB171B451EB25767002F91B7 /* CircularView.swift in Sources */,
-				DBB3102C1E9BEAC1000A926C /* VerificheViewController.swift in Sources */,
 				DB5A65C91E7C41960094FCC8 /* NumeriCasualiViewController.swift in Sources */,
 				DBB3105C1E9F7C44000A926C /* OnBoardingViewController.swift in Sources */,
-				DB171B4B1EB652C6002F91B7 /* iForgotVC.swift in Sources */,
 				DB6C6FD41E380CE2009C2578 /* SettingsViewController.swift in Sources */,
 				DB98E7A81E86968700593168 /* InfoApp.swift in Sources */,
 			);

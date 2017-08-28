@@ -19,8 +19,7 @@ extension Double {
 }
 
 class ViewController: UIViewController {
-    //let colorMode = ColorMode()
-    
+        
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet var numbers: [UIButton]!

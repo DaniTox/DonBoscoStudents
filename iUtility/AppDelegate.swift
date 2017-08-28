@@ -77,31 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         FIRApp.configure()
         
-        if let username = UserDefaults.standard.string(forKey: "usernameAccount") {
-            if username != "" {
-                let date = Date()
-                let now = Calendar.current
-                let hour = now.component(.hour, from: date)
-                let minute = now.component(.minute, from: date)
-                let day = now.component(.day, from: date)
-                let month = now.component(.month, from: date)
-                let year = now.component(.year, from: date)
-                
-                let versione = Bundle.main.releaseVersionNumber
-                
-                DispatchQueue.global(qos: .background).async {
-                    self.ref = FIRDatabase.database().reference()
-                    self.ref.child("Utenti").child(username).child("Ultimo Accesso").setValue("\(hour):\(minute) - \(day)/\(month)/\(year)")
-                    self.ref.child("Utenti").child(username).child("Versione App").setValue("v" + String(describing : versione!))
-                }
-                
-            }
-        }
-        
-        
-        
-        
-        
+    
         return true
     }
 

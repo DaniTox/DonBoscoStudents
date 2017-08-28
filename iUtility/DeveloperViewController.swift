@@ -43,12 +43,14 @@ class Sviluppatori: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         changeBackground()
         
-        let request = GADRequest()
-        request.testDevices = [kGADSimulatorID, "a9484684fa3d0b184eb1926824c424926e90dedb", "013ecc8866dae7a4f9d1ef7a0e14c650"]
-        bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-3178427291726733/6133430803"
-        bannerView.rootViewController = self
-        bannerView.load(request)
+        //TODO: Disattivato momentaneamente
+        
+//        let request = GADRequest()
+//        request.testDevices = [kGADSimulatorID, "a9484684fa3d0b184eb1926824c424926e90dedb", "013ecc8866dae7a4f9d1ef7a0e14c650"]
+//        bannerView.delegate = self
+//        bannerView.adUnitID = "ca-app-pub-3178427291726733/6133430803"
+//        bannerView.rootViewController = self
+//        bannerView.load(request)
         
     }
     

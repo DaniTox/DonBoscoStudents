@@ -75,12 +75,14 @@ class VerificheViewController: UIViewController, UITableViewDelegate, UITableVie
         
         changeBackground()
         
-        let request = GADRequest()
-        request.testDevices = [kGADSimulatorID, "a9484684fa3d0b184eb1926824c424926e90dedb", "013ecc8866dae7a4f9d1ef7a0e14c650"]
-        bannerAdView.delegate = self
-        bannerAdView.adUnitID = "ca-app-pub-3178427291726733/3190297606"
-        bannerAdView.rootViewController = self
-        bannerAdView.load(request)
+            //Disattivato momentaneamente
+        
+//        let request = GADRequest()
+//        request.testDevices = [kGADSimulatorID, "a9484684fa3d0b184eb1926824c424926e90dedb", "013ecc8866dae7a4f9d1ef7a0e14c650"]
+//        bannerAdView.delegate = self
+//        bannerAdView.adUnitID = "ca-app-pub-3178427291726733/3190297606"
+//        bannerAdView.rootViewController = self
+//        bannerAdView.load(request)
         
         
         statusBar.backgroundColor = UIColor.clear
