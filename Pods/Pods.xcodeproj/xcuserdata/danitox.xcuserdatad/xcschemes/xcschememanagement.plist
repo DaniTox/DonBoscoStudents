@@ -4,21 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BlueSocket.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>CryptoSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>GoogleToolboxForMac.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,42 +52,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>39EEBE3471509F3852386C626DFCC7C5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4C69BF3EF4CE81852226B9442B0C2DF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
+		<key>4E492F7928FD00022F9E931D911D6E04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BB1C1403B2419F911818DA8413FDA07</key>
+		<key>5DDFD94434A26DA1B6F3757117DE6696</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C5B80060FE8C664DF08841000F41D515</key>
+		<key>6F47D5F6E48FEC1C8305DA2400EC8DD7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E454327908567BC65749AF0DC9943D12</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EBF516AF5A42C4DF5E28BC43D2DF5A4E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FD6A994F3F4B0A2CC5252381153CADFD</key>
+		<key>C235F77E101E742652CCF98FFDFA5182</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -3,7 +3,7 @@
 //  https://github.com/lexrus/LTMorphingLabel
 //
 //  The MIT License (MIT)
-//  Copyright (c) 2016 Lex Tang, http://lexrus.com
+//  Copyright (c) 2017 Lex Tang, http://lexrus.com
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files
@@ -48,7 +48,7 @@ extension LTMorphingLabel {
                         x: centerRect.origin.x,
                         y: centerRect.origin.y + centerRect.size.height / 1.3)
                     layer.renderMode = kCAEmitterLayerSurface
-                    cell.emissionLongitude = CGFloat(Double.pi / 2.0)
+                    cell.emissionLongitude = CGFloat(Double.pi / 2)
                     cell.scale = self.font.pointSize / 90.0
                     cell.scaleSpeed = self.font.pointSize / 130
                     cell.birthRate = 60
@@ -73,7 +73,7 @@ extension LTMorphingLabel {
                         x: centerRect.origin.x,
                         y: centerRect.origin.y + centerRect.size.height / 1.3)
                     layer.renderMode = kCAEmitterLayerSurface
-                    cell.emissionLongitude = CGFloat(Double.pi / 2.0)
+                    cell.emissionLongitude = CGFloat(Double.pi / 2)
                     cell.scale = self.font.pointSize / 90.0
                     cell.scaleSpeed = self.font.pointSize / 130
                     cell.birthRate = 60
