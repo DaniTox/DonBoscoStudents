@@ -17,6 +17,9 @@ class VotiVC: UIViewController {
     
     @IBOutlet weak var registerButtonOutlet: UIButton!
     
+    
+    @IBOutlet weak var esciButtonOutlet: UIButton!
+    
     //REGISTRAZIONE
     @IBOutlet weak var nomeTextField: UITextField!
     @IBOutlet weak var cognomeTextField: UITextField!
@@ -25,12 +28,13 @@ class VotiVC: UIViewController {
     @IBOutlet weak var password2TextField: UITextField!
 
     @IBOutlet weak var registerIndicator: UIActivityIndicatorView!
-    
     @IBOutlet var registrationTextFields: [UITextField]!
     
     
-    
     @IBOutlet weak var showRegisterViewOutlet: UIButton!
+    
+    //LOGIN
+    
     
     
     
@@ -135,12 +139,22 @@ class VotiVC: UIViewController {
     func setModeforView(isLogged: Bool) {
         if isLogged == true {
             registerButtonOutlet.isHidden = true
+            esciButtonOutlet.isHidden = false
         }
         else {
-            
+            esciButtonOutlet.isHidden = true
+            registerButtonOutlet.isHidden = false
         }
         
     }
+    
+    
+    @IBAction func logoutAccountAction(_ sender: UIButton) {
+        UserDefaults.standard.set(nil, forKey: USERLOGGED)
+        UserDefaults.standard.set(false, forKey: ISLOGGED)
+        setModeforView(isLogged: false)
+    }
+    
     
     
 }

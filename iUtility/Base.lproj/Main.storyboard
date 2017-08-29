@@ -2164,6 +2164,20 @@
                                     <action selector="showRegisterViewAction:" destination="URe-5g-bdg" eventType="touchUpInside" id="hhR-MX-ZVY"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHQ-zc-dgK">
+                                <rect key="frame" x="888" y="51" width="85" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="Yyg-vP-Gut"/>
+                                    <constraint firstAttribute="width" constant="85" id="p28-kn-Ilj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="31"/>
+                                <state key="normal" title="Esci">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutAccountAction:" destination="URe-5g-bdg" eventType="touchUpInside" id="9rD-31-JOs"/>
+                                </connections>
+                            </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GM8-aI-fFq">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="719"/>
                                 <subviews>
@@ -2351,10 +2365,12 @@
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GM8-aI-fFq" secondAttribute="trailing" id="12n-Dv-cUW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yHQ-zc-dgK" secondAttribute="trailing" constant="31" id="1oy-3g-vHw"/>
                             <constraint firstItem="GM8-aI-fFq" firstAttribute="top" secondItem="U6d-7o-FEs" secondAttribute="top" id="9V2-az-CQZ"/>
                             <constraint firstItem="JUi-0D-KG1" firstAttribute="top" secondItem="GM8-aI-fFq" secondAttribute="bottom" id="OfX-CN-Mnf"/>
                             <constraint firstAttribute="trailing" secondItem="Suk-gg-9Jn" secondAttribute="trailing" id="Uc2-7U-hc0"/>
                             <constraint firstItem="JUi-0D-KG1" firstAttribute="top" secondItem="Suk-gg-9Jn" secondAttribute="bottom" id="eF6-6E-X7L"/>
+                            <constraint firstItem="yHQ-zc-dgK" firstAttribute="top" secondItem="kqp-SX-dh1" secondAttribute="bottom" constant="31" id="mkx-tJ-vXe"/>
                             <constraint firstItem="Suk-gg-9Jn" firstAttribute="leading" secondItem="U6d-7o-FEs" secondAttribute="leading" id="rpQ-Og-0ay"/>
                             <constraint firstItem="GM8-aI-fFq" firstAttribute="leading" secondItem="U6d-7o-FEs" secondAttribute="leading" id="vaD-um-Vn5"/>
                             <constraint firstItem="Suk-gg-9Jn" firstAttribute="top" secondItem="U6d-7o-FEs" secondAttribute="top" id="yMz-Rw-3fj"/>
@@ -2369,6 +2385,7 @@
                     <connections>
                         <outlet property="cognomeTextField" destination="xSO-yt-TcU" id="vo4-nG-4v5"/>
                         <outlet property="emailTextField" destination="rPE-k6-rQR" id="Ac7-ep-jym"/>
+                        <outlet property="esciButtonOutlet" destination="yHQ-zc-dgK" id="ZZg-tv-3iH"/>
                         <outlet property="loginView" destination="Suk-gg-9Jn" id="Wkr-zM-J2m"/>
                         <outlet property="nomeTextField" destination="4FW-9o-1m6" id="YXl-eO-ZHs"/>
                         <outlet property="password1TextField" destination="Xtm-Us-gBm" id="VfP-Z0-hlh"/>

@@ -62,7 +62,7 @@ class DBAccountHelper {
                     let dataUser = NSKeyedArchiver.archivedData(withRootObject: user)
                      
                     UserDefaults.standard.set(dataUser, forKey: USERLOGGED)
-                    
+                    UserDefaults.standard.set(true, forKey: ISLOGGED)
                     
                 case "300":
                     returnCode = 2

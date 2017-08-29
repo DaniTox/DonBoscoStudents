@@ -19,9 +19,14 @@ class InsertVotoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let data = UserDefaults.standard.object(forKey: USERLOGGED) {
-            let user = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as! User
-            print("Ciao, \(user.nome)")
+        if UserDefaults.standard.bool(forKey: ISLOGGED) {
+            if let userData = UserDefaults.standard.object(forKey: USERLOGGED) {
+                let user = NSKeyedUnarchiver.unarchiveObject(with: userData as! Data) as! User
+                print("Ciao, \(user.nome)")
+            }
+        }
+        else {
+            print("Ciao utente non loggato")
         }
         
     }

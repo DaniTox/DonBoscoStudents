@@ -10,3 +10,4 @@ import Foundation
 
 
 let USERLOGGED = "userLogged"
+let ISLOGGED = "isUserLogged"
