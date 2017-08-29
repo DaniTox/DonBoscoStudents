@@ -23,6 +23,10 @@
 		DB3343361E1437C8007535E6 /* iUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343351E1437C8007535E6 /* iUtilityTests.swift */; };
 		DB3343411E1437C9007535E6 /* iUtilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3343401E1437C9007535E6 /* iUtilityUITests.swift */; };
 		DB368B151E3FCA5E00B185DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */; };
+		DB4A2D8D1F54C40B003368EE /* InsertVotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A2D8C1F54C40B003368EE /* InsertVotoVC.swift */; };
+		DB4A2D8F1F54C73A003368EE /* VotiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A2D8E1F54C73A003368EE /* VotiVC.swift */; };
+		DB4A2D911F54D2A2003368EE /* DBAccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A2D901F54D2A2003368EE /* DBAccountHelper.swift */; };
+		DB4A2D931F551BB4003368EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A2D921F551BB4003368EE /* Constants.swift */; };
 		DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */; };
 		DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */; };
 		DB5A65C91E7C41960094FCC8 /* NumeriCasualiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */; };
@@ -87,6 +91,10 @@
 		DB3343421E1437C9007535E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DB3A5D5E1EC8E0CE009EAA9C /* BlueSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BlueSocket.framework; path = "../../Library/Developer/Xcode/DerivedData/iUtility-auuluzxdtjglungwowhcyjpdyzgk/Build/Products/Debug-iphoneos/BlueSocket/BlueSocket.framework"; sourceTree = "<group>"; };
+		DB4A2D8C1F54C40B003368EE /* InsertVotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertVotoVC.swift; sourceTree = "<group>"; };
+		DB4A2D8E1F54C73A003368EE /* VotiVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotiVC.swift; sourceTree = "<group>"; };
+		DB4A2D901F54D2A2003368EE /* DBAccountHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBAccountHelper.swift; sourceTree = "<group>"; };
+		DB4A2D921F551BB4003368EE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DB4AB0561E896A3600EE2A93 /* CorrettoreLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrettoreLink.swift; sourceTree = "<group>"; };
 		DB4BEB051E5E2AB000BD9099 /* Reachablity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachablity.swift; sourceTree = "<group>"; };
 		DB5A65C81E7C41960094FCC8 /* NumeriCasualiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumeriCasualiViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +245,7 @@
 				DB368B141E3FCA5E00B185DC /* Launch Screen.storyboard */,
 				DB33432C1E1437C8007535E6 /* Info.plist */,
 				DBB310581E9F781B000A926C /* CircleButton.swift */,
+				DB4A2D921F551BB4003368EE /* Constants.swift */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -244,6 +253,8 @@
 		DB7957641EBF6F3C00829574 /* Voti */ = {
 			isa = PBXGroup;
 			children = (
+				DB4A2D8E1F54C73A003368EE /* VotiVC.swift */,
+				DB4A2D901F54D2A2003368EE /* DBAccountHelper.swift */,
 			);
 			name = Voti;
 			sourceTree = "<group>";
@@ -279,6 +290,7 @@
 			children = (
 				DB875F5D1F53CD3C006F21F4 /* VerificaCell.swift */,
 				DB875F5F1F53CD68006F21F4 /* VerificheVC.swift */,
+				DB4A2D8C1F54C40B003368EE /* InsertVotoVC.swift */,
 			);
 			name = Verifiche;
 			sourceTree = "<group>";
@@ -615,15 +627,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB4A2D931F551BB4003368EE /* Constants.swift in Sources */,
 				DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */,
+				DB4A2D8D1F54C40B003368EE /* InsertVotoVC.swift in Sources */,
 				DB89B1A41E902F7F006E727E /* ChangeLog.swift in Sources */,
 				DB30005C1ED60586005BA0C8 /* CircularTextView.swift in Sources */,
 				DBB310591E9F781B000A926C /* CircleButton.swift in Sources */,
 				DB1A7C901E85864200B73044 /* DeviceInfo.swift in Sources */,
 				DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */,
+				DB4A2D8F1F54C73A003368EE /* VotiVC.swift in Sources */,
 				DB875F601F53CD68006F21F4 /* VerificheVC.swift in Sources */,
 				DB875F5E1F53CD3C006F21F4 /* VerificaCell.swift in Sources */,
 				DBCBDF0A1EAD3CF30027FFC1 /* Extensions.swift in Sources */,
+				DB4A2D911F54D2A2003368EE /* DBAccountHelper.swift in Sources */,
 				DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */,
 				DB3343231E1437C7007535E6 /* ViewController.swift in Sources */,
 				DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */,

@@ -2,150 +2,192 @@
 //  VotiVC.swift
 //  iUtility
 //
-//  Created by Dani Tox on 27/04/17.
+//  Created by Dani Tox on 28/08/17.
 //  Copyright © 2017 Dani Tox. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
-
-
 
 class VotiVC: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var accediOutlet: UIButton!
-    @IBOutlet weak var registratiOutlet: UIButton!
-    @IBOutlet weak var infoOutlet: UILabel!
-    @IBOutlet weak var loginIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var avvisoDaEliminare: UILabel!
-    @IBOutlet weak var materieButtonsView: UIView!
+    //MARK: - Outlets and Variables
     
-    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var registerView: UIView!
+    @IBOutlet weak var loginView: UIView!
     
-    var finallyLogged :Bool?
+    @IBOutlet weak var registerButtonOutlet: UIButton!
     
-    var ref: FIRDatabaseReference!
-    var handle:FIRDatabaseHandle!
+    //REGISTRAZIONE
+    @IBOutlet weak var nomeTextField: UITextField!
+    @IBOutlet weak var cognomeTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var password1TextField: UITextField!
+    @IBOutlet weak var password2TextField: UITextField!
+
+    @IBOutlet weak var registerIndicator: UIActivityIndicatorView!
     
-    func changeBackground() {
-        if GETcolorMode() == "customImage" {
-            let imageURL = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/customImage.jpg")
-            print("URL dell'immagine: \(imageURL)")
-            if let image = UIImage(contentsOfFile: imageURL) {
-                imageView.image = image
-            }
-            
-        }
-        else {
-            imageView.image = UIImage(named: GETcolorMode())
-        }
-    }
+    @IBOutlet var registrationTextFields: [UITextField]!
     
+    
+    
+    @IBOutlet weak var showRegisterViewOutlet: UIButton!
+    
+    
+    
+    
+    //MARK: - Entry Point
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginIndicator.isHidden = true
-        blurView.isHidden = true
-        materieButtonsView.isHidden = true
-        
-        accediOutlet.layer.cornerRadius = 18
-        registratiOutlet.layer.cornerRadius = 18
-        
-        
-        changeBackground()
-        infoOutlet.numberOfLines = 0
-        infoOutlet.lineBreakMode = NSLineBreakMode.byWordWrapping
-        
-        NotificationCenter.default.addObserver(forName: NOTIF_ACCEDUTO, object: nil, queue: nil) { (notification) in
-            self.accediOutlet.isHidden = true
-            self.registratiOutlet.isHidden = true
-            self.infoOutlet.text = "Benvenuto in DaniToxCloud! Ora puoi vedere le statistiche del tuo anno scoastico.\nBuona fortuna, \(UserDefaults.standard.string(forKey: "usernameAccount") ?? "Error while getting username")!"
-            self.avvisoDaEliminare.isHidden = true
-            self.materieButtonsView.isHidden = false
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.data(forKey: USERLOGGED) != nil {
+            setModeforView(isLogged: true)
         }
-        
-        NotificationCenter.default.addObserver(forName: NOTIF_LOGOUT, object: nil, queue: nil) { (notification) in
-            self.accediOutlet.isHidden = false
-            self.registratiOutlet.isHidden = false
-            self.avvisoDaEliminare.isHidden = true
-            self.materieButtonsView.isHidden = true
-            self.infoOutlet.text = "Per salvare i tuoi voti e vedere le statistiche, devi registrarti al servizio DaniToxCloud"
-            
-            UserDefaults.standard.set(false, forKey: "accountLoggato")
-            UserDefaults.standard.set(0, forKey: "AccessToken")
-            UserDefaults.standard.set(nil, forKey: "usernameAccount")
-            
-            
-            
-            UserDefaults.standard.set(nil, forKey: "voti")
+        else {
+            setModeforView(isLogged: false)
         }
-        
-        NotificationCenter.default.addObserver(forName: NOTIF_COLORMODE, object: nil, queue: nil) { (notification) in
-            self.changeBackground()
-        }
-        
-        checkIfLogged()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func logoutAction() {
-        NotificationCenter.default.post(name: NOTIF_LOGOUT, object: nil)
-    }
-
-    func checkIfLogged() {
-        let loggato = UserDefaults.standard.bool(forKey: "accountLoggato")
-        let token = UserDefaults.standard.integer(forKey: "AccessToken")
-        let username = UserDefaults.standard.string(forKey: "usernameAccount")
+    //MARK: - Functions
+    
+    @IBAction func showRegisterViewAction(_ sender: UIButton) {
+        self.registerView.isHidden = false
+        self.registerView.alpha = 0
         
-        
-        if loggato == true {
-            loginIndicator.isHidden = false
-            blurView.isHidden = false
-            loginIndicator.startAnimating()
-            if username != nil && token != 0 {
-                ref = FIRDatabase.database().reference()
-                ref.child("Utenti").child(username!).observeSingleEvent(of: .value, with: { (snapshot) in
-                    if let credentials = snapshot.value as? NSDictionary {
-                        let tokenRight = credentials["Access Token"] as? Int
-                        
-                        if token == tokenRight {
-                            self.finallyLogged = true
-
-                            NotificationCenter.default.post(name: NOTIF_ACCEDUTO, object: nil)
-                            self.loginIndicator.stopAnimating()
-                            self.blurView.isHidden = true
-                        }
-                        else {
-                            self.mostraAlert(titolo: "Error", messaggio: "ACCESS_TOKEN WRONG", tipo: .alert)
-                            UserDefaults.standard.set("", forKey: "usernameAccount")
-                            UserDefaults.standard.set(false, forKey: "accountLoggato")
-                            UserDefaults.standard.set(0, forKey: "AccessToken")
-                            
-                            self.loginIndicator.stopAnimating()
-                            self.blurView.isHidden = true
-                        }
-                    } else {
-                        self.mostraAlert(titolo: "Errore", messaggio: "Firebase Error VotiVC", tipo: .alert)
-                    }
-                })
-            }
+        UIView.animate(withDuration: 0.4) {
+            self.registerView.alpha = 1
         }
     }
     
-    @IBAction func showStats(_ sender: UIButton) {
-        if let nomeMateria = sender.currentTitle {
-            materiaStats = nomeMateria
-            print(materiaStats ?? "Error")
+    @IBAction func Registrati(_ sender: UIButton) {
+       
+        var isAbleToRegister: Bool = true
+        
+        for textfield in registrationTextFields {
+            if textfield.text == "" || textfield.text == nil {
+                isAbleToRegister = false
+            }
+            
+            if password1TextField.text != password2TextField.text {
+                isAbleToRegister = false
+            }
+            
+        }
+        
+        if isAbleToRegister {
+            registerButtonOutlet.isEnabled = false
+            registerIndicator.startAnimating()
+            
+            let nome = nomeTextField.text
+            let cognome = cognomeTextField.text
+            let email = emailTextField.text
+            let password = password1TextField.text
+            let classe = UserDefaults.standard.string(forKey: "classe")
+            
+            let DBHelper = DBAccountHelper(nome: nome!, cognome: cognome!, email: email!, password: password!, classe: classe!)
+            let isRegistered = DBHelper.registerUser()
+            
+            switch isRegistered {
+            case 1:
+                mostraAlert(titolo: "Errore", messaggio: "C'è stato un errore durante la fase di registrazione. Prova a controllare i dati inseriti e riprova", tipo: .alert)
+                registerIndicator.stopAnimating()
+                registerButtonOutlet.isEnabled = true
+                
+            case 2:
+                mostraAlert(titolo: "Errore", messaggio: "La mail è già presente nel database", tipo: .alert)
+                registerIndicator.stopAnimating()
+                registerButtonOutlet.isEnabled = true
+                
+            case 0:
+                mostraAlert(titolo: "Completato", messaggio: "La registrazione è stata completate", tipo: .alert)
+                
+                UIView.animate(withDuration: 1, animations: {
+                    self.registerView.alpha = 0
+                }, completion: { (completed) in
+                    self.registerView.isHidden = true
+                })
+                
+                setModeforView(isLogged: true)
+                
+                
+                
+            default:
+                print("Error. \(isRegistered)")
+            }
+            
+            
+            
+            
+            
+        }
+        
+    
+    }
+    
+    
+    func setModeforView(isLogged: Bool) {
+        if isLogged == true {
+            registerButtonOutlet.isHidden = true
         }
         else {
-            print("Error in getting materia nam for stats")
+            
         }
         
-        self.performSegue(withIdentifier: "viewStats", sender: self)
     }
     
+    
 }
+
+
+
+//MARK: - Others
+
+class User: NSObject, NSCoding {
+    public var id : String
+    public var nome : String
+    public var cognome : String
+    public var classe : String
+    public var email : String
+    public var token : String
+    
+    init(id: String, nome: String, cognome: String, classe: String, email:String, token:String) {
+        self.id = id
+        self.nome = nome
+        self.cognome = cognome
+        self.classe = classe
+        self.email = email
+        self.token = token
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        id = aDecoder.decodeObject(forKey: "id") as! String
+        nome = aDecoder.decodeObject(forKey: "nome") as! String
+        cognome = aDecoder.decodeObject(forKey: "cognome") as! String
+        classe = aDecoder.decodeObject(forKey: "classe") as! String
+        email = aDecoder.decodeObject(forKey: "email") as! String
+        token = aDecoder.decodeObject(forKey: "token") as! String
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(nome, forKey: "nome")
+        aCoder.encode(cognome, forKey: "cognome")
+        aCoder.encode(classe, forKey: "classe")
+        aCoder.encode(email, forKey: "email")
+        aCoder.encode(token, forKey: "token")
+    }
+    
+    
+}
+
+
+
+
+
