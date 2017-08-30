@@ -9,5 +9,5 @@
 import Foundation
 
 
-let USERLOGGED = "userLogged"
-let ISLOGGED = "isUserLogged"
+let USERLOGGED = "userLogged" //User Data Class logged in
+let ISLOGGED = "isUserLogged" //Bool if any user is logged or not

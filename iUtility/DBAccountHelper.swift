@@ -81,9 +81,57 @@ class DBAccountHelper {
         return returnCode
     }
     
-    public func login() -> Bool {
+    public func login() -> Int {
+        let paramentri = "email=\(email)&password=\(password)"
+        let urlString = "http://localhost:8888/AppScuola/login.php?\(paramentri)"
+        let url = URL(string: urlString)
         
-        return false
+        var returnCode = 1
+        
+        if let data = try? Data(contentsOf: url!) as Data {
+            
+            let json = JSON(data: data, options: .mutableContainers, error: nil).dictionaryObject
+            
+            let code = json?["code"] as! String
+            
+            
+            switch code {
+            case "200":
+                returnCode = 0
+                
+                let id = json?["id"] as! String
+                let nome = json?["nome"] as! String
+                let cognome = json?["cognome"] as! String
+                let email = json?["email"] as! String
+                let token = json?["token"] as! String
+                let classe = json?["classe"] as! String
+                
+                
+                let user = User(id: id, nome: nome, cognome: cognome, classe: classe, email: email, token: token)
+                
+                let userData = NSKeyedArchiver.archivedData(withRootObject: user)
+                
+                UserDefaults.standard.set(userData, forKey: USERLOGGED)
+                UserDefaults.standard.set(true, forKey: ISLOGGED)
+                
+                
+            case "300":
+                returnCode = 1
+            case "400":
+                returnCode = -1
+            default:
+                returnCode = -1
+            }
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        return returnCode
     }
     
     deinit {

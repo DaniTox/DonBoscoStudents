@@ -35,6 +35,11 @@ class VotiVC: UIViewController {
     
     //LOGIN
     
+    @IBOutlet weak var showAccediViewOutlet: UIButton!
+    
+    @IBOutlet weak var emailLoginTextField: UITextField!
+    @IBOutlet weak var passwordLoginTextField: UITextField!
+    @IBOutlet weak var accediLoginButtonOutlet: UIButton!
     
     
     
@@ -47,12 +52,7 @@ class VotiVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if UserDefaults.standard.data(forKey: USERLOGGED) != nil {
-            setModeforView(isLogged: true)
-        }
-        else {
-            setModeforView(isLogged: false)
-        }
+        setModeforView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,7 +118,7 @@ class VotiVC: UIViewController {
                     self.registerView.isHidden = true
                 })
                 
-                setModeforView(isLogged: true)
+                setModeforView()
                 
                 
                 
@@ -126,24 +126,25 @@ class VotiVC: UIViewController {
                 print("Error. \(isRegistered)")
             }
             
-            
-            
-            
-            
+  
         }
         
     
     }
     
     
-    func setModeforView(isLogged: Bool) {
+    func setModeforView() {
+        let isLogged = UserDefaults.standard.bool(forKey: ISLOGGED)
+        
         if isLogged == true {
-            registerButtonOutlet.isHidden = true
+            showRegisterViewOutlet.isHidden = true
+            showAccediViewOutlet.isHidden = true
             esciButtonOutlet.isHidden = false
         }
         else {
             esciButtonOutlet.isHidden = true
-            registerButtonOutlet.isHidden = false
+            showRegisterViewOutlet.isHidden = false
+            showAccediViewOutlet.isHidden = false
         }
         
     }
@@ -152,9 +153,75 @@ class VotiVC: UIViewController {
     @IBAction func logoutAccountAction(_ sender: UIButton) {
         UserDefaults.standard.set(nil, forKey: USERLOGGED)
         UserDefaults.standard.set(false, forKey: ISLOGGED)
-        setModeforView(isLogged: false)
+        setModeforView()
     }
     
+    
+    @IBAction func sowAccediViewAction(_ sender: UIButton) {
+        
+        self.loginView.isHidden = false
+        self.loginView.alpha = 0
+        
+        UIView.animate(withDuration: 0.4) { 
+            self.loginView.alpha = 1
+        }
+        
+    }
+    
+    
+    @IBAction func loginAction(_ sender: UIButton) {
+        var isAbletoLogin: Bool = true
+        
+        if emailLoginTextField.text == nil || emailLoginTextField.text == "" {
+            isAbletoLogin = false
+        }
+        if passwordLoginTextField.text == nil || passwordLoginTextField.text == "" {
+            isAbletoLogin = false
+        }
+        
+        
+        if isAbletoLogin {
+            accediLoginButtonOutlet.isEnabled = false
+            
+            let email = emailLoginTextField.text
+            let password = passwordLoginTextField.text
+            
+            let DBUserHelper = DBAccountHelper(email: email!, password: password!)
+            
+            let result = DBUserHelper.login()
+            
+            switch result {
+            case 0:
+                
+                mostraAlert(titolo: "Completato", messaggio: "Login effettuato con successo", tipo: .alert)
+                
+                
+                
+                UIView.animate(withDuration: 1, animations: {
+                    self.loginView.alpha = 0
+                }, completion: { (completed) in
+                    self.loginView.isHidden = true
+                })
+                
+                setModeforView()
+                
+            case 1:
+                mostraAlert(titolo: "Errore", messaggio: "La mail non è presente nel database. Assicurati di averla scritta giusta e riprova", tipo: .alert)
+                accediLoginButtonOutlet.isEnabled = true
+                
+            case -1:
+                mostraAlert(titolo: "Errore", messaggio: "C'è stato un errore del server. Se continua a non funzionare, riprova più tardi.", tipo: .alert)
+                accediLoginButtonOutlet.isEnabled = true
+            default:
+                mostraAlert(titolo: "Errore", messaggio: "C'è stato un errore del server. Se continua a non funzionare, riprova più tardi.", tipo: .alert)
+                accediLoginButtonOutlet.isEnabled = true
+            }
+            
+        }
+        
+        
+        
+    }
     
     
 }

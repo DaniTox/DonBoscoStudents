@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-var verifiche = [Verifica]()
+
 
 
 class VerificheVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -19,76 +19,67 @@ class VerificheVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var segentedControlOutlet: UISegmentedControl!
     
+    
+    var refreshControl : UIRefreshControl!
     
     //MARK: - Entry Point
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(catchVerifiche), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.backgroundView = refreshControl
+        }
+        
         imageView.image = #imageLiteral(resourceName: "dark")
+    
+    
+        catchVerifiche()
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
+        catchVerifiche()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        catchVerifiche()
+        
     }
 
     //MARK: Functions
     
     func catchVerifiche() {
         
-        if let classe = UserDefaults.standard.string(forKey: "classe") {
-            let url = "http://localhost:8888/AppScuola/catchVerificheNoToken.php?classe=\(classe)"
-            let url2 = URL(string: url)
-            
-            if let data = try? Data(contentsOf: url2!) as Data {
-                let json = JSON(data: data, options: .mutableContainers, error: nil)
-                
-                if let array = json.arrayObject as? [[String : String]] {
-                    
-                    verifiche.removeAll()
-                    
-                    for item in array {
-                        
-                        let id = item["idVerifica"]
-                        let titolo = item["Titolo"]
-                        let materia = item["Materia"]
-                        let data = item["Data"]
-                        let formatore = item["Formatore"]
-                        let svolgimento = item["Svolgimento"]
-                        
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "dd-MM-yyyy"
-                        let date = dateFormatter.date(from: data!)
-                        
-                        
-                        let verifica = Verifica(idVerifica: id!, Titolo: titolo!, Materia: materia!, Data: date!, Formatore: formatore!, Svolgimento: svolgimento!)
-                        verifiche.append(verifica)
-                                                
-                        
-                        
-                    }
-                }
-                else {
-                    verifiche.removeAll()
-                    
-                    mostraAlert(titolo: "Che culo!", messaggio: "Non ci sono verifiche per questa classe", tipo: .alert)
-                    
-                    tableView.reloadData()
-                }
-            }
+        let DBVerificheHelper = DBVerificheCatcher()
+        let result = DBVerificheHelper.catchVerifiche()
+        
+        switch result {
+        case 1:
+            print("Non sono state trovate verifiche o c'è stato un errore")
+        case -1:
+            mostraAlert(titolo: "Errore", messaggio: "C'è stato un errore nel prelevare le verifiche. errore classe", tipo: .alert)
+        default:
+            print("Verifiche prese con successo")
         }
-        else {
-            
-        }
- 
+        
+        refreshControl.endRefreshing()
         tableView.reloadData()
     }
+    
+    @IBAction func showDifferentVerificheSection(_ sender: UISegmentedControl) {
+        
+       tableView.reloadData()
+        
+    }
+    
     
     
 
@@ -105,19 +96,73 @@ extension VerificheVC {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! VerificaCell
         
-        if verifiche.count != 0 {
+        switch segentedControlOutlet.selectedSegmentIndex {
+        case 0:
             
-            verifiche.sort(by: { ($0.Data).compare($1.Data) == .orderedAscending })
-            cell.titoloMateriaLabel.text = verifiche[indexPath.row].Materia
-            cell.argomentoLabel.text = "ARGOMENTO: \(verifiche[indexPath.row].Titolo)"
+            if verificheInCorso.count != 0 {
+                
+                verificheInCorso.sort(by: { ($0.Data).compare($1.Data) == .orderedAscending })
+                cell.titoloMateriaLabel.text = verificheInCorso[indexPath.row].Materia
+                cell.argomentoLabel.text = "ARGOMENTO: \(verificheInCorso[indexPath.row].Titolo)"
+                
+                let data = verificheInCorso[indexPath.row].Data
+                let calendar = Calendar.current
+                let dd = calendar.component(.day, from: data)
+                let mm = calendar.component(.month, from: data)
+                let yyyy = calendar.component(.year, from: data)
+                cell.dataVerificaLabel.text = "DATA: \(dd)/\(mm)/\(yyyy)"
+            }
+
+        case 1:
             
-            let data = verifiche[indexPath.row].Data
-            let calendar = Calendar.current
-            let dd = calendar.component(.day, from: data)
-            let mm = calendar.component(.month, from: data)
-            let yyyy = calendar.component(.year, from: data)
-            cell.dataVerificaLabel.text = "DATA: \(dd)/\(mm)/\(yyyy)"
+            if verificheinAttesadiValutazione.count != 0 {
+                
+                verificheinAttesadiValutazione.sort(by: { ($0.Data).compare($1.Data) == .orderedAscending })
+                cell.titoloMateriaLabel.text = verificheinAttesadiValutazione[indexPath.row].Materia
+                cell.argomentoLabel.text = "ARGOMENTO: \(verificheinAttesadiValutazione[indexPath.row].Titolo)"
+                
+                let data = verificheinAttesadiValutazione[indexPath.row].Data
+                let calendar = Calendar.current
+                let dd = calendar.component(.day, from: data)
+                let mm = calendar.component(.month, from: data)
+                let yyyy = calendar.component(.year, from: data)
+                cell.dataVerificaLabel.text = "DATA: \(dd)/\(mm)/\(yyyy)"
+            }
+            
+        case 2:
+            
+            if verificheCompletate.count != 0 {
+                
+                verificheCompletate.sort(by: { ($0.Data).compare($1.Data) == .orderedAscending })
+                cell.titoloMateriaLabel.text = verificheCompletate[indexPath.row].Materia
+                cell.argomentoLabel.text = "ARGOMENTO: \(verificheCompletate[indexPath.row].Titolo)"
+                
+                let data = verificheCompletate[indexPath.row].Data
+                let calendar = Calendar.current
+                let dd = calendar.component(.day, from: data)
+                let mm = calendar.component(.month, from: data)
+                let yyyy = calendar.component(.year, from: data)
+                cell.dataVerificaLabel.text = "DATA: \(dd)/\(mm)/\(yyyy)"
+            }
+            
+        default:
+            if verificheInCorso.count != 0 {
+                
+                verificheInCorso.sort(by: { ($0.Data).compare($1.Data) == .orderedAscending })
+                cell.titoloMateriaLabel.text = verificheInCorso[indexPath.row].Materia
+                cell.argomentoLabel.text = "ARGOMENTO: \(verificheInCorso[indexPath.row].Titolo)"
+                
+                let data = verificheInCorso[indexPath.row].Data
+                let calendar = Calendar.current
+                let dd = calendar.component(.day, from: data)
+                let mm = calendar.component(.month, from: data)
+                let yyyy = calendar.component(.year, from: data)
+                cell.dataVerificaLabel.text = "DATA: \(dd)/\(mm)/\(yyyy)"
+            }
         }
+        
+        
+        
         
         
         
@@ -125,21 +170,31 @@ extension VerificheVC {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return verifiche.count
+        switch segentedControlOutlet.selectedSegmentIndex {
+        case 0:
+            return verificheInCorso.count
+        case 1:
+            return verificheinAttesadiValutazione.count
+        case 2:
+            return verificheCompletate.count
+        default:
+            return 0
+        }
+        
+    }
+    
+    //Mark: - Others enum, classes, etc.
+    
+    enum verificheDaVedere {
+        case inProgramma
+        case inAttesaDiVoto
+        case completate
     }
     
     
 }
 
 
-struct Verifica {
-    var idVerifica : String
-    var Titolo : String
-    var Materia : String
-    var Data : Date
-    var Formatore : String
-    var Svolgimento : String
-}
 
 
 
