@@ -91,6 +91,10 @@ extension VerificheVC {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Hi, you just selected the row at index \(indexPath.row)")
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,6 +102,8 @@ extension VerificheVC {
         
         switch segentedControlOutlet.selectedSegmentIndex {
         case 0:
+            
+            cell.isUserInteractionEnabled = false
             
             if verificheInCorso.count != 0 {
                 
@@ -114,6 +120,8 @@ extension VerificheVC {
             }
 
         case 1:
+            cell.isUserInteractionEnabled = false
+
             
             if verificheinAttesadiValutazione.count != 0 {
                 
@@ -130,7 +138,8 @@ extension VerificheVC {
             }
             
         case 2:
-            
+            cell.isUserInteractionEnabled = true
+
             if verificheCompletate.count != 0 {
                 
                 verificheCompletate.sort(by: { ($0.Data).compare($1.Data) == .orderedAscending })
