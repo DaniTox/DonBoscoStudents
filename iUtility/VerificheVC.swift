@@ -94,6 +94,7 @@ extension VerificheVC {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        VerificaSelezionata = verificheCompletate[indexPath.row]
         
     }
     

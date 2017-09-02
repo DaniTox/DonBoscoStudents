@@ -13,6 +13,8 @@
 		DB0A06DA1E4531AC00D7F9CC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0A06D91E4531AC00D7F9CC /* SwiftyJSON.framework */; };
 		DB0B46F81E3CB75100DF7CC7 /* WebViewOrarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */; };
 		DB171B451EB25767002F91B7 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB171B441EB25767002F91B7 /* CircularView.swift */; };
+		DB1884D31F5A287D003FA70E /* MediaVotiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1884D21F5A287D003FA70E /* MediaVotiCell.swift */; };
+		DB1884D51F5A6286003FA70E /* ShowStatsVotiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1884D41F5A6286003FA70E /* ShowStatsVotiVC.swift */; };
 		DB1961011F2D101800C6FA41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB1961001F2D101800C6FA41 /* Images.xcassets */; };
 		DB1A7C901E85864200B73044 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */; };
 		DB30005A1ED5F8FE005BA0C8 /* WordsCountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3000591ED5F8FE005BA0C8 /* WordsCountVC.swift */; };
@@ -42,6 +44,7 @@
 		DBB310591E9F781B000A926C /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB310581E9F781B000A926C /* CircleButton.swift */; };
 		DBB3105C1E9F7C44000A926C /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB3105B1E9F7C44000A926C /* OnBoardingViewController.swift */; };
 		DBCBDF0A1EAD3CF30027FFC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBDF091EAD3CF30027FFC1 /* Extensions.swift */; };
+		DBF49ECD1F59143C00EC72FD /* DBVotiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF49ECC1F59143C00EC72FD /* DBVotiHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,8 @@
 		DB0B46F71E3CB75100DF7CC7 /* WebViewOrarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewOrarioViewController.swift; sourceTree = "<group>"; };
 		DB0B46FD1E3D1A8400DF7CC7 /* iUtility.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iUtility.entitlements; sourceTree = "<group>"; };
 		DB171B441EB25767002F91B7 /* CircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
+		DB1884D21F5A287D003FA70E /* MediaVotiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaVotiCell.swift; sourceTree = "<group>"; };
+		DB1884D41F5A6286003FA70E /* ShowStatsVotiVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowStatsVotiVC.swift; sourceTree = "<group>"; };
 		DB1961001F2D101800C6FA41 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DB1A7C8F1E85864200B73044 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		DB3000591ED5F8FE005BA0C8 /* WordsCountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsCountVC.swift; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 		DBB310581E9F781B000A926C /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		DBB3105B1E9F7C44000A926C /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		DBCBDF091EAD3CF30027FFC1 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DBF49ECC1F59143C00EC72FD /* DBVotiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBVotiHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +263,9 @@
 			children = (
 				DB4A2D8E1F54C73A003368EE /* VotiVC.swift */,
 				DB4A2D901F54D2A2003368EE /* DBAccountHelper.swift */,
+				DBF49ECC1F59143C00EC72FD /* DBVotiHelper.swift */,
+				DB1884D21F5A287D003FA70E /* MediaVotiCell.swift */,
+				DB1884D41F5A6286003FA70E /* ShowStatsVotiVC.swift */,
 			);
 			name = Voti;
 			sourceTree = "<group>";
@@ -641,10 +650,13 @@
 				DB4BEB061E5E2AB000BD9099 /* Reachablity.swift in Sources */,
 				DB4A2D8F1F54C73A003368EE /* VotiVC.swift in Sources */,
 				DB875F601F53CD68006F21F4 /* VerificheVC.swift in Sources */,
+				DB1884D51F5A6286003FA70E /* ShowStatsVotiVC.swift in Sources */,
+				DBF49ECD1F59143C00EC72FD /* DBVotiHelper.swift in Sources */,
 				DB875F5E1F53CD3C006F21F4 /* VerificaCell.swift in Sources */,
 				DBCBDF0A1EAD3CF30027FFC1 /* Extensions.swift in Sources */,
 				DB4A2D911F54D2A2003368EE /* DBAccountHelper.swift in Sources */,
 				DB4AB0571E896A3600EE2A93 /* CorrettoreLink.swift in Sources */,
+				DB1884D31F5A287D003FA70E /* MediaVotiCell.swift in Sources */,
 				DB3343231E1437C7007535E6 /* ViewController.swift in Sources */,
 				DB5A65CB1E7C452D0094FCC8 /* ModelNumeriCasuali.swift in Sources */,
 				DB3343211E1437C7007535E6 /* AppDelegate.swift in Sources */,

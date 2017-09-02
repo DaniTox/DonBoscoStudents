@@ -17,6 +17,7 @@ class VotiVC: UIViewController {
     
     @IBOutlet weak var registerButtonOutlet: UIButton!
     
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var esciButtonOutlet: UIButton!
     
@@ -48,7 +49,7 @@ class VotiVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getVoti()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,11 +141,13 @@ class VotiVC: UIViewController {
             showRegisterViewOutlet.isHidden = true
             showAccediViewOutlet.isHidden = true
             esciButtonOutlet.isHidden = false
+            tableView.isHidden = false
         }
         else {
             esciButtonOutlet.isHidden = true
             showRegisterViewOutlet.isHidden = false
             showAccediViewOutlet.isHidden = false
+            tableView.isHidden = true
         }
         
     }
@@ -224,7 +227,93 @@ class VotiVC: UIViewController {
     }
     
     
+    func getVoti() {
+        
+        let dbHelper = DBVotiHelper()
+        dbHelper.getVoti()
+        
+        tableView.reloadData()
+        print(votiDict)
+    }
+    
+    
+    func calcMediaOf(_ voti: [Voto]) -> Double {
+        
+        var i = 0
+        for voto in voti {
+            i += voto.votoVerifica
+        }
+        
+        let media = i / voti.count
+        
+//        if media.truncatingRemainder(dividingBy: 1) == 0 {
+//            let mediaInt = Int(media)
+//            return Double(mediaInt)
+//        }
+//        else {
+//            return media
+//        }
+        
+        return Double(media)
+    }
+    
+    
 }
+
+//MARK: - Extension
+
+extension VotiVC : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var keys = Array(votiDict.keys)
+        for (index, key) in keys.enumerated() {
+            if key == "MediaGenerale" {
+                keys.remove(at: index)
+                keys.insert(key, at: 0)
+                break
+            }
+        }
+        
+        MateriaVotiSelezionata =  votiDict[keys[indexPath.row]]
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return votiDict.keys.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MediaVotiCell
+        
+        
+        
+        var keys = Array(votiDict.keys)
+        for (index, key) in keys.enumerated() {
+            if key == "MediaGenerale" {
+                keys.remove(at: index)
+                keys.insert(key, at: 0)
+                break
+            }
+        }
+        
+        let materia = String(keys[indexPath.row])
+        
+        cell.materiaLabel.text = String(keys[indexPath.row])
+        
+        
+        if let voti = votiDict[materia!] {
+            cell.mediaMateriaLabel.text = "MEDIA: \(calcMediaOf(voti).cleanValue)"
+        }
+        
+        
+        return cell
+    }
+    
+    
+    
+}
+
 
 
 
