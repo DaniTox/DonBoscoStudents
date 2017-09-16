@@ -230,7 +230,17 @@ class VotiVC: UIViewController {
     func getVoti() {
         
         let dbHelper = DBVotiHelper()
-        dbHelper.getVoti()
+        let result = dbHelper.getVoti()
+        
+        switch result! {
+        case -2:
+            print("Nessun Voto")
+        case 0:
+            print("Voti recuperati con successo")
+        default:
+            print("Voti recuperati con successo")
+        }
+        
         
         tableView.reloadData()
         print(votiDict)

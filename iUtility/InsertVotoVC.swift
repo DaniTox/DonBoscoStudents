@@ -58,11 +58,11 @@ class InsertVotoVC: UIViewController {
             if let voto = votoTextField.text {
                 
                 let idVerifica = VerificaSelezionata.idVerifica
-                let email = user.email
+                
                 let token = user.token
                 
-                let parametri = "token=\(token)&idVerifica=\(idVerifica)&email=\(email)&voto=\(voto)"
-                let urlString = "http://localhost:8888/AppScuola/insertVoto.php?\(parametri)"
+                let parametri = "token=\(token)&idVerifica=\(idVerifica)&voto=\(voto)"
+                let urlString = "http://localhost:8888/Final/StudentiAction/insertVotoVerifica.php?\(parametri)"
                 
                 let url = URL(string: urlString)
                 

@@ -16,7 +16,7 @@ var votiDict = [String : [Voto]]()
 
 class DBVotiHelper {
     
-    public func getVoti() {
+    public func getVoti() -> Int? {
         
         
         
@@ -27,28 +27,31 @@ class DBVotiHelper {
             
             let token = user.token
             
-            let urlString = "http://localhost:8888/AppScuola/getVoti.php?token=\(token)"
+            let urlString = "http://localhost:8888/Final/StudentiAction/getVotiVerifiche.php?token=\(token)"
             let url = URL(string: urlString)
             
             if let dataVoti = try? Data(contentsOf: url!) as Data {
                 
                 let json = JSON(data: dataVoti, options: .mutableContainers, error: nil)
                 
-                let arrayVotiTemp = json.arrayObject as? [[String : String]]
+                let arrayVotiTemp = json["voti"].arrayObject as? [[String : Any]]
                 
+                if arrayVotiTemp == nil {
+                    return -2
+                }
                 
                 for votoItem in arrayVotiTemp! {
                     
-                    let voto = Int(votoItem["Voto"]!)
-                    let titolo = votoItem["Titolo"]!
-                    let materia = votoItem["Materia"]!
-                    let data = votoItem["Data"]!
+                    let voto = votoItem["Voto"]! as! Int
+                    let titolo = votoItem["Titolo"]! as! String
+                    let materia = votoItem["Materia"]! as! String
+                    let data = votoItem["Data"]! as! String
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "dd-mm-yyyy"
                     let date = dateFormatter.date(from: data)
                     
-                    let votoVerifica = Voto(voto: voto!, titolo: titolo, materia: materia, data: date!)
+                    let votoVerifica = Voto(voto: voto, titolo: titolo, materia: materia, data: date!)
                     votiGenerale.append(votoVerifica)
 
                     let materiaTemp = votoVerifica.materiaVerifica
@@ -72,6 +75,8 @@ class DBVotiHelper {
                 print("Ciao scemo. Non funziona una cippa")
             }
         }
+        
+        return 0
     }
     
     

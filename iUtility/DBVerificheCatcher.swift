@@ -22,13 +22,13 @@ class DBVerificheCatcher {
         var returnCode : Int = 1
         
         if let classe = UserDefaults.standard.string(forKey: "classe") {
-            let url = "http://localhost:8888/AppScuola/catchVerificheNoToken.php?classe=\(classe)"
+            let url = "http://localhost:8888/Final/StudentiAction/getVerificheByClasse.php?classe=\(classe)"
             let url2 = URL(string: url)
             
             if let data = try? Data(contentsOf: url2!) as Data {
                 let json = JSON(data: data, options: .mutableContainers, error: nil)
                 
-                if let array = json.arrayObject as? [[String : String]] {
+                if let array = json.arrayObject as? [[String : Any]] {
                     
                     verifiche.removeAll()
                     verificheinAttesadiValutazione.removeAll()
@@ -36,19 +36,19 @@ class DBVerificheCatcher {
                     
                     for item in array {
                         
-                        let id = item["idVerifica"]
-                        let titolo = item["Titolo"]
-                        let materia = item["Materia"]
-                        let data = item["Data"]
-                        let formatore = item["Formatore"]
-                        let svolgimento = item["Svolgimento"]
+                        let id = item["idVerifica"] as! Int
+                        let titolo = item["titolo"] as! String
+                        let materia = item["materia"] as! String
+                        let data = item["data"] as! String
+                        let formatore = item["formatore"] as! String
+                        let svolgimento = item["svolgimento"] as! Int
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "dd-MM-yyyy"
-                        let date = dateFormatter.date(from: data!)
+                        let date = dateFormatter.date(from: data)
                         
                         
-                        let verifica = Verifica(idVerifica: id!, Titolo: titolo!, Materia: materia!, Data: date!, Formatore: formatore!, Svolgimento: svolgimento!)
+                        let verifica = Verifica(idVerifica: id, Titolo: titolo, Materia: materia, Data: date!, Formatore: formatore, Svolgimento: svolgimento)
                         verifiche.append(verifica)
                         
                         parseVerificheinSection()
@@ -88,7 +88,7 @@ class DBVerificheCatcher {
                 verificheInCorso.append(verifica)
             }
             
-            if verifica.Svolgimento == "0" {
+            if verifica.Svolgimento == 0 {
                 
                 if calendar.isDateInYesterday(verifica.Data) {
                     verificheinAttesadiValutazione.append(verifica)
@@ -114,10 +114,10 @@ class DBVerificheCatcher {
 
 
 struct Verifica {
-    var idVerifica : String
+    var idVerifica : Int
     var Titolo : String
     var Materia : String
     var Data : Date
     var Formatore : String
-    var Svolgimento : String
+    var Svolgimento : Int
 }

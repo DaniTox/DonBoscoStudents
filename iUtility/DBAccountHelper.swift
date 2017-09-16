@@ -31,12 +31,11 @@ class DBAccountHelper {
     }
     
     public func registerUser() -> Int {
-        var returnCode = 2
         
         if let nome = self.nome, let cognome = self.cognome, let classe = self.classe {
             
             let parametri = "nome=\(nome)&cognome=\(cognome)&email=\(email)&password=\(password)&classe=\(classe)"
-            let urlString = "http://192.168.1.10:8888/AppScuola/register.php?\(parametri)"
+            let urlString = "http://localhost:8888/Final/registerStudent.php?\(parametri)"
             
             if let data = try? Data(contentsOf: URL(string: urlString)!) as Data {
                 let json = JSON(data: data, options: .mutableContainers, error: nil).dictionaryObject
@@ -48,7 +47,6 @@ class DBAccountHelper {
                 
                 switch code! {
                 case "200":
-                    returnCode = 0
                     
                     let id = json?["id"] as? String
                     let nome = json?["nome"] as? String
@@ -63,27 +61,33 @@ class DBAccountHelper {
                      
                     UserDefaults.standard.set(dataUser, forKey: USERLOGGED)
                     UserDefaults.standard.set(true, forKey: ISLOGGED)
-                    
+                    return 0
                 case "300":
-                    returnCode = 2
+                    return 2
                 case "400":
-                    returnCode = 1
+                    return 1
                 default:
-                    returnCode = 1
+                    return 1
                 }
                 
             }
             
+            else {
+                return 1
+            }
             
       
         }
 
-        return returnCode
+        else {
+            return 1
+        }
+        
     }
     
     public func login() -> Int {
         let paramentri = "email=\(email)&password=\(password)"
-        let urlString = "http://localhost:8888/AppScuola/login.php?\(paramentri)"
+        let urlString = "http://localhost:8888/Final/loginStudente.php?\(paramentri)"
         let url = URL(string: urlString)
         
         var returnCode = 1
