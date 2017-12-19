@@ -7,7 +7,7 @@ target 'iUtility' do
 
 pod 'SwiftyJSON'
 pod 'TextFieldEffects'
-pod 'LTMorphingLabel'
+#pod 'LTMorphingLabel'
 pod 'IQKeyboardManagerSwift'
 
   target 'iUtilityTests' do

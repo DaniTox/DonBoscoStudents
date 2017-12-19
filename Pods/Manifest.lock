@@ -1,21 +1,18 @@
 PODS:
   - IQKeyboardManagerSwift (4.0.13)
-  - LTMorphingLabel (0.5.3)
   - SwiftyJSON (3.1.4)
   - TextFieldEffects (1.3.3)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
-  - LTMorphingLabel
   - SwiftyJSON
   - TextFieldEffects
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: fb399c4cddcd8d9bbcd2d0c7c81ed290b61c088e
-  LTMorphingLabel: b85b6c1c5d0c4203e22f8d3dca722546f67b8410
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TextFieldEffects: 8706f53525f1ce51c8921b7af32237caab50c467
 
-PODFILE CHECKSUM: 5846f963ab04ca1184f10ca8e4f1f3a2d91d80ca
+PODFILE CHECKSUM: 9839ee02320b812441a98cf69659fbe26b29bb06
 
 COCOAPODS: 1.3.1

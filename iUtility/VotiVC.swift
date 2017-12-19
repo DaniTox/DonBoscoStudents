@@ -312,7 +312,7 @@ extension VotiVC : UITableViewDelegate, UITableViewDataSource {
         cell.materiaLabel.text = String(keys[indexPath.row])
         
         
-        if let voti = votiDict[materia!] {
+        if let voti = votiDict[materia] {
             cell.mediaMateriaLabel.text = "MEDIA: \(calcMediaOf(voti).cleanValue)"
         }
         

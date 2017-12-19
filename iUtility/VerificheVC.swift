@@ -56,7 +56,7 @@ class VerificheVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
 
     //MARK: Functions
     
-    func catchVerifiche() {
+    @objc func catchVerifiche() {
         
         let DBVerificheHelper = DBVerificheCatcher()
         let result = DBVerificheHelper.catchVerifiche()
